@@ -21,12 +21,13 @@ const prepareStoryhook = storyhook => {
     return storyhook;
 }
 
-const npcActs = () => {
-    return generate('npc_acts')
-}
-
 const functions = {
-    npcActs
+    npcActs: () => {
+        return generate('npc_acts')
+    },
+    pcRelated: () => {
+        return generate('pc_related')
+    },
 }
 
 module.exports = functions
