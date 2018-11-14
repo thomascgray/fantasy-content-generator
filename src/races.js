@@ -3,7 +3,10 @@ const StringTemplate = require("string-template")
 
 const races = [
     'orc',
-    'elf'
+    'elf',
+    'gnome',
+    'dwarf',
+    'human'
 ]
 
 const generate = (props) => {
