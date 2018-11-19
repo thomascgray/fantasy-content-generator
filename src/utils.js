@@ -1,11 +1,20 @@
-const Random = require("random-js")();
-
 /**
+ * pick 1 or more unique values from an array, and return a new array of those picked values
  * 
  * @param {any[]} array an array of values to pick from
+ * @param {number} count how many unique array values to pick out
  */
-const pick = array => {
-    return array[Random.integer(0, array.length - 1)];
+const pick = (array, count = 1) => {
+    const arrayCopy = Array.from(array)
+    const pickedValues = []
+
+    for (let i = 0; i < count; i++) {
+        let pickedIndex = rand(0, arrayCopy.length - 1);
+        pickedValues.push(arrayCopy[pickedIndex]);
+        arrayCopy.splice(pickedIndex, 1);
+    }
+
+    return pickedValues.length === 1 ? pickedValues[0] : pickedValues;
 }
 
 /**
@@ -27,7 +36,17 @@ const parseStringWithPlaceholders = string => {
     return string;
 }
 
+/**
+ * 
+ * @param {number} min minimum number to return (inclusive)
+ * @param {number} max maximum number to return (inclusive)
+ */
+const rand = (min, max) => {
+    return Math.floor(Math.random() * max) + min;
+}
+
 module.exports = {
     pick,
-    parseStringWithPlaceholders
+    parseStringWithPlaceholders,
+    rand
 }
