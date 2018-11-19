@@ -46,7 +46,7 @@ describe('pick', () => {
       expect(items).toContain(item);
     });
 
-    test.only('pick a different item each time', () => {
+    test('pick a different item each time', () => {
       const items = ['a', 'b', 'c']
 
       const tracker = { 'a' : 0, 'b': 0, 'c': 0 }
@@ -56,8 +56,6 @@ describe('pick', () => {
         tracker[item] += 1
       }
 
-      console.log('tracker', tracker);
-
       expect(tracker['a']).toBeGreaterThan(0);
       expect(tracker['b']).toBeGreaterThan(0);
       expect(tracker['c']).toBeGreaterThan(0);
@@ -66,6 +64,8 @@ describe('pick', () => {
     test('pick 2 items', () => {
       const items = ['a', 'b', 'c']
       const picked = Utils.pick(items, 2);
+
+      console.log('picked', picked);
 
       expect(typeof picked).toBe('object')
       expect(Array.isArray(picked)).toBe(true)
@@ -145,18 +145,28 @@ describe('rand', () => {
       const v = Utils.rand(1, 3);
       tracker[v] += 1;
     }
+
+    expect(tracker[1]).toBeGreaterThan(0);
+    expect(tracker[2]).toBeGreaterThan(0);
+    expect(tracker[3]).toBeGreaterThan(0);
   });
 
-  test('generate between 1 and 3', () => {
+  test('generate between 0 and 3', () => {
     const tracker = {
+      0: 0,
       1: 0,
       2: 0,
       3: 0
     }
 
     for (let i = 0; i < 500; i++) {
-      const v = Utils.rand(1, 3);
+      const v = Utils.rand(0, 3);
       tracker[v] += 1;
     }
+
+    expect(tracker[0]).toBeGreaterThan(0);
+    expect(tracker[1]).toBeGreaterThan(0);
+    expect(tracker[2]).toBeGreaterThan(0);
+    expect(tracker[3]).toBeGreaterThan(0);
   });
 });

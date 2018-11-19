@@ -19,6 +19,7 @@ const pick = (array, count = 1) => {
 
 /**
  * 
+ * 
  * @param {string} string 
  */
 const parseStringWithPlaceholders = string => {
@@ -42,7 +43,7 @@ const parseStringWithPlaceholders = string => {
  * @param {number} max maximum number to return (inclusive)
  */
 const rand = (min, max) => {
-    return Math.floor(Math.random() * max) + min;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 module.exports = {
