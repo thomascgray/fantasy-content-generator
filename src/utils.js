@@ -39,6 +39,7 @@ const parseStringWithPlaceholders = string => {
 
 /**
  * 
+ * 
  * @param {number} min minimum number to return (inclusive)
  * @param {number} max maximum number to return (inclusive)
  */
@@ -46,8 +47,20 @@ const rand = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+/**
+ * 
+ * @param {number} number 
+ * @param {function} func 
+ */
+const forCount = (number, func) => {
+    for (let i = 0; i < number; i++) {
+        func();
+    }
+}
+
 module.exports = {
     pick,
     parseStringWithPlaceholders,
-    rand
+    rand,
+    forCount
 }

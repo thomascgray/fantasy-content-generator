@@ -1,7 +1,6 @@
 const Utils = require('./utils');
 const _ = require('lodash')
 
-
 describe('parseStringWithPlaceholders', () => {
     test('no placeholders returns same', () => {
       const test = 'sphinx of black quartz; judge my vow!'
@@ -64,8 +63,6 @@ describe('pick', () => {
     test('pick 2 items', () => {
       const items = ['a', 'b', 'c']
       const picked = Utils.pick(items, 2);
-
-      console.log('picked', picked);
 
       expect(typeof picked).toBe('object')
       expect(Array.isArray(picked)).toBe(true)
@@ -168,5 +165,19 @@ describe('rand', () => {
     expect(tracker[1]).toBeGreaterThan(0);
     expect(tracker[2]).toBeGreaterThan(0);
     expect(tracker[3]).toBeGreaterThan(0);
+  });
+});
+
+describe('forCount', () => {
+  test('add value to outside array', () => {
+    const vals = [];
+
+    Utils.forCount(2, () => {
+      vals.push('a')
+    });
+
+    expect(vals.length).toBe(2);
+    expect(vals[0]).toBe('a');
+    expect(vals[1]).toBe('a');
   });
 });
