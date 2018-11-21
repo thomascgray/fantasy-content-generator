@@ -3,7 +3,7 @@ const StringTemplate = require("string-template")
 const Data = require('../data.json');
 
 const generate = (props) => {
-    const raceTemplates = require(`./${props.race}.json`)
+    const raceTemplates = require(`./${props.race}/template.json`)
 
     if (!raceTemplates) {
         throw new Error(`could not find race templates for ${props.race}`)
