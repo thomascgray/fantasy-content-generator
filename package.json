@@ -1,20 +1,23 @@
 {
   "name": "fantasy-content-generator",
   "version": "1.0.2",
-  "description": "",
-  "main": "index.js",
+  "homepage": "https://github.com/thomascgray/fantasy-content-generator",
+  "description": "Generates fantasy themed content, such as names, NPCs, storyhooks, and more",
+  "main": "src/index.js",
   "scripts": {
     "test": "jest",
-    "release": "release-it"
+    "release": "release-it",
+    "build": "parcel build src/index.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Tom Gray <tom.c.gray@gmail.com>",
+  "license": "Unlicense",
   "dependencies": {
     "string-template": "^1.0.0"
   },
   "devDependencies": {
     "jest": "^23.6.0",
     "lodash": "^4.17.11",
+    "parcel-bundler": "^1.10.3",
     "release-it": "^8.0.1"
   }
 }

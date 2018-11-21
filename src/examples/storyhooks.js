@@ -1,4 +1,4 @@
-const Storyhooks = require('../src/storyhooks')
+const Storyhooks = require('../storyhooks')
 
 console.log('****NPC ACTS****');
 console.log(Storyhooks.npcActs());
