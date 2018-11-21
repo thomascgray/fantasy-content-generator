@@ -1,19 +1,34 @@
-# fantasy-content-generator
+# Fantasy Content Generator
 
-very wip
+_[Very WIP!]_
 
-huge thanks to
+> Generate fantasy content for your app, video game, website and more
 
-- the www.reddit.com/r/d100 community for inspiration and content
+## Using the Library
 
-### seeing examples
+`npm install --save fantasy-content-generator`
 
-you can generate example output for the races, npcs and storybooks
+```js
+// app.js
 
-the setups are defined in `./examples`
+const FCG = require('fantasy-content-generator')
 
-to run an example:
+FCG.Races.orc();
+// 'Dunzub Gruulbav'
 
-```
-node examples/<example>/js
+FCG.NPCs.generate();
+// {
+//  name: 'Zephlickle Fentombus',
+//  race: 'gnome',
+//  traits: [
+//   'Spits',
+//   'Bruises easily'
+//  ],
+//  flaws: [
+//   'I make a joke out of everything.'
+//  ]
+// }
+
+FCG.Storyhooks.npcActs();
+// 'An NPC is caught palming a weapon by the PCs'
 ```
