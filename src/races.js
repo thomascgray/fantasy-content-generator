@@ -1,13 +1,6 @@
 const Utils = require('./utils');
 const StringTemplate = require("string-template")
-
-const races = [
-    'orc',
-    'elf',
-    'gnome',
-    'dwarf',
-    'human'
-]
+const Data = require('./data.json');
 
 const generate = (props) => {
     const raceTemplates = require(`../races/${props.race}.json`)
@@ -16,6 +9,7 @@ const generate = (props) => {
         throw new Error(`could not find race templates for ${props.race}`)
     }
 
+    // TODO improve all this shit
     const template = Utils.pick(raceTemplates);
     const starts = require(`../races/${props.race}/start.json`)
     const middles = require(`../races/${props.race}/middle.json`)
@@ -36,7 +30,7 @@ const functions = {
     generate
 }
 
-races.forEach(race => {
+Data.races.forEach(race => {
     functions[race] = () => functions.generate({ race })
 })
 

@@ -1,36 +1,13 @@
 const Races = require('../src/races')
+const Utils = require('../src/utils')
+const Data = require('../src/data.json')
 
-console.log('****ORCS****');
-console.log(Races.orc());
-console.log(Races.orc());
-console.log(Races.orc());
-console.log(Races.orc());
-console.log(Races.orc());
-console.log('');
-console.log('****ELFS****');
-console.log(Races.elf());
-console.log(Races.elf());
-console.log(Races.elf());
-console.log(Races.elf());
-console.log(Races.elf());
-console.log('');
-console.log('****GNOMES****');
-console.log(Races.gnome());
-console.log(Races.gnome());
-console.log(Races.gnome());
-console.log(Races.gnome());
-console.log(Races.gnome());
-console.log('');
-console.log('****DWARVES****');
-console.log(Races.dwarf());
-console.log(Races.dwarf());
-console.log(Races.dwarf());
-console.log(Races.dwarf());
-console.log(Races.dwarf());
-console.log('');
-console.log('****HUMANS****');
-console.log(Races.human());
-console.log(Races.human());
-console.log(Races.human());
-console.log(Races.human());
-console.log(Races.human());
+Data.races.forEach(race => {
+    console.log(`****${race.toUpperCase()}S****`);
+    console.log(Races[race]());
+    console.log(Races[race]());
+    console.log(Races[race]());
+    console.log(Races[race]());
+    console.log(Races[race]());
+    console.log('');
+});
