@@ -3,7 +3,7 @@ const StringTemplate = require("string-template")
 const Data = require('../data.json');
 
 const generate = (props) => {
-    const raceTemplates = require(`./${props.race}/template.json`)
+    const raceTemplates = require(`./${props.race}/templates.json`)
 
     if (!raceTemplates) {
         throw new Error(`could not find race templates for ${props.race}`)
@@ -11,16 +11,12 @@ const generate = (props) => {
 
     // TODO improve all this shit
     const template = Utils.pick(raceTemplates);
-    const starts = require(`./${props.race}/start.json`)
-    const middles = require(`./${props.race}/middle.json`)
-    const ends = require(`./${props.race}/end.json`)
+    const firsts = require(`./${props.race}/first.json`)
+    const lasts = require(`./${props.race}/last.json`)
 
     const name = StringTemplate(template, {
-        start1: Utils.pick(starts),
-        start2: Utils.pick(starts),
-        end1: Utils.pick(ends),
-        end2: Utils.pick(ends),
-        middle: Utils.pick(middles),
+        first: Utils.pick(firsts),
+        last: Utils.pick(lasts),
     });
 
     return name;
