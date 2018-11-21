@@ -8,7 +8,7 @@
     "test": "jest",
     "release": "release-it",
     "build": "parcel build src/index.js",
-    "prepublish": "npm run build"
+    "prepare": "npm run build"
   },
   "author": "Tom Gray <tom.c.gray@gmail.com>",
   "license": "Unlicense",

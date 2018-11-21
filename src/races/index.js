@@ -1,6 +1,6 @@
-const Utils = require('./utils');
+const Utils = require('../utils');
 const StringTemplate = require("string-template")
-const Data = require('./data.json');
+const Data = require('../data.json');
 
 const generate = (props) => {
     const raceTemplates = require(`./races/${props.race}.json`)
