@@ -1,6 +1,6 @@
 {
   "name": "fantasy-content-generator",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "homepage": "https://github.com/thomascgray/fantasy-content-generator",
   "description": "Generates fantasy themed content, such as names, NPCs, storyhooks, and more",
   "main": "src/index.js",
