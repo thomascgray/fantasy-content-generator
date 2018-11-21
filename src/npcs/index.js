@@ -1,11 +1,12 @@
-const Races = require('./races');
-const Utils = require('./utils');
+const Races = require('../races');
+const Utils = require('../utils');
+const Data = require('../data.json')
 
 const generate = (props = {}) => {
     const characterTraitsJson = require('./characterTraits.json');
     const flawsJson = require('./flaws.json');
 
-    const race = props.race ? props.race : Utils.pick(['orc', 'gnome', 'dwarf', 'elf', 'human'])
+    const race = props.race ? props.race : Utils.pick(Data.races)
     const name = Races[race]();
 
     const traits = [];
