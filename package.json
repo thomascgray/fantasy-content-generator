@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "release": "release-it"
   },
   "author": "",
   "license": "ISC",
@@ -13,6 +14,7 @@
   },
   "devDependencies": {
     "jest": "^23.6.0",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.11",
+    "release-it": "^8.0.1"
   }
 }
