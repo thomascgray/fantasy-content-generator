@@ -1,5 +1,7 @@
 # Fantasy Content Generator
 
+[![npm](https://img.shields.io/npm/v/fantasy-content-generator.svg?style=flat-square)](https://www.npmjs.com/package/fantasy-content-generator)
+
 _[Very WIP!]_
 
 > Generate fantasy content for your app, video game, website and more
