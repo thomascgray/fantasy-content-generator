@@ -1,6 +1,6 @@
 [
-    "{humanFirst} {humanLast}",
-    "{humanFirst}",
-    "{tieflingFirst} {humanLast}",
-    "{tieflingFirst}"
+    "{$humanFirst} {$humanLast}",
+    "{$humanFirst}",
+    "{$tieflingFirst} {$humanLast}",
+    "{$tieflingFirst}"
 ]

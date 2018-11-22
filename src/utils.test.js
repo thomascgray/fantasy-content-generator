@@ -1,7 +1,7 @@
 const Utils = require('./utils');
 const _ = require('lodash')
 
-describe('parseTemplate - without', () => {
+describe('parseTemplate', () => {
     test('no placeholders returns same', () => {
       const test = 'sphinx of black quartz; judge my vow!'
       expect(Utils.parseTemplate(test)).toEqual('sphinx of black quartz; judge my vow!')
@@ -33,6 +33,41 @@ describe('parseTemplate - without', () => {
       expect(tracker['sphinx of black quartz; judge my vow!']).toBeGreaterThan(0);
       expect(tracker['sphinx of green quartz; judge my vow!']).toBeGreaterThan(0);
     });
+
+    test('placeholder with variable replacements', () => {
+      const test = 'sphinx of {$colour} quartz; judge my vow!'
+      expect(Utils.parseTemplate(test, {
+        colour: 'green'
+      })).toEqual('sphinx of green quartz; judge my vow!')
+    })
+
+    test('placeholder with multiple variable replacements', () => {
+      const test = 'sphinx of {$colour} quartz; judge my {$action}!'
+      expect(Utils.parseTemplate(test, {
+        colour: 'green',
+        action: 'hat'
+      })).toEqual('sphinx of green quartz; judge my hat!')
+    })
+
+    test('placeholder with options and multiple variable replacements', () => {
+      const test = '{sphinx/lion} of {$colour} quartz; judge my {$action}!';
+
+      const tracker = {
+        'sphinx of green quartz; judge my hat!': 0,
+        'lion of green quartz; judge my hat!': 0,
+      }
+
+      for (let i = 0; i < 200; i++) {
+        const parsed = Utils.parseTemplate(test, {
+          colour: 'green',
+          action: 'hat',
+        });
+        tracker[parsed] += 1
+      }
+
+      expect(tracker['sphinx of green quartz; judge my hat!']).toBeGreaterThan(0);
+      expect(tracker['lion of green quartz; judge my hat!']).toBeGreaterThan(0);
+    })
 });
 
 describe('pick', () => {

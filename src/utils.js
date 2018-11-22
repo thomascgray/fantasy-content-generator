@@ -29,8 +29,13 @@ const parseTemplate = (string, content = {}) => {
 
     if (matches) {
         matches.forEach(match => {
-            let replacement = pick(match.substring(1).substring(0, match.length - 2).split('/'));
-            string = string.replace(match, replacement);
+            if (match.charAt(1) === '$') {
+                replacementVarName = match.substring(2, match.length-1)
+                string = string.replace(match, content[replacementVarName]);
+            } else {
+                let replacement = pick(match.substring(1).substring(0, match.length - 2).split('/'));
+                string = string.replace(match, replacement);
+            }
         })
     }
 

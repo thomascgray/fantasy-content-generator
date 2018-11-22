@@ -1,5 +1,4 @@
 const Utils = require('../utils');
-const StringTemplate = require("string-template")
 const Data = require('../data.json');
 
 const _generate = (props) => {
@@ -18,19 +17,22 @@ const _generate = (props) => {
         case 'gnome':
         case 'halfling':
         case 'human':
-        case 'orc':
-            return StringTemplate(template, {
+            return Utils.parseTemplate(template, {
                 first: Utils.pick(require(`./${props.race}/first.json`)),
                 last: Utils.pick(require(`./${props.race}/last.json`)),
             });
+        case 'orc':
+            return Utils.parseTemplate(template, {
+                first: Utils.pick(require(`./${props.race}/first.json`)),
+            });
         case 'half-orc':
-            return StringTemplate(template, {
+            return Utils.parseTemplate(template, {
                 humanFirst: Utils.pick(require(`./human/first.json`)),
                 humanLast: Utils.pick(require(`./human/last.json`)),
                 orcFirst: Utils.pick(require(`./orc/first.json`)),
             });
         case 'tiefling':
-            return StringTemplate(template, {
+            return Utils.parseTemplate(template, {
                 humanFirst: Utils.pick(require(`./human/first.json`)),
                 humanLast: Utils.pick(require(`./human/last.json`)),
                 tieflingFirst: Utils.pick(require(`./tiefling/first.json`)),
