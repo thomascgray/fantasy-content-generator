@@ -31,6 +31,13 @@ const _generate = (props) => {
                 humanLast: Utils.pick(require(`./human/last.json`)),
                 orcFirst: Utils.pick(require(`./orc/first.json`)),
             });
+        case 'half-elf':
+            return Utils.parseTemplate(template, {
+                humanFirst: Utils.pick(require(`./human/first.json`)),
+                humanLast: Utils.pick(require(`./human/last.json`)),
+                elfFirst: Utils.pick(require(`./elf/first.json`)),
+                elfLast: Utils.pick(require(`./elf/last.json`)),
+            });
         case 'tiefling':
             return Utils.parseTemplate(template, {
                 humanFirst: Utils.pick(require(`./human/first.json`)),
