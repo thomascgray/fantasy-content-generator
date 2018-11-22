@@ -2,24 +2,50 @@ const Utils = require('../utils');
 const StringTemplate = require("string-template")
 const Data = require('../data.json');
 
-const generate = (props) => {
+const _generate = (props) => {
     const raceTemplates = require(`./${props.race}/templates.json`)
 
     if (!raceTemplates) {
         throw new Error(`could not find race templates for ${props.race}`)
     }
 
-    // TODO improve all this shit
     const template = Utils.pick(raceTemplates);
-    const firsts = require(`./${props.race}/first.json`)
-    const lasts = require(`./${props.race}/last.json`)
 
-    const name = StringTemplate(template, {
-        first: Utils.pick(firsts),
-        last: Utils.pick(lasts),
-    });
+    switch (props.race) {
+        case 'dragonborn':
+        case 'dwarf':
+        case 'elf':
+        case 'gnome':
+        case 'halfling':
+        case 'human':
+        case 'orc':
+            return StringTemplate(template, {
+                first: Utils.pick(require(`./${props.race}/first.json`)),
+                last: Utils.pick(require(`./${props.race}/last.json`)),
+            });
+        case 'half-orc':
+            return StringTemplate(template, {
+                humanFirst: Utils.pick(require(`./human/first.json`)),
+                humanLast: Utils.pick(require(`./human/last.json`)),
+                orcFirst: Utils.pick(require(`./orc/first.json`)),
+            });
+        case 'tiefling':
+            return StringTemplate(template, {
+                humanFirst: Utils.pick(require(`./human/first.json`)),
+                humanLast: Utils.pick(require(`./human/last.json`)),
+                tieflingFirst: Utils.pick(require(`./tiefling/first.json`)),
+            });
+    }
+}
+
+const sanitise = name => {
 
     return name;
+}
+
+const generate = props => {
+    const name = _generate(props);
+    return sanitise(name);
 }
 
 const functions = {
@@ -27,7 +53,7 @@ const functions = {
 }
 
 Data.races.forEach(race => {
-    functions[race] = () => functions.generate({ race })
+    functions[race] = () => generate({ race })
 })
 
 module.exports = functions

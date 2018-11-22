@@ -1,3 +1,6 @@
 [
-    "{first} {last}"
+    "{humanFirst} {humanLast}",
+    "{humanFirst}",
+    "{tieflingFirst} {humanLast}",
+    "{tieflingFirst}"
 ]

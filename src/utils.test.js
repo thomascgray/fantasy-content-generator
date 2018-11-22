@@ -1,20 +1,20 @@
 const Utils = require('./utils');
 const _ = require('lodash')
 
-describe('parseStringWithPlaceholders', () => {
+describe('parseTemplate - without', () => {
     test('no placeholders returns same', () => {
       const test = 'sphinx of black quartz; judge my vow!'
-      expect(Utils.parseStringWithPlaceholders(test)).toEqual('sphinx of black quartz; judge my vow!')
+      expect(Utils.parseTemplate(test)).toEqual('sphinx of black quartz; judge my vow!')
     });
 
     test('single placeholder with 1 option - use that option', () => {
       const test = 'sphinx of {black} quartz; judge my vow!'
-      expect(Utils.parseStringWithPlaceholders(test)).toEqual('sphinx of black quartz; judge my vow!')
+      expect(Utils.parseTemplate(test)).toEqual('sphinx of black quartz; judge my vow!')
     });
 
     test('multiple placeholders, each with 1 option - use those options', () => {
       const test = '{sphinx} of {black} quartz; judge {my} {vow}!'
-      expect(Utils.parseStringWithPlaceholders(test)).toEqual('sphinx of black quartz; judge my vow!')
+      expect(Utils.parseTemplate(test)).toEqual('sphinx of black quartz; judge my vow!')
     });
 
     test('placeholder with 2 options', () => {
@@ -26,7 +26,7 @@ describe('parseStringWithPlaceholders', () => {
       }
 
       for (let i = 0; i < 200; i++) {
-        const parsed = Utils.parseStringWithPlaceholders(test);
+        const parsed = Utils.parseTemplate(test);
         tracker[parsed] += 1
       }
 

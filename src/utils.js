@@ -22,7 +22,7 @@ const pick = (array, count = 1) => {
  * 
  * @param {string} string 
  */
-const parseStringWithPlaceholders = string => {
+const parseTemplate = (string, content = {}) => {
     const regex = /{(.+?)}/gm;
 
     const matches = string.match(regex);
@@ -60,7 +60,7 @@ const forCount = (number, func) => {
 
 module.exports = {
     pick,
-    parseStringWithPlaceholders,
+    parseTemplate,
     rand,
     forCount
 }

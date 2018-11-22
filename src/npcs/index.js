@@ -13,11 +13,11 @@ const generate = (props = {}) => {
     const flaws = [];
 
     Utils.forCount(Utils.rand(1, 3), () => {
-        traits.push(Utils.parseStringWithPlaceholders(Utils.pick(characterTraitsJson)));
+        traits.push(Utils.parseTemplate(Utils.pick(characterTraitsJson)));
     });
 
     Utils.forCount(Utils.rand(1, 2), () => {
-        flaws.push(Utils.parseStringWithPlaceholders(Utils.pick(flawsJson)));
+        flaws.push(Utils.parseTemplate(Utils.pick(flawsJson)));
     });
 
     return {
