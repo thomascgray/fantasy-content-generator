@@ -48,7 +48,6 @@ const _generate = (props) => {
 }
 
 const sanitise = name => {
-
     return name;
 }
 
