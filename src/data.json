@@ -31,10 +31,23 @@
         "small_town": "400-900",
         "medium_town": "900-2000",
         "large_town": "2000-5000",
-        "small_city": "5000-10,000",
+        "small_city": "5000-10000",
         "medium_city": "10000-20000",
         "large_city": "20000-50000",
         "great_city": "50000-100000",
         "metropolis": "100000-100000"
+    },
+    "settlement_type_natural_landmark_count": {
+        "thorp": "0-1",
+        "hamlet": "0-1",
+        "village": "0-1",
+        "small_town": "0-2",
+        "medium_town": "0-2",
+        "large_town": "0-3",
+        "small_city": "0-4",
+        "medium_city": "0-4",
+        "large_city": "1-4",
+        "great_city": "2-5",
+        "metropolis": "3-6"
     }
 }
