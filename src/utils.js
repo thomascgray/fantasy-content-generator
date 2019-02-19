@@ -43,7 +43,7 @@ const parseTemplate = (string, content = {}) => {
 }
 
 /**
- * 
+ * generate a random number between 2 inclusive values
  * 
  * @param {number} min minimum number to return (inclusive)
  * @param {number} max maximum number to return (inclusive)
