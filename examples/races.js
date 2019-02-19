@@ -1,6 +1,6 @@
-const Races = require('../races')
-const Utils = require('../utils')
-const Data = require('../data.json')
+const Races = require('../src/races')
+const Utils = require('../src/utils')
+const Data = require('../src/data.json')
 
 Data.races.forEach(race => {
     console.log(`****${race.toUpperCase()}S****`);
