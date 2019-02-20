@@ -8,6 +8,8 @@
     "test": "jest",
     "release": "release-it",
     "build": "parcel build src/index.js",
+    "build:browser": "browserify -t require-globify ./src/index_browser.js | npx terser -o fantasy_content_generator.js",
+    "build:browser:unminified": "browserify -t require-globify ./src/index_browser.js -o fantasy_content_generator.js",
     "prepare": "npm run build"
   },
   "author": "Tom Gray <tom.c.gray@gmail.com>",
@@ -16,6 +18,9 @@
     "jest": "^23.6.0",
     "lodash": "^4.17.11",
     "parcel-bundler": "^1.10.3",
-    "release-it": "^8.0.1"
+    "release-it": "^8.0.1",
+    "require-globify": "^1.4.1",
+    "terser": "^3.16.1",
+    "uglify-js": "^3.4.9"
   }
 }

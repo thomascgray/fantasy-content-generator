@@ -8,6 +8,8 @@ _[Very WIP!]_
 
 ## Using the Library
 
+### Node/Webpack
+
 `npm install --save fantasy-content-generator`
 
 See API reference for full details of content available to generate
@@ -17,6 +19,11 @@ const FCG = require('fantasy-content-generator')
 
 FCG.Names.orc(); // 'Dunzub Gruulbav'
 ```
+
+### Browser
+
+to browserify with bundling built in
+`browserify -r through -r duplexer -r ./src/index.js:my-module > bundle.js`
 
 ## Tests
 
