@@ -1,4 +1,4 @@
-const Races = require('../races');
+const Names = require('../names');
 const Utils = require('../utils');
 const Data = require('../data.json')
 
@@ -7,7 +7,7 @@ const generate = (props = {}) => {
     const flawsJson = require('./flaws.json');
 
     const race = props.race ? props.race : Utils.pick(Data.races)
-    const name = Races[race]();
+    const name = Names[race]();
 
     const traits = [];
     const flaws = [];

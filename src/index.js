@@ -1,11 +1,11 @@
-const Races = require('./races')
+const Names = require('./names')
 const Storyhooks = require('./storyhooks')
 const NPCs = require('./npcs')
 const Settlements = require('./settlements')
 const Loots = require('./loots')
 
 module.exports = {
-    Names: Races,
+    Names,
     Storyhooks,
     NPCs,
     Settlements,
