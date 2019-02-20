@@ -1,6 +1,6 @@
 const Utils = require('../utils');
 const SettlementData = require('../data/settlements.json')
-const NaturalLandmarks = require('../data/natural_landmarks.json')
+const PointsOfInterest = require('../data/points_of_interest.json')
 
 const settlementType = () => {
     return Utils.pick(Object.keys(SettlementData))
@@ -14,22 +14,22 @@ const population = type => {
 }
 
 const naturalLandmarks = type => {
-    const naturalLandmarkCountRange = SettlementData[type].natural_landmark_count.split('-');
-    const naturalLandmarks = []
+    const pointOfInterestCountRange = SettlementData[type].natural_landmark_count.split('-');
+    const pointOfInterests = []
 
-    Utils.forCount(Utils.rand(naturalLandmarkCountRange[0], naturalLandmarkCountRange[1]), () => {
-        naturalLandmarks.push(Utils.parseTemplate(Utils.pick(NaturalLandmarks)));
+    Utils.forCount(Utils.rand(pointOfInterestCountRange[0], pointOfInterestCountRange[1]), () => {
+        pointOfInterests.push(Utils.parseTemplate(Utils.pick(PointsOfInterest)));
     });
 
-    return naturalLandmarks;
+    return pointOfInterests;
 }
 
-const generate = props => {
-    const type = settlementType();
+const generate = (props = {}) => {
+    const type = (props.type) ? props.type : settlementType();
     return {
         type,
         population: population(type),
-        natural_landmarks: naturalLandmarks(type),
+        points_of_interest: naturalLandmarks(type),
     }
 }
 
