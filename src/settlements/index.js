@@ -1,20 +1,20 @@
 const Utils = require('../utils');
-const Data = require('../data.json')
-const NaturalLandmarks = require('../natural_landmarks.json')
+const SettlementData = require('../data/settlements.json')
+const NaturalLandmarks = require('../data/natural_landmarks.json')
 
 const settlementType = () => {
-    return Utils.pick(Data.settlement_types)
+    return Utils.pick(Object.keys(SettlementData))
 }
 
 const population = type => {
-    const populationRange = Data.settlement_type_populations[type].split('-');
+    const populationRange = SettlementData[type].population_range.split('-');
     const population = Utils.rand(parseInt(populationRange[0]), parseInt(populationRange[1]))
 
     return population.toLocaleString();
 }
 
 const naturalLandmarks = type => {
-    const naturalLandmarkCountRange = Data.settlement_type_natural_landmark_count[type].split('-');
+    const naturalLandmarkCountRange = SettlementData[type].natural_landmark_count.split('-');
     const naturalLandmarks = []
 
     Utils.forCount(Utils.rand(naturalLandmarkCountRange[0], naturalLandmarkCountRange[1]), () => {
