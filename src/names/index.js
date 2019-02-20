@@ -1,11 +1,26 @@
 const Utils = require('../utils');
-const Data = require('../data.json');
+const Data = require('../data/names.json')
 
+/**
+ * generate a name for a race and gender.
+ * 
+ * if no race given, throws error. if no gender gives, picks one randomly
+ * 
+ * @param {object} props 
+ * @param {string} props.race
+ * @param {string} props.gender
+ */
 const _generate = (props) => {
-    const raceTemplates = require(`./${props.race}/templates.json`)
+    let { race, gender } = props;
+
+    if (gender == null) {
+        gender = Utils.pick(['male', 'female']);
+    }
+
+    const raceTemplates = Data[race].templates
 
     if (!raceTemplates) {
-        throw new Error(`could not find race templates for ${props.race}`)
+        throw new Error(`could not find race templates for ${race}`)
     }
 
     const template = Utils.pick(raceTemplates);
@@ -18,31 +33,27 @@ const _generate = (props) => {
         case 'halfling':
         case 'human':
             return Utils.parseTemplate(template, {
-                first: Utils.pick(require(`./${props.race}/first.json`)),
-                last: Utils.pick(require(`./${props.race}/last.json`)),
-            });
-        case 'orc':
-            return Utils.parseTemplate(template, {
-                first: Utils.pick(require(`./${props.race}/first.json`)),
+                first: Utils.pick(Data[race][gender]),
+                last: Utils.pick(Data[race].last),
             });
         case 'half-orc':
             return Utils.parseTemplate(template, {
-                humanFirst: Utils.pick(require(`./human/first.json`)),
-                humanLast: Utils.pick(require(`./human/last.json`)),
-                orcFirst: Utils.pick(require(`./orc/first.json`)),
+                humanFirst: Utils.pick(Data.human[gender]),
+                humanLast: Utils.pick(Data.human.last),
+                orcFirst: Utils.pick(Data["half-orc"][gender]),
             });
         case 'half-elf':
             return Utils.parseTemplate(template, {
-                humanFirst: Utils.pick(require(`./human/first.json`)),
-                humanLast: Utils.pick(require(`./human/last.json`)),
-                elfFirst: Utils.pick(require(`./elf/first.json`)),
-                elfLast: Utils.pick(require(`./elf/last.json`)),
+                humanFirst: Utils.pick(Data.human[gender]),
+                humanLast: Utils.pick(Data.human.last),
+                elfFirst: Utils.pick(Data.elf[gender]),
+                elfLast: Utils.pick(Data.elf.last),
             });
         case 'tiefling':
             return Utils.parseTemplate(template, {
-                humanFirst: Utils.pick(require(`./human/first.json`)),
-                humanLast: Utils.pick(require(`./human/last.json`)),
-                tieflingFirst: Utils.pick(require(`./tiefling/first.json`)),
+                humanFirst: Utils.pick(Data.human[gender]),
+                humanLast: Utils.pick(Data.human.last),
+                tieflingFirst: Utils.pick(Data.tiefling[gender]),
             });
     }
 }
@@ -60,8 +71,15 @@ const functions = {
     generate
 }
 
-Data.races.forEach(race => {
-    functions[race] = () => generate({ race })
-})
+// setup a function for each race
+Object.keys(Data).forEach(race => {
+    functions[race] = props => {
+        if (props == null) {
+            props = {}
+        }
+        props.race = race;
+        return generate(props);
+    }
+});
 
 module.exports = functions

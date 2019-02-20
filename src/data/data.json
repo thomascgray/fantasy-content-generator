@@ -1,16 +1,4 @@
 {
-    "races": [
-        "dragonborn",
-        "dwarf",
-        "elf",
-        "gnome",
-        "half-elf",
-        "half-orc",
-        "halfling",
-        "human",
-        "orc",
-        "tiefling"
-    ],
     "settlement_types": [
         "thorp",
         "hamlet",

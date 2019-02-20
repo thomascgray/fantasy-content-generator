@@ -1,0 +1,46 @@
+{
+    "thorp": {
+        "population_range": "",
+        "natural_landmark_count": ""
+    },
+    "hamlet": {
+        "population_range": "",
+        "natural_landmark_count": ""
+    },
+    "village": {
+        "population_range": "",
+        "natural_landmark_count": ""
+    },
+    "small_town": {
+        "population_range": "",
+        "natural_landmark_count": ""
+    },
+    "medium_town": {
+        "population_range": "",
+        "natural_landmark_count": ""
+    },
+    "large_town": {
+        "population_range": "",
+        "natural_landmark_count": ""
+    },
+    "small_city": {
+        "population_range": "",
+        "natural_landmark_count": ""
+    },
+    "medium_city": {
+        "population_range": "",
+        "natural_landmark_count": ""
+    },
+    "large_city": {
+        "population_range": "",
+        "natural_landmark_count": ""
+    },
+    "great_city": {
+        "population_range": "",
+        "natural_landmark_count": ""
+    },
+    "metropolis": {
+        "population_range": "",
+        "natural_landmark_count": ""
+    }
+}

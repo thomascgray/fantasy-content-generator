@@ -1,13 +1,14 @@
 const Names = require('../names');
 const Utils = require('../utils');
-const Data = require('../data.json')
+const NameData = require('../data/names.json')
 
 const generate = (props = {}) => {
     const characterTraitsJson = require('./characterTraits.json');
     const flawsJson = require('./flaws.json');
 
-    const race = props.race ? props.race : Utils.pick(Data.races)
-    const name = Names[race]();
+    const race = props.race ? props.race : Utils.pick(Object.keys(NameData))
+    const gender = props.gender ? props.gender : Utils.pick(['male', 'female'])
+    const name = Names.generate({ race, gender });
 
     const traits = [];
     const flaws = [];
@@ -22,6 +23,7 @@ const generate = (props = {}) => {
 
     return {
         name,
+        gender,
         race,
         traits,
         flaws
