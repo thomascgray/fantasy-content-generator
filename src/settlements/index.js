@@ -2,9 +2,7 @@ const Utils = require('../utils');
 const SettlementData = require('../data/settlements.json')
 const PointsOfInterest = require('../data/points_of_interest.json')
 
-const settlementType = () => {
-    return Utils.pick(Object.keys(SettlementData))
-}
+const settlementType = () => Utils.pick(Object.keys(SettlementData));
 
 const population = type => {
     const populationRange = SettlementData[type].population_range.split('-');

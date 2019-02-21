@@ -3,8 +3,9 @@
  * 
  * @param {any[]} array an array of values to pick from
  * @param {number} count how many unique array values to pick out
+ * @param {boolean} returnAsArray if true, always return result as an array, even if only 1 item is picked
  */
-const pick = (array, count = 1) => {
+const pick = (array, count = 1, returnAsArray = false) => {
     const arrayCopy = Array.from(array)
     const pickedValues = []
 
@@ -14,7 +15,7 @@ const pick = (array, count = 1) => {
         arrayCopy.splice(pickedIndex, 1);
     }
 
-    return pickedValues.length === 1 ? pickedValues[0] : pickedValues;
+    return (pickedValues.length === 1 && returnAsArray === false) ? pickedValues[0] : pickedValues;
 }
 
 /**
