@@ -5,16 +5,17 @@
   "description": "Generates fantasy themed content, such as names, NPCs, storyhooks, and more",
   "main": "dist/index.js",
   "scripts": {
-    "test": "build:browser && jest",
-    "release": "build:browser && release-it",
+    "test": "npm run build:browser && jest",
+    "release": "npm run build:browser && release-it",
     "build": "parcel build src/index.js",
-    "build:browser": "browserify -t require-globify ./src/index_browser.js | npx terser -o fantasy_content_generator.js",
-    "build:browser:unminified": "browserify -t require-globify ./src/index_browser.js -o fantasy_content_generator.js",
+    "build:browser": "npx browserify -t require-globify ./src/index_browser.js | npx terser -o fantasy_content_generator.js",
+    "build:browser:unminified": "npx browserify -t require-globify ./src/index_browser.js -o fantasy_content_generator.js",
     "prepare": "npm run build"
   },
   "author": "Tom Gray <tom.c.gray@gmail.com>",
   "license": "Unlicense",
   "devDependencies": {
+    "browserify": "^16.2.3",
     "jest": "^23.6.0",
     "lodash": "^4.17.11",
     "parcel-bundler": "^1.10.3",
