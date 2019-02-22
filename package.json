@@ -5,8 +5,8 @@
   "description": "Generates fantasy themed content, such as names, NPCs, storyhooks, and more",
   "main": "dist/index.js",
   "scripts": {
-    "test": "jest",
-    "release": "release-it",
+    "test": "build:browser && jest",
+    "release": "build:browser && release-it",
     "build": "parcel build src/index.js",
     "build:browser": "browserify -t require-globify ./src/index_browser.js | npx terser -o fantasy_content_generator.js",
     "build:browser:unminified": "browserify -t require-globify ./src/index_browser.js -o fantasy_content_generator.js",

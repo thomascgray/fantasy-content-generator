@@ -12,12 +12,24 @@ _[Very WIP!]_
 
 `npm install --save fantasy-content-generator`
 
-See API reference for full details of content available to generate
-
 ```js
-const FCG = require('fantasy-content-generator')
+const FCG = require('fantasy-content-generator');
 
 FCG.Names.orc(); // 'Dunzub Gruulbav'
+```
+
+### Direct `<script>` include
+
+Download `./fantasy_content_generator.js` and include in a script tag like
+
+```html
+<script src="./fantasy_content_generator.js"></script>
+```
+
+The API will be available on the global `window.FantasyContentGenerator` object.
+
+```js
+window.FantasyContentGenerator.Names.orc(); // 'Dunzub Gruulbav'
 ```
 
 ### Browser
@@ -33,9 +45,9 @@ npm test
 
 to run the Jest tests
 
-## Api Reference
+# Api Reference
 
-### Names
+## Names
 
 Generate names based on races
 
@@ -45,7 +57,7 @@ const FCG = require('fantasy-content-generator')
 FCG.Names.elf(); // 'Hadarai Liadon'
 ```
 
-### Storyhooks
+## Storyhooks
 
 Generate short, interesting actions for an NPC to take, sparking actions or interest from the player(s)
 
@@ -55,7 +67,7 @@ const FCG = require('fantasy-content-generator')
 FCG.Storyhooks.npcActs(); // 'An NPC becomes fearful'
 ```
 
-### NPCs
+## NPCs
 
 Generate NPCs
 
