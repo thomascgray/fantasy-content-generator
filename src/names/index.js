@@ -13,6 +13,10 @@ const Data = require('../data/names.json')
 const _generate = (props) => {
     let { race, gender } = props;
 
+    if (race == null) {
+        race = Utils.pick(Object.keys(Data));
+    }
+
     if (gender == null) {
         gender = Utils.pick(['male', 'female']);
     }
