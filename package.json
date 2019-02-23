@@ -12,7 +12,9 @@
     "build": "parcel build src/index.js",
     "build:browser": "npx browserify -t require-globify ./src/index_browser.js | npx terser -o fantasy_content_generator.js",
     "build:browser:unminified": "npx browserify -t require-globify ./src/index_browser.js -o fantasy_content_generator.js",
-    "publish:patch": "npm version patch && npm publish"
+    "publish:patch": "npm version patch && npm publish",
+    "publish:minor": "npm version minor && npm publish",
+    "publish:major": "npm version major && npm publish"
   },
   "author": "Tom Gray <tom.c.gray@gmail.com>",
   "license": "Unlicense",
