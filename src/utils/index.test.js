@@ -69,7 +69,7 @@ describe('parseTemplate', () => {
       expect(tracker['lion of green quartz; judge my hat!']).toBeGreaterThan(0);
     })
 
-    test('variable replacement setup', () => {
+    test('linked placeholders', () => {
       const test = 'the spell was {HEAT::fire/ice} - this made it {HEAT::hot/cold}';
 
       const tracker = {
@@ -88,6 +88,67 @@ describe('parseTemplate', () => {
       expect(tracker['the spell was ice - this made it cold']).toBeGreaterThan(0);
       expect(tracker['the spell was fire - this made it cold']).toEqual(0);
       expect(tracker['the spell was ice - this made it hot']).toEqual(0);
+    })
+
+    test('linked placeholders - including normal placeholders', () => {
+      const test = 'the spell was {weak/strong} and {HEAT::fire/ice} - this made it {HEAT::hot/cold}';
+
+      const tracker = {
+        'the spell was weak and fire - this made it hot': 0,
+        'the spell was strong and fire - this made it hot': 0,
+        'the spell was weak and ice - this made it cold': 0,
+        'the spell was strong and ice - this made it cold': 0,
+        'the spell was weak and fire - this made it cold': 0, // should stay zero
+        'the spell was strong and fire - this made it cold': 0, // should stay zero
+        'the spell was weak and ice - this made it hot': 0, // should stay zero
+        'the spell was strong and ice - this made it hot': 0, // should stay zero
+      }
+
+      for (let i = 0; i < 200; i++) {
+        const parsed = Utils.parseTemplate(test);
+        tracker[parsed] += 1
+      }
+
+      expect(tracker['the spell was weak and fire - this made it hot']).toBeGreaterThan(0);
+      expect(tracker['the spell was strong and fire - this made it hot']).toBeGreaterThan(0);
+      expect(tracker['the spell was weak and ice - this made it cold']).toBeGreaterThan(0);
+      expect(tracker['the spell was strong and ice - this made it cold']).toBeGreaterThan(0);
+      expect(tracker['the spell was weak and fire - this made it cold']).toEqual(0);
+      expect(tracker['the spell was strong and fire - this made it cold']).toEqual(0);
+      expect(tracker['the spell was weak and ice - this made it hot']).toEqual(0);
+      expect(tracker['the spell was strong and ice - this made it hot']).toEqual(0);
+    })
+
+    test('linked placeholders - including normal placeholders AND reference placeholders', () => {
+      const test = 'the spell was {weak/strong} and {$size} and {HEAT::fire/ice} - this made it {HEAT::hot/cold} and {$colour}';
+
+      const tracker = {
+        'the spell was weak and big and fire - this made it hot and blue': 0,
+        'the spell was strong and big and fire - this made it hot and blue': 0,
+        'the spell was weak and big and ice - this made it cold and blue': 0,
+        'the spell was strong and big and ice - this made it cold and blue': 0,
+        'the spell was weak and big and fire - this made it cold and blue': 0, // should stay zero
+        'the spell was strong and big and fire - this made it cold and blue': 0, // should stay zero
+        'the spell was weak and big and ice - this made it hot and blue': 0, // should stay zero
+        'the spell was strong and big and ice - this made it hot and blue': 0, // should stay zero
+      }
+
+      for (let i = 0; i < 200; i++) {
+        const parsed = Utils.parseTemplate(test, {
+          size: 'big',
+          colour: 'blue'
+        });
+        tracker[parsed] += 1
+      }
+
+      expect(tracker['the spell was weak and big and fire - this made it hot and blue']).toBeGreaterThan(0);
+      expect(tracker['the spell was strong and big and fire - this made it hot and blue']).toBeGreaterThan(0);
+      expect(tracker['the spell was weak and big and ice - this made it cold and blue']).toBeGreaterThan(0);
+      expect(tracker['the spell was strong and big and ice - this made it cold and blue']).toBeGreaterThan(0);
+      expect(tracker['the spell was weak and big and fire - this made it cold and blue']).toEqual(0);
+      expect(tracker['the spell was strong and big and fire - this made it cold and blue']).toEqual(0);
+      expect(tracker['the spell was weak and big and ice - this made it hot and blue']).toEqual(0);
+      expect(tracker['the spell was strong and big and ice - this made it hot and blue']).toEqual(0);
     })
 });
 
