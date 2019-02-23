@@ -78,7 +78,7 @@ FCG.Names.elf(); // an elf with a random gender
 FCG.Names.elf({ gender: 'female' }); // a female elf
 ```
 
-### Storyhooks
+### `Storyhooks`
 
 Generate short, interesting things to happen that can spur on an encounter or spice things up if they're getting stale.
 
@@ -94,7 +94,7 @@ An NPC does something.
 FCG.Storyhooks.npcActs(); // 'An NPC becomes fearful'
 ```
 
-### NPCs
+### `NPCs`
 
 Generate NPCs
 
