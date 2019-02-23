@@ -19,7 +19,11 @@ const pick = (array, count = 1, returnAsArray = false) => {
 }
 
 /**
- * 
+ * parse our special template syntax
+ * handles multiple "kinds" of template syntax
+ * a string container '{alpha/beta}' will choose one at random
+ * a string starting with a $ symbol is a reference for any passed content
+ *   so '{$colour}' becomes 'blue' if `content` was passed as { colour: 'blue' }
  * 
  * @param {string} string 
  */
@@ -28,10 +32,28 @@ const parseTemplate = (string, content = {}) => {
 
     const matches = string.match(regex);
 
+    const linkedPlaceholderIndexes = {
+        'HEAT': 0
+    };
+
+    console.log('INITIAL string', string);
     if (matches) {
+        // is our match a placeholder setup
+        matches.forEach(match => {
+            const linkedPlaceholderMatches = /{(.+?)::(.+?)}/gm.exec(match);
+            if (linkedPlaceholderMatches) {
+                const rawLinkToken = linkedPlaceholderMatches[1];
+                if (linkedPlaceholderIndexes[rawLinkToken] != null) { // if we're already setup
+                    let indexToUse = linkedPlaceholderIndexes[rawLinkToken]
+                    let replacement = linkedPlaceholderMatches[2].split('/')[indexToUse]
+                    string = string.replace(match, replacement);
+                }
+            }
+        });
+
         matches.forEach(match => {
             if (match.charAt(1) === '$') {
-                replacementVarName = match.substring(2, match.length-1)
+                replacementVarName = match.substring(2, match.length - 1)
                 string = string.replace(match, content[replacementVarName]);
             } else {
                 let replacement = pick(match.substring(1).substring(0, match.length - 2).split('/'));
@@ -39,6 +61,8 @@ const parseTemplate = (string, content = {}) => {
             }
         })
     }
+
+    console.log('string', string);
 
     return string;
 }

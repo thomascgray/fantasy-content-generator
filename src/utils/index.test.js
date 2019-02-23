@@ -68,6 +68,27 @@ describe('parseTemplate', () => {
       expect(tracker['sphinx of green quartz; judge my hat!']).toBeGreaterThan(0);
       expect(tracker['lion of green quartz; judge my hat!']).toBeGreaterThan(0);
     })
+
+    test.only('variable replacement setup', () => {
+      const test = 'the spell was {HEAT::fire/ice} - this made it {HEAT::hot/cold}';
+
+      const tracker = {
+        'the spell was fire - this made it hot': 0,
+        'the spell was ice - this made it cold': 0,
+        'the spell was fire - this made it cold': 0, // should stay zero
+        'the spell was ice - this made it hot': 0, // should stay zero
+      }
+
+      for (let i = 0; i < 1; i++) {
+        const parsed = Utils.parseTemplate(test);
+        tracker[parsed] += 1
+      }
+
+      expect(tracker['the spell was fire - this made it hot']).toBeGreaterThan(0);
+      expect(tracker['the spell was ice - this made it cold']).toBeGreaterThan(0);
+      expect(tracker['the spell was fire - this made it cold']).toEqual(0);
+      expect(tracker['the spell was ice - this made it hot']).toEqual(0);
+    })
 });
 
 describe('pick', () => {
