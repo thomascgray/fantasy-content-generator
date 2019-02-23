@@ -131,4 +131,10 @@ Race and gender parameters can be given to generate to ensure those values.
 npm test
 ```
 
-to run the Jest tests
+to run the Jest tests.
+
+## Contributing
+
+Open up a PR!
+
+As a general rule of thumb, aim to only use/reference content that is totally custom, or available in the PHB of D&D 5E.
