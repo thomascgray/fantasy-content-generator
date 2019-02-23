@@ -6,7 +6,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "npm run build:browser && jest",
-    "release": "npm run test && release-it",
+    "release": "npm run test && git add . && git commit . && release-it",
     "build": "parcel build src/index.js",
     "build:browser": "npx browserify -t require-globify ./src/index_browser.js | npx terser -o fantasy_content_generator.js",
     "build:browser:unminified": "npx browserify -t require-globify ./src/index_browser.js -o fantasy_content_generator.js",
