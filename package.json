@@ -12,6 +12,9 @@
     "build:browser:unminified": "npx browserify -t require-globify ./src/index_browser.js -o fantasy_content_generator.js",
     "prepare": "npm run build"
   },
+  "release-it": {
+    "requireCleanWorkingDir": false
+  },
   "author": "Tom Gray <tom.c.gray@gmail.com>",
   "license": "Unlicense",
   "devDependencies": {
