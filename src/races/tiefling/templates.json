@@ -1,6 +1,0 @@
-[
-    "{$humanFirst} {$humanLast}",
-    "{$humanFirst}",
-    "{$tieflingFirst} {$humanLast}",
-    "{$tieflingFirst}"
-]

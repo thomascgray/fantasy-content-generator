@@ -1,2 +1,4 @@
-src
 .cache
+examples
+src
+fantasy_content_generator.js

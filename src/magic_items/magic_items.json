@@ -1,0 +1,51 @@
+{
+    "types": [
+        "wonderous_item",
+        "weapon",
+        "armour",
+        "potion"
+    ],
+    "power_levels": [
+        "minor",
+        "lesser",
+        "greater",
+        "supreme"
+    ],
+    "schools_of_magic": [
+        "abjuration",
+        "conjuration",
+        "divination",
+        "enchantment",
+        "evocation",
+        "illusion",
+        "necromancy",
+        "transmutation"
+    ],
+    "item_effects_per_level": {
+        "minor": "{0/0/1}",
+        "lesser": "{0/1/1/1}",
+        "greater": "{1/1/1/2}",
+        "supreme": "{1/1/2/2}"
+    },
+    "school_weapon_effects_per_level": {
+        "necromancy:minor": [
+            "On a successful attack, target must make a CON save or take an extra {1d2/1d3} Necrotic damage"
+        ],
+        "necromancy:lesser": [
+            "On a successful attack, target must make a CON save or gain 1 point of Exhaustion",
+            "On a successful attack, target must make a CON save or lose {2/1d4} HP, and the attacker gains that much HP",
+            "On a successful attack, {sickly/black/dark} energy strikes all targets in a {20/25/30}ft radius. All targets must make a CON saving throw. Any failures become Deaf for {2d4} turns"
+        ],
+        "necromancy:greater": [
+            "On a successful attack, {sickly/black/dark} energy strikes all targets in a {20/25/30}ft radius. All targets must make a CON saving throw. Any failures become Blind for {2d4} turns",
+            "On a successful attack, {sickly/black/dark} energy {strikes/slams into/seeks out/rushes into} all targets in a {20/25/30}ft radius. All targets must make a CON saving throw. Any failures take {3/4}d{4/5} Necrotic damage. This power happens {2/3} times/day",
+            "While wielding this weapon, the holder can cast Inflict Wounds as a 1st level spell {2/3} times/day"
+        ],
+        "necromancy:supreme": [
+            "If a creature is killed with this weapon, they are raised as undead in 1d10 turns. The raised creature acts as if raised by the Create Undead spell at 6th level",
+            "On a successful attack, target must make a CON save. On a failure, oily black roots dig through the targets body into their skull, and they become permanently {Blind/Deaf}",
+            "While wielding this weapon, the holder can cast {Blight} as a 4th level spell {2/3} times/day",
+            "While wielding this weapon, the holder can cast Contagion as a 4th level spell {2/3} times/day"
+        ]
+    }
+}

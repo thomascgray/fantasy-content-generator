@@ -1,35 +1,33 @@
 const Utils = require('../utils');
-const Data = require('../data.json')
-const NaturalLandmarks = require('../natural_landmarks.json')
+const SettlementData = require('../data/settlements.json')
+const PointsOfInterest = require('../data/points_of_interest.json')
 
-const settlementType = () => {
-    return Utils.pick(Data.settlement_types)
-}
+const settlementType = () => Utils.pick(Object.keys(SettlementData));
 
 const population = type => {
-    const populationRange = Data.settlement_type_populations[type].split('-');
+    const populationRange = SettlementData[type].population_range.split('-');
     const population = Utils.rand(parseInt(populationRange[0]), parseInt(populationRange[1]))
 
     return population.toLocaleString();
 }
 
 const naturalLandmarks = type => {
-    const naturalLandmarkCountRange = Data.settlement_type_natural_landmark_count[type].split('-');
-    const naturalLandmarks = []
+    const pointOfInterestCountRange = SettlementData[type].natural_landmark_count.split('-');
+    const pointOfInterests = []
 
-    Utils.forCount(Utils.rand(naturalLandmarkCountRange[0], naturalLandmarkCountRange[1]), () => {
-        naturalLandmarks.push(Utils.parseTemplate(Utils.pick(NaturalLandmarks)));
+    Utils.forCount(Utils.rand(pointOfInterestCountRange[0], pointOfInterestCountRange[1]), () => {
+        pointOfInterests.push(Utils.parseTemplate(Utils.pick(PointsOfInterest)));
     });
 
-    return naturalLandmarks;
+    return pointOfInterests;
 }
 
-const generate = props => {
-    const type = settlementType();
+const generate = (props = {}) => {
+    const type = (props.type) ? props.type : settlementType();
     return {
         type,
         population: population(type),
-        natural_landmarks: naturalLandmarks(type),
+        points_of_interest: naturalLandmarks(type),
     }
 }
 

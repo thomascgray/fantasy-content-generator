@@ -1,4 +1,4 @@
-const Utils = require('./utils');
+const Utils = require('./index');
 const _ = require('lodash')
 
 describe('parseTemplate', () => {

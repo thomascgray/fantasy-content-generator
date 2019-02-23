@@ -1,6 +1,0 @@
-[
-    "{$humanFirst} {$humanLast}",
-    "{$elfFirst} {$elfLast}",
-    "{$humanFirst} {$elfLast}",
-    "{$elfFirst} {$humanLast}"
-]
