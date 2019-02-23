@@ -20,7 +20,7 @@ FCG.Names.orc(); // 'Dunzub Gruulbav'
 
 ### Direct `<script>` include
 
-Download `./fantasy_content_generator.js` and include in a script tag like
+Download `./fantasy_content_generator.js` direct from Github and include in a script tag like
 
 ```html
 <script src="./fantasy_content_generator.js"></script>
