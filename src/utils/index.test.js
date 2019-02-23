@@ -69,7 +69,7 @@ describe('parseTemplate', () => {
       expect(tracker['lion of green quartz; judge my hat!']).toBeGreaterThan(0);
     })
 
-    test.only('variable replacement setup', () => {
+    test('variable replacement setup', () => {
       const test = 'the spell was {HEAT::fire/ice} - this made it {HEAT::hot/cold}';
 
       const tracker = {
@@ -79,7 +79,7 @@ describe('parseTemplate', () => {
         'the spell was ice - this made it hot': 0, // should stay zero
       }
 
-      for (let i = 0; i < 1; i++) {
+      for (let i = 0; i < 200; i++) {
         const parsed = Utils.parseTemplate(test);
         tracker[parsed] += 1
       }

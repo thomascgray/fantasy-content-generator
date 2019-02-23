@@ -32,11 +32,8 @@ const parseTemplate = (string, content = {}) => {
 
     const matches = string.match(regex);
 
-    const linkedPlaceholderIndexes = {
-        'HEAT': 0
-    };
+    const linkedPlaceholderIndexes = {};
 
-    console.log('INITIAL string', string);
     if (matches) {
         // is our match a placeholder setup
         matches.forEach(match => {
@@ -44,8 +41,13 @@ const parseTemplate = (string, content = {}) => {
             if (linkedPlaceholderMatches) {
                 const rawLinkToken = linkedPlaceholderMatches[1];
                 if (linkedPlaceholderIndexes[rawLinkToken] != null) { // if we're already setup
-                    let indexToUse = linkedPlaceholderIndexes[rawLinkToken]
-                    let replacement = linkedPlaceholderMatches[2].split('/')[indexToUse]
+                    let replacement = linkedPlaceholderMatches[2].split('/')[linkedPlaceholderIndexes[rawLinkToken]]
+                    string = string.replace(match, replacement);
+                } else { // if not, we need to do the first one and add the index into the linkedPlaceholderIndexes
+                    const allPlaceholderChunks = linkedPlaceholderMatches[2].split('/');
+                    const newIndex = rand(0, allPlaceholderChunks.length - 1);
+                    let replacement = allPlaceholderChunks[newIndex];
+                    linkedPlaceholderIndexes[rawLinkToken] = newIndex; // set it up for further matches
                     string = string.replace(match, replacement);
                 }
             }
@@ -61,8 +63,6 @@ const parseTemplate = (string, content = {}) => {
             }
         })
     }
-
-    console.log('string', string);
 
     return string;
 }
