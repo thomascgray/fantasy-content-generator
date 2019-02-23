@@ -40,13 +40,13 @@ const _generate = (props) => {
                 first: Utils.pick(Data[race][gender]),
                 last: Utils.pick(Data[race].last),
             });
-        case 'half-orc':
+        case 'halfOrc':
             return Utils.parseTemplate(template, {
                 humanFirst: Utils.pick(Data.human[gender]),
                 humanLast: Utils.pick(Data.human.last),
-                orcFirst: Utils.pick(Data["half-orc"][gender]),
+                orcFirst: Utils.pick(Data.halfOrc[gender]),
             });
-        case 'half-elf':
+        case 'halfElf':
             return Utils.parseTemplate(template, {
                 humanFirst: Utils.pick(Data.human[gender]),
                 humanLast: Utils.pick(Data.human.last),

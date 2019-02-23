@@ -288,7 +288,7 @@
             "{$first} {$last}"
         ]
     },
-    "half-elf": {
+    "halfElf": {
         "templates": [
             "{$humanFirst} {$humanLast}",
             "{$elfFirst} {$elfLast}",
@@ -296,7 +296,7 @@
             "{$elfFirst} {$humanLast}"
         ]
     },
-    "half-orc": {
+    "halfOrc": {
         "male": [
             "Dench",
             "Feng",

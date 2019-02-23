@@ -7,3 +7,9 @@ Object.keys(Data).forEach(race => {
     console.log(Names.generate({ race, gender: 'female'}));
     console.log('');
 });
+
+console.log('male elf', Names.elf({ gender: 'male' }));
+console.log('female elf', Names.elf({ gender: 'female' }));
+
+console.log('male elf', Names.elf({ gender: 'male' }));
+console.log('female elf', Names.elf({ gender: 'female' }));
