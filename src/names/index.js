@@ -11,6 +11,10 @@ const Data = require('../data/names.json')
  * @param {string} props.gender
  */
 const _generate = (props) => {
+    if (!props) {
+        props = {}
+    }
+    
     let { race, gender } = props;
 
     if (race == null) {

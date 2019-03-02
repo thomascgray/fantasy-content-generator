@@ -90,9 +90,12 @@ const forCount = (number, func) => {
     }
 }
 
+const titleCase = string => string.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+
 module.exports = {
     pick,
     parseTemplate,
     rand,
-    forCount
+    forCount,
+    titleCase
 }

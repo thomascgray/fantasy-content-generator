@@ -1,5 +1,6 @@
 const MagicItemData = require('./magic_items.json')
 const Utils = require('../utils')
+const Names = require('../names');
 
 const _type = () => Utils.pick(MagicItemData.types);
 const _powerLevel = () => Utils.pick(MagicItemData.power_levels);
@@ -17,12 +18,22 @@ const generate = props => {
     const powerLevel = (props.powerLevel) ? props.powerLevel : _powerLevel();
     const schoolOfMagic = (props.schoolOfMagic) ? props.schoolOfMagic : _schoolOfMagic();
     const effects = (props.effects) ? props.effects : _effects(schoolOfMagic, powerLevel);
+    const subtype = Utils.pick(MagicItemData.subtypes[type]);
+
+    const formattedData = {}
+
+    if (powerLevel === 'supreme') {
+        formattedData.owner = Names.generate();
+    }
+
+    formattedData.title = `${subtype} of ${Utils.titleCase(powerLevel)} ${Utils.titleCase(schoolOfMagic)}`
 
     return {
         type,
         powerLevel,
         schoolOfMagic,
         effects,
+        formattedData
     }
 }
 
