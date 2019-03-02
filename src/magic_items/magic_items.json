@@ -6,7 +6,7 @@
         "potion"
     ],
     "subtypes": {
-        "weapon" : [
+        "weapon": [
             "Club",
             "Dagger",
             "Greatclub",
@@ -66,14 +66,14 @@
             ],
             "lesser": [
                 "This weapon has {2/3/4} charges. While holding this weapon, the wielder can expend a charge to cast {Acid Splash/Poison Spray/Produce Flame} as though they were 5th level. The charges are regained at dawn.",
-                
+                "On a successful attack, the target must make a DC 14 CON save. On a failure, the targets mouth and stomach is suddenly filled with monstrous {slugs/worms/beetles/insects/maggots}, and they begin to vomit and cough uncontrollably. The target can take no action other than movement for 1d4 turns.",
+                "On a successful attack, magical {vines/tentacles/ropes} erupt from the weapon, wrapping themselves around the limbs and joints of the targets. The target must make a DC 13 DEX save. On a failure, for 2d4 turns the target's max speed is reduced to 10 ft per turn and they have disadvantage on attack rolls"
             ],
             "greater": [
                 "This weapon has {3/4} charges. While holding this weapon, the wielder can expend a charge to cast {Acid Splash/Poison Spray/Produce Flame} as though they were 11th level. The charges are regained at dawn.",
-                
                 "On a successful attack, the target must make a DC 12 WIS save. On a failure, the target blinks out of existence, and reappears 2d12 feet away. Direction of teleportation is determined by rolling 1d8. If the target reappears inside solid matter, their body replaces the matter. However, the target can become stuck in this manner (for example, reappearing with their leg inside a boulder)."
             ],
-            "supreme" : [
+            "supreme": [
                 "This weapon has 4 charges. While holding this weapon, the wielder can expend a charge to cast {Acid Splash/Poison Spray/Produce Flame} as though they were 17th level. The charges are regained at dawn.",
                 "This weapon has 2 charges. The wielder can expend a charge to load the blade with a crackling, screeching heat, and the steel becomes a shade of {maroon/violet}. The wielder can use the weapon to carve into space itself, creating a freestanding portal in the air. This portal acts as if created by the spell Arcane Gate. There can only ever be 2 portals present - if a 3rd is opened, the 1st closes. The charges are regained at dawn.",
                 "Once per day, the wielder of this weapon can speak the ancient words and make a sacrifice of blood in order to unleash the weapons power. Lose 2d4 HP, and cast the spell Hunger of Hadar.",
@@ -81,41 +81,99 @@
             ]
         },
         "enchantment": {
-            "minor": [],
-            "lesser": [],
-            "greater": [],
-            "supreme": []
+            "minor": [
+                "This weapon has {2/3} charges. While holding this weapon, the wielder can expend a charge to cast Vicious Mockery as though they were 1st level. The charges are regained at dawn."
+            ],
+            "lesser": [
+                "This weapon has {2/3} charges. While holding this weapon, the wielder can expend a charge to cast Vicious Mockery as though they were 5th level. The charges are regained at dawn.",
+                "On a successful attack, target must make a DC 14 WIS save. On a failure, their mind is clouded with terrifying visions. They have disadvantage on all attack rolls for {2/3}d4 rounds.",
+                "On a successful attack, target must make a DC 14 WIS save. On a failure, their thoughts are swamped with intense emotions of fear, panic and sorrow. They are unable to make hostile or aggressive actions for 1d6 rounds."
+            ],
+            "greater": [
+                "This weapon has {2/3} charges. While holding this weapon, the wielder can expend a charge to cast Vicious Mockery as though they were 11th level. The charges are regained at dawn.",
+                "On a successful attack, targets must make a DC 16 WIS save. On a failure, the target becomes Paralyzed for {2/3}d4 rounds.",
+                "is weapon has {2/3} charges. On a successful attack, the wielder can expend a charge to swamp the target’s mind with thoughts of jealousy and anger. On the target’s next turn, they must try and attack an ally, to the reasonable best of the target’s ability. The charges are regained at dawn."
+            ],
+            "supreme": [
+                "This weapon has {2/3} charges. While holding this weapon, the wielder can expend a charge to cast Vicious Mockery as though they were 17th level. The charges are regained at dawn.",
+                "This weapon has {2/3} charges. On a successful attack, the wielder can expend a charge to cast Confusion at 4th level. The spells point of origin is the target. If allies are inside the sphere, the wielder can choose to make them exempt from the effect. The charges are regained at dawn"
+            ]
         },
         "evocation": {
-            "minor": [],
+            "minor": [
+                "This weapon has {2/3} charges. The wielder can expend a charge to cast {Eldritch Blast/Fire Bolt/Frostbite} as though they were 1st level. The charges are regained at dawn"
+            ],
             "lesser": [
+                "This weapon has {2/3} charges. The wielder can expend a charge to cast {Eldritch Blast/Fire Bolt/Frostbite} as though they were 5th level. The charges are regained at dawn",
+                "On a successful attack, embers and flames erupt from the target at the point where the weapon made contact. Target takes an additional {2/3}d4 of Fire damage.",
+                "Twice a day, you can thrust the weapon into the ground beneath you, sending out magical shockwaves. This has the effect of casting Thunderwave at 1st level"
+            ],
+            "greater": [
+                "This weapon has {2/3} charges. The wielder can expend a charge to cast {Eldritch Blast/Fire Bolt/Frostbite} as though they were 11th level. The charges are regained at dawn",
+                "The blade of this weapon crackles with {electrical/magical/eldritch} energy. When swung in front of a group of creatures, {X::2/3/4} of the creatures are struck with bolts of energy. Each affected creature takes 3d4 Lightning damage, and becomes Paralyzed for 2 rounds."
+            ],
+            "supreme": [
+                "This weapon has {2/3} charges. The wielder can expend a charge to cast {Eldritch Blast/Fire Bolt/Frostbite} as though they were 17th level. The charges are regained at dawn"
+            ]
+        },
+        "illusion": {
+            "minor": [
+                "This weapon has {2/3} charges. The wielder can expend a charge to cast Minor Illusion as though they were 1st level. The charges are regained at dawn"
+            ],
+            "lesser": [
+                "This weapon has {2/3} charges. The wielder can expend a charge to cast Minor Illusion as though they were 5th level. The charges are regained at dawn",
                 "On a successful attack, embers and flames erupt from the target at the point where the weapon made contact. Target takes an additional {2/3}d4 of Fire damage."
             ],
             "greater": [
-                "The blade of this weapon crackles with {electrical/magical/eldritch} energy. When swung in front of a group of creatures, {X::2/3/4} of the creatures are struck with bolts of energy. Each affected creature takes 3d4 Lightning damage, and becomes Paralyzed for 2 rounds.",
+                "This weapon has {2/3} charges. The wielder can expend a charge to cast Minor Illusion as though they were 11th level. The charges are regained at dawn",
+                "On a successful attack, the target must make a DC 16 WIS save. On a failure, they see lifelike bugs and insects pouring out of the wound inflicted by the attack, and become frightened for 1d8 turns. The source of the fear is the weapon itself."
             ],
-            "supreme": []
+            "supreme": [
+                "This weapon has {2/3} charges. The wielder can expend a charge to cast Minor Illusion as though they were 17th level. The charges are regained at dawn"
+            ]
         },
         "necromancy": {
             "minor": [
-                "On a successful attack, target must make a CON save or take an extra {1d2/1d3} Necrotic damage"
+                "On a successful attack, target must make a DC 12 CON save or take an extra {1d2/1d3} of {Necrotic/Chill} damage. This effect occurs once per day",
+                "On a successful attack, target must make a DC 12 CON save. On a failure, the target's youth is sapped, stiffening their joints and aging their skin. It has has disadvantage on all DEX saves for 1 minute"
             ],
             "lesser": [
-                "On a successful attack, target must make a CON save or gain 1 point of Exhaustion",
-                "On a successful attack, target must make a CON save or lose {2/1d4} HP, and the attacker gains that much HP",
-                "On a successful attack, {sickly/black/dark} energy strikes all targets in a {20/25/30}ft radius. All targets must make a CON saving throw. Any failures become Deaf for {2d4} turns"
+                "On a successful attack, target must make a DC 14 CON save or take an extra {1d6/2d4} {Necrotic/Chill} damage. This effect occurs once per day",
+                "On a successful attack, target must make a DC {14/15/16} CON save or gain 1 point of Exhaustion",
+                "On a successful attack, target must make a DC {14/15} CON save or lose {2/1d4} HP, and the attacker gains that much HP",
+                "On a successful attack, {sickly/black/dark} energy strikes all creatures of the wielders choosing in a {20/25/30}ft radius. All targets must make a DC {14/15} CON saving throw. Any failures become Deaf for {2d4} turns."
             ],
             "greater": [
-                "On a successful attack, {sickly/black/dark} energy strikes all targets in a {20/25/30}ft radius. All targets must make a CON saving throw. Any failures become Blind for {2d4} turns",
-                "On a successful attack, {sickly/black/dark} energy {strikes/slams into/seeks out/rushes into} all targets in a {20/25/30}ft radius. All targets must make a CON saving throw. Any failures take {3/4}d{4/5} Necrotic damage. This power happens {2/3} times/day",
-                "While wielding this weapon, the holder can cast Inflict Wounds as a 1st level spell {2/3} times/day"
+                "On a successful attack, target must make a DC 16 CON save or take an extra {2/3}d{6/8} {Necrotic/Chill} damage. This effect occurs once per day",
+                "On a successful attack, {sickly/black/dark} energy strikes all creatures of the wielders choosing in a {15/20/25}ft radius. All targets must make a DC {15/16} CON saving throw. Any failures become Blind for {2d4} turns.",
+                "On a successful attack, {sickly/black/dark} energy {strikes/slams into/seeks out/rushes into} all targets of the wielders choosing in a {20/25/30}ft radius. All targets must make a DC 16 CON saving throw. Any failures take {2/3}d4 Necrotic damage.",
+                "While wielding this weapon, the holder can cast Inflict Wounds at base level {2/3} times/day",
+                "This weapon has {3/4} charges. On a successful attack, the wielder can expend a charge to sap the life energy from the target to regain health. The number of Hit Points restored is equal to the damage inflicted by the weapon. The charges are regained at dawn"
             ],
             "supreme": [
-                "If a creature is killed with this weapon, they are raised as undead in 1d10 turns. The raised creature acts as if raised by the Create Undead spell at 6th level",
-                "On a successful attack, target must make a CON save. On a failure, oily black roots dig through the targets body into their skull, and they become permanently {Blind/Deaf}",
-                "While wielding this weapon, the holder can cast {Blight} as a 4th level spell {2/3} times/day",
-                "While wielding this weapon, the holder can cast Contagion as a 4th level spell {2/3} times/day"
+                "On a successful attack, target must make a DC 18 CON save or take an extra {3/4}d{10/12} {Necrotic/Chill} damage. This effect occurs once per day",
+                "If a creature is killed with this weapon, they are raised as undead in 1d10 turns. The raised creature acts as if raised by the Create Undead spell cast at base level",
+                "This weapon has 1 charge. On a successful attack, the wielder can expend a charge to send oily black roots digging through the targets body into their skull. The target must make a DC 14 CON save. On a failure, they become permanently {Blind/Deaf}.",
+                "While wielding this weapon, the holder can cast {Blight/Contagion} at base level {once/twice} per day",
+                "Whenever a creature looks at this weapon, they must make a DC {14/15/16} WIS save. On a failure, the creature becomes Frightened for 2d4 turns. The creature re-try the saving throw after these turns. A success renders the creature immune to the effect for 24 hours"
             ]
         },
+        "transmutation": {
+            "minor": [
+                "This weapon has {2/3} charges. The wielder can expend a charge to cast Thorn Whip as though they were 1st level. The charges are regained at dawn"
+            ],
+            "lesser": [
+                "This weapon has {2/3} charges. The wielder can expend a charge to cast Thorn Whip as though they were 5th level. The charges are regained at dawn"
+            ],
+            "greater": [
+                "This weapon has {2/3} charges. The wielder can expend a charge to cast Thorn Whip as though they were 11th level. The charges are regained at dawn",
+                "This weapon has {2/3} charges. On a successful attack, the wielder can expend a charge to trigger the effect. The target must make a DC 15 {WIS/CON} save or be transmuted into {wood/stone/rock/clay} for {1/2/3}d4 minutes. While transmuted, the target has the Petrified condition. The charges are regained at dawn"
+            ],
+            "supreme": [
+                "This weapon has {2/3} charges. The wielder can expend a charge to cast Thorn Whip as though they were 17th level. The charges are regained at dawn",
+                "On a successful attack, the target must make a DC 18 WIS check. On a failure, the creature feels stinging, ice cold energy coursing through their veins. The creature becomes Petrified",
+                "This weapon has 2 charges. While holding this weapon, the wielder can expend a charge to cast the spell Gaseous Form on themselves or an ally. The charges are regained at dawn"
+            ]
+        }
     }
 }
