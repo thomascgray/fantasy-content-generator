@@ -1,9 +1,6 @@
 {
     "types": [
-        "wonderous_item",
-        "weapon",
-        "armour",
-        "potion"
+        "weapon"
     ],
     "subtypes": {
         "weapon": [

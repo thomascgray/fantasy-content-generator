@@ -34,6 +34,7 @@ const generate = props => {
 
     return {
         type,
+        subtype,
         powerLevel,
         schoolOfMagic,
         effects,

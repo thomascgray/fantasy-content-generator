@@ -4,7 +4,11 @@
 
 _[Very WIP!]_
 
-> Generate fantasy content for your app, video game, website and more
+> Generate D&D 5E-flavoured fantasy content for your app, video game, website and more
+
+Kinda like [Faker.js](https://github.com/marak/Faker.js/), but for D&D themed pieces of content! Need an NPC? A name? A magic item? We gotchu'.
+
+*Massive thank you to the [d100](https://www.reddit.com/r/d100/) community for both content and inspiration!*
 
 ## Installing
 
@@ -43,6 +47,8 @@ const FCG = require('fantasy-content-generator');
 ```
 
 but all API methods work with the direct `<script>` include too.
+
+**All** items below should be taken as WIP. We're following SEMVER, but assume that everything may change in the future for future versions!
 
 ### `Names`
 
@@ -124,6 +130,50 @@ FCG.NPCs.generate();
 ```
 
 Race and gender parameters can be given to generate to ensure those values.
+
+
+### Magic Items
+
+Generate magical items, with names, effects, school of magic and power level
+
+**Currently only generating melee weapons! More flavours of magic items to come soon!**
+
+**Functions**
+
+- `generate();`
+
+A generated magic item. *Currently only generates weapons*.
+
+Generated magic items will have;
+
+- `type`
+  - the base "role" of the item.
+- `subtype`
+  - `subtype`s depend on base type. for `type` 'weapon', for example, `subtype` will be melee weapons.
+- `schoolOfMagic`
+  - 'conjuration', 'necromancy', etc.
+- `effects`
+  - any magic effects the item has
+- `formattedData`
+  - some pre-built strings for you to use
+
+```js
+FCG.MagicItems.generate({ type: 'weapon'});
+
+/*
+{
+  type: 'weapon',
+  powerLevel: 'greater',
+  schoolOfMagic: 'evocation',
+  effects: [
+    'The blade of this weapon crackles with magical energy. When swung in front of a group of creatures, 2  of the creatures are struck with bolts of energy. Each affected creature takes 3d4 Lightning damage, and b ecomes Paralyzed for 2 rounds.'
+  ],
+  formattedData: {
+    title: 'War Pick of Greater Evocation'
+  }
+}
+*/
+```
 
 ## Tests
 
