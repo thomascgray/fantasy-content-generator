@@ -1,0 +1,53 @@
+{
+    "loot_source": [
+        "Humanoid (Civilised)",
+        "Humanoid (Wild)",
+        "Beast",
+        "Undead"
+    ],
+    "loot_per_loot_source": {
+        "Humanoid (Civilised)": [
+            "sack containing {2/3/4} rations",
+            "{green/blue/red} glass bottle of {cheap/expensive/luxurious} {Dwarven/Elvish} {alcohol/wine/ale}"
+        ],
+        "Humanoid (Wild)": [
+            "a {worn/damaged/rough/primitive} {cloth/woollen} bag of bones",
+            "a waterskin {half-filled/fully filled} with {water/stale water/dirty water}",
+            "{rotting/spoiled} meat wrapped in {leaves/parchment/ragged cloth/stained cloth/torn animal hide}",
+            "{damaged/broken} manacles",
+            "a {glass/stone} bottle of strong, harsh alcohol",
+            "a small empty cage made of wood",
+            "{2/3/4} corked glass bottles",
+            "a small jar, holding {5/6/7} fireflies",
+            "a {worn/damaged/rough/primitive} bag full of leaves & stems of an unknown plant",
+            "a dagger. It is stained with {blood/old blood/dirt/something unknown}",
+            "{8/9/10/12/15} arrows tied up with crude string",
+            "a necklace made from {string/pewter chain/silver chain/rough string}",
+            "a necklace made from {string/pewter chain/silver chain/rough string}. There is a pendant attached. The pendant is made from {jade/ebony/glass/lead/iron/copper/bronze}. It depicts the image of {Sirrion/Reorx/Chislev/Zivilyn/Shinare/Lunitari/Takhisis/Sargonnas/Morgion/Chemosh/Zeboim/Hiddukel/Nuitari/}",
+            "a small {worn/damaged/rough/primitive/weathered/stained} bag of jewellery. Inside is a small collection of rings, necklaces, several earrings and a brooch",
+            "a crude animal cage. Inside there are {2/3} live {rats/mice/bats/squirrels}",
+            "a crude animal cage. Inside there is a live {rat/mouse/bat/squirrel}",
+            "a book. It is badly water damaged, and it's pages cannot be read.",
+            "several severed fingers, wrapped in bloody {cloth/fabric}. The fingers appear to be {Dwarven/Elvish/Orcish/Human}.",
+            "a small animal skull, floating in a glass jar filled with {salt water/oil}",
+            "the skull of an {Elf/Dwarf/Orc/Gnoll/Tiefling/Human}. It is partially covered in a dark stain.",
+            "a small, {stone/wooden} box. It is empty. On the lid, there is a carving of {an eye/a sword/the sun/the moon/a religious symbol}",
+            "a small bag, containing what appears to be a crude {dice game/card game/collection of figurines}. ",
+            "a sack of torn up clothing",
+            "a length of rope, measuring {20/30/40}ft in total.",
+            "a length of {primitive/badly wound/crusty, stained} rope, measuring {20/30/40}ft in total.",
+            "{2/3/4} jars of oil tied together with {rough/fraying} twine. The jars are secured with {bronze/copper/iron} lids.",
+            "a collected set of {2/3} ornate, sharpened daggers. They appear to be made from {a hard, black wood/glass/granite}.",
+            "a small set of {iron/bronze/copper} rods, instruments. Many of the pieces are {bent out of shape/badly rusted/cracked}. With some cleaning and repair, they could work as a set of Thieves Tools.",
+            "a stack of stained, water damaged parchments. Many of the sheets appear to have {Dwarvish/Elvish/Goblin/Draconic/Abyssal} script on them. With care, {15/17/19/20} of the parchments can be salvaged."
+        ],
+        "Beast": [
+            "broken {fangs/claws/talons}"
+        ],
+        "Undead": [
+            "pieces of rotting flesh",
+            "damaged {amour/weapons/ammunition}"
+
+        ]
+    }
+}
