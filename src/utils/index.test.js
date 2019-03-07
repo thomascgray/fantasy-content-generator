@@ -25,7 +25,7 @@ describe('parseTemplate', () => {
         'sphinx of green quartz; judge my vow!': 0,
       }
 
-      for (let i = 0; i < 200; i++) {
+      for (let i = 0; i < 100; i++) {
         const parsed = Utils.parseTemplate(test);
         tracker[parsed] += 1
       }
@@ -57,7 +57,7 @@ describe('parseTemplate', () => {
         'lion of green quartz; judge my hat!': 0,
       }
 
-      for (let i = 0; i < 200; i++) {
+      for (let i = 0; i < 100; i++) {
         const parsed = Utils.parseTemplate(test, {
           colour: 'green',
           action: 'hat',
@@ -79,7 +79,7 @@ describe('parseTemplate', () => {
         'the spell was ice - this made it hot': 0, // should stay zero
       }
 
-      for (let i = 0; i < 200; i++) {
+      for (let i = 0; i < 100; i++) {
         const parsed = Utils.parseTemplate(test);
         tracker[parsed] += 1
       }
@@ -104,7 +104,7 @@ describe('parseTemplate', () => {
         'the spell was strong and ice - this made it hot': 0, // should stay zero
       }
 
-      for (let i = 0; i < 200; i++) {
+      for (let i = 0; i < 100; i++) {
         const parsed = Utils.parseTemplate(test);
         tracker[parsed] += 1
       }
@@ -133,7 +133,7 @@ describe('parseTemplate', () => {
         'the spell was strong and big and ice - this made it hot and blue': 0, // should stay zero
       }
 
-      for (let i = 0; i < 200; i++) {
+      for (let i = 0; i < 100; i++) {
         const parsed = Utils.parseTemplate(test, {
           size: 'big',
           colour: 'blue'
@@ -167,7 +167,7 @@ describe('pick', () => {
 
       const tracker = { 'a' : 0, 'b': 0, 'c': 0 }
 
-      for (let i = 0; i < 200; i++) {
+      for (let i = 0; i < 100; i++) {
         const item = Utils.pick(items);
         tracker[item] += 1
       }
@@ -229,7 +229,7 @@ describe('rand', () => {
       10: 0,
     }
 
-    for (let i = 0; i < 200; i++) {
+    for (let i = 0; i < 100; i++) {
       const x = Utils.rand(min, max);
       expect(x).toBeGreaterThanOrEqual(1);
       expect(x).toBeLessThanOrEqual(10);
