@@ -68,8 +68,9 @@ Generate NPCs
 
 - `generate();`
 
-A generated NPC will have a race, a gender, a name (based on the race and gender), 1-2 random character traits, and 1-2 random character flaws.
+A generated NPC will have a race, a gender and a name (based on the race and gender).
 
+**NPC character traits, desires, flaws and relationships coming soon!**
 ```js
 FCG.NPCs.generate();
 
@@ -78,18 +79,11 @@ FCG.NPCs.generate();
   name: 'Silaqui Liadon',
   gender: 'female',
   race: 'elf',
-  traits: [
-    'Collects hair of slain opponents'
-  ],
-  flaws: [
-    'Deep down, I know I only do this for the thrill.',
-    'I am very impatient. I must have everything immediately.'
-  ]
 }
 */
 ```
 
-Race and gender parameters can be given to generate to ensure those values.
+You can pass an object with `race` or `gender` params into `generate()` to ensure those values.
 
 ## Magic Items
 
@@ -131,6 +125,34 @@ FCG.MagicItems.generate({ type: 'weapon'});
   formattedData: {
     title: 'War Pick of Greater Evocation'
   }
+}
+*/
+```
+
+## Loots
+
+Generate loot items by different methods
+
+**Functions:**
+
+- `source()`
+
+Generate loot by working from a "source" list, or the "source of the loot" as opposed to the "type".
+
+Loot generated from `source()` will have
+
+- `source`
+  - the source of the loot
+- `loot`
+  - the loot item itself
+
+```js
+FCG.Loot.source();
+
+/*
+{
+  source: 'Humanoid (Wild)',
+  loot: 'a crudely fashioned hunting trap. It is made of gnarled wood and jagged iron spikes. It could be used to trap small creatures, such as boar or deer.'
 }
 */
 ```

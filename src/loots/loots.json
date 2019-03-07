@@ -1,0 +1,70 @@
+{
+    "loot_source": [
+        "Humanoid (Wild)"
+    ],
+    "loot_per_loot_source": {
+        "Humanoid (Civilised)": [
+            "sack containing {2/3/4} rations",
+            "{green/blue/red} glass bottle of {cheap/expensive/luxurious} {Dwarven/Elvish} {alcohol/wine/ale}"
+        ],
+        "Humanoid (Wild)": [
+            "a {worn/damaged/rough/primitive} {cloth/woollen} bag of bones.",
+            "a waterskin {half-filled/fully filled} with {water/stale water/dirty water}.",
+            "{rotting/spoiled} meat wrapped in {leaves/parchment/ragged cloth/stained cloth/torn animal hide}.",
+            "{damaged/broken} manacles.",
+            "a {glass/stone} bottle of strong, harsh alcohol.",
+            "a small empty cage made of wood.",
+            "{2/3/4} corked glass bottles.",
+            "a small jar, holding {5/6/7} fireflies.",
+            "a {worn/damaged/rough/primitive} bag full of leaves & stems of an unknown plant.",
+            "a dagger. It is stained with {blood/old blood/dirt/something unknown}.",
+            "{8/9/10/12/15} arrows tied up with crude string.",
+            "a necklace made from {string/pewter chain/silver chain/rough string}.",
+            "a necklace made from {string/pewter chain/silver chain/rough string}. There is a pendant attached. The pendant is made from {jade/ebony/glass/lead/iron/copper/bronze}. It depicts the image of {Sirrion/Reorx/Chislev/Zivilyn/Lunitari/Takhisis/Sargonnas/Chemosh/Zeboim/Hiddukel}",
+            "a small, {worn/damaged/rough/primitive/weathered/stained} bag of jewellery. Inside is a small collection of rings, necklaces, several earrings and a brooch.",
+            "a crude animal cage. Inside there are {2/3} live {rats/mice/bats/squirrels}.",
+            "a crude animal cage. Inside there is a live {rat/mouse/bat/squirrel}.",
+            "a book. It is badly water damaged, and it's pages cannot be read.",
+            "several severed fingers, wrapped in bloody {cloth/fabric}. The fingers appear to be {Dwarven/Elvish/Orcish/Human}.",
+            "a small animal skull, floating in a glass jar filled with {salt water/oil}.",
+            "the skull of an {Elf/Dwarf/Orc/Gnoll/Tiefling/Human}. It is partially covered in a dark stain.",
+            "a small, {stone/wooden} box. It is empty. On the lid, there is a carving of {an eye/a sword/the sun/the moon/a religious symbol}.",
+            "a small bag, containing what appears to be a crude {dice game/card game/collection of figurines}. ",
+            "a sack of torn up clothing.",
+            "a length of rope, measuring {20/30/40}ft in total.",
+            "a length of {primitive/badly wound/crusty, stained} rope, measuring {20/30/40}ft in total.",
+            "{2/3/4} jars of oil tied together with {rough/fraying} twine. The jars are secured with {bronze/copper/iron} lids.",
+            "a collected set of {2/3} ornate, sharpened daggers. They appear to be made from {a hard, black wood/glass/granite}.",
+            "a small set of {iron/bronze/copper} rods, instruments. Many of the pieces are {bent out of shape/badly rusted/cracked}. With some cleaning and repair, they could work as a set of Thieves Tools.",
+            "a stack of stained, water damaged parchments. Many of the sheets appear to have {Dwarvish/Elvish/Goblin/Draconic/Abyssal} script on them. With care, {15/17/19/20} of the parchments can be salvaged.",
+            "a rusty, {copper/iron}, oil lamp. It leaks, and appears to be {Dwarvish/Elvish/Human} made. With some repair, it could be made fully functional.",
+            "a badly tarnished crowbar. The flattened end is covered in a dark {red/black} stain.",
+            "a silver hand mirror. It is badly {cracked/tarnished}.",
+            "{2/3}lbs of salted meat, wrapped in {cloth/parchment}.",
+            "a {glass/stone} jar of acid. The jar's lid is badly fitting, and the acid bubbles and froths as it moves. A {skull/symbol of fire/warning written in Dwarvish} is etched onto the side of the jar.",
+            "a small, crude chest. It is filled with {apples/partially rotten apples/cooked meats/skulls/empty glass vials}. The chest {has a broken hinge/appears to be badly burnt}.",
+            "{3/4} vials of basic Poison in a scuffed leather pouch. ",
+            "a bedroll. It is covered in a large, dark stain, but is in otherwise good condition.",
+            "a bedroll. It has several gashes down its length, but could be repaired.",
+            "{3/4} pots and pans of various sizes, tied together with {crude/rough} rope.",
+            "a note written in {Draconic/Abysmal/Ocrish} script. Some deciphering will show that is appears to be list of commands, focusing on {stealing livestock/ransacking a local settlement/attacking travellers for their wares}.",
+            "an unholy symbol of {Cyric/Talos/Umberlee}. It is covered in dried blood, and stings when a good creature touches it.",
+            "a badly {water damaged/burned/torn} spellbook. Though mostly unintelligible, some deciphering shows the book {belongs/belonged} to a {wizard/witch} specialising in {Conjuration/Divination/Transmutation}.",
+            "crude fishing supplies, including a box of maggots, several {rusty/bent} hooks and a {10/12/15}ft length of wire.",
+            "a set of clothes, appearing {Dwarvish/Elvish/Human/Halfling} in size and design. They appear {partially burnt/wet and ragged}, and have a large, black stain on the chest.",
+            "a corked vial of cloudy, {crimson/charcoal/green/teal} coloured liquid. The vial is wrapped in {cloth/fabric} inside a leather pouch. The leather pouch has a {skull/symbol of Bhaal/symbol of Kelemvor/symbol of Myrkul} etched onto it. Investigation will reveal the liquid to be a dosage of {Assassin’s blood/Crawler mucus/Drow poison/Essence of ether/Malice/Pale tincture/Serpent venom}. ",
+            "{2/3} torches, tied together with rope.",
+            "a large {stone/bronze/iron} jar with a fastened lid, which is then secured even further with tightly would twine. Inside the jar is a live {tarantula/rat/snake/giant millipede}.",
+            "a crudely fashioned hunting trap. It is made of {blackened/gnarled} wood and jagged {iron/steel} {hooks/spikes}. It could be used to trap small creatures, such as boar or deer.",
+            "a set of badly maintained scientific instruments, including a compass, measuring rods, quills and ink. With some repair, they could form a Cartographer's toolkit.",
+            "the skull of a {Dwarf/Elf/Human/Tiefling/Halfling}. It has been cleaned and bleached white, and has a large, drilled hole in the centre of the crown. {Symbols of Bhaal/Symbols of Cyric/Symbols of Talos/Several Abysmal symbols/Several Draconic symbols} are crudely carved into the temples."
+        ],
+        "Beast": [
+            "broken {fangs/claws/talons}"
+        ],
+        "Undead": [
+            "pieces of rotting flesh",
+            "damaged {amour/weapons/ammunition}"
+        ]
+    }
+}

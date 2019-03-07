@@ -1,6 +1,6 @@
 {
   "name": "fantasy-content-generator",
-  "version": "2.2.0",
+  "version": "2.5.0",
   "homepage": "https://github.com/thomascgray/fantasy-content-generator",
   "description": "Generates fantasy themed content, such as names, NPCs, storyhooks, and more",
   "main": "dist/index.js",
@@ -27,5 +27,8 @@
     "require-globify": "^1.4.1",
     "terser": "^3.16.1",
     "uglify-js": "^3.4.9"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }

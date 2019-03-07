@@ -18,6 +18,9 @@ const _effects = (schoolOfMagic, powerLevel) => {
 }
 
 const generate = props => {
+    if (props == null) {
+        props = {};
+    }
     const type = (props.type) ? props.type : _type();
     const powerLevel = (props.powerLevel) ? props.powerLevel : _powerLevel();
     const schoolOfMagic = (props.schoolOfMagic) ? props.schoolOfMagic : _schoolOfMagic(type);

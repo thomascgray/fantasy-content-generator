@@ -4,8 +4,6 @@ const Data = require('../data/names.json')
 /**
  * generate a name for a race and gender.
  * 
- * if no race given, throws error. if no gender gives, picks one randomly
- * 
  * @param {object} props 
  * @param {string} props.race
  * @param {string} props.gender
@@ -33,7 +31,7 @@ const _generate = (props) => {
 
     const template = Utils.pick(raceTemplates);
 
-    switch (props.race) {
+    switch (race) {
         case 'dragonborn':
         case 'dwarf':
         case 'elf':

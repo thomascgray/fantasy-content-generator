@@ -2,13 +2,14 @@
 
 [![npm](https://img.shields.io/npm/v/fantasy-content-generator.svg?style=flat-square)](https://www.npmjs.com/package/fantasy-content-generator)
 
-_[Very WIP!]_
+**Kinda like [Faker.js](https://github.com/marak/Faker.js/), but for D&D 5E themed pieces of content. Need an NPC? A name? A magic item? We gotchu'**
 
-> Generate D&D 5E-flavoured fantasy content for your app, video game, website and more
+Features:
 
-Kinda like [Faker.js](https://github.com/marak/Faker.js/), but for D&D themed pieces of content! Need an NPC? A name? A magic item? We gotchu'.
-
-*Massive thank you to the [d100](https://www.reddit.com/r/d100/) community for both content and inspiration!*
+- easy to understand API
+- zero dependencies
+- can be used in both Node & browser
+- flavoursome content
 
 ## Installing & Usage
 
@@ -76,15 +77,10 @@ Please make sure your PR includes;
 
 _If you want to use content taken from other sources, please check with their licensing first. For example, D&D 5E content is OK, as long its from the SRD._
 
-## Roadmap
-
-- [ ] move data JSON's around, they're a bit all over the place at the minute
-- [ ] finish loots and magic items as a priority
-
 ## Credits
 
-[d100 Community](https://www.reddit.com/r/d100/) - Content & Endless Inspiration
+[d100 Community](https://www.reddit.com/r/d100/) - Endless Inspiration
 
-[tmcgry](https://twitter.com/tmcgry) - Code & Additional Content
+[tmcgry](https://twitter.com/tmcgry) - Code & Content
 
 [SkyD1vingNun](https://twitter.com/SkyD1vingNun) - Additional Content
