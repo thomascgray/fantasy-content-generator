@@ -79,8 +79,8 @@ _If you want to use content taken from other sources, please check with their li
 
 ## Credits
 
-[d100 Community](https://www.reddit.com/r/d100/) - Content & Endless Inspiration
+[d100 Community](https://www.reddit.com/r/d100/) - Endless Inspiration
 
-[tmcgry](https://twitter.com/tmcgry) - Code & Additional Content
+[tmcgry](https://twitter.com/tmcgry) - Code & Content
 
 [SkyD1vingNun](https://twitter.com/SkyD1vingNun) - Additional Content
