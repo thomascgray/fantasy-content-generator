@@ -27,5 +27,8 @@
     "require-globify": "^1.4.1",
     "terser": "^3.16.1",
     "uglify-js": "^3.4.9"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
