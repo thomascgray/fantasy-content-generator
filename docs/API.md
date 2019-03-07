@@ -128,3 +128,31 @@ FCG.MagicItems.generate({ type: 'weapon'});
 }
 */
 ```
+
+## Loots
+
+Generate loot items by different methods
+
+**Functions:**
+
+- `source()`
+
+Generate loot by working from a "source" list, or the "source of the loot" as opposed to the "type".
+
+Loot generated from `source()` will have
+
+- `source`
+  - the source of the loot
+- `loot`
+  - the loot item itself
+
+```js
+FCG.Loot.source();
+
+/*
+{
+  source: 'Humanoid (Wild)',
+  loot: 'a crudely fashioned hunting trap. It is made of gnarled wood and jagged iron spikes. It could be used to trap small creatures, such as boar or deer.'
+}
+*/
+```

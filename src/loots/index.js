@@ -1,39 +1,25 @@
-/**
- * 
- * @param {object} props properties to generate on
- * weapons
- * armour
- * magic_weapons
- * magic_items
- * currency
- * gems & value items
- * misc_food
- * 
- * OR loot source
- * // ok, 2 generators
- * 
- * maybe a loot source?
- * - creature
- * - treasure
- * - quest reward
- * 
- * 
- */
-/*
- can generate based on loot source
- OR items to be included
- */
-const generate = props => {
-    // work out what we're including in the loot
+const LootData = require('./loots.json')
+const Utils = require('../utils')
 
-    
+const sourceFunc = props => {
+    if (props == null) {
+        props = {}
+    }
 
+    const source = (props.source) ? props.source : Utils.pick(LootData.loot_source);
 
+    const lootItem = Utils.pick(LootData.loot_per_loot_source[source]);
 
+    if (lootItem) {
+        return {
+            source,
+            loot: Utils.parseTemplate(lootItem)
+        }
+    }
 }
 
 const functions = {
-    generate,
+    source: sourceFunc
 }
 
 module.exports = functions

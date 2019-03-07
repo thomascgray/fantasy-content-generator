@@ -1,9 +1,6 @@
 {
     "loot_source": [
-        "Humanoid (Civilised)",
-        "Humanoid (Wild)",
-        "Beast",
-        "Undead"
+        "Humanoid (Wild)"
     ],
     "loot_per_loot_source": {
         "Humanoid (Civilised)": [
@@ -55,7 +52,7 @@
             "a badly {water damaged/burned/torn} spellbook. Though mostly unintelligible, some deciphering shows the book {belongs/belonged} to a {wizard/witch} specialising in {Conjuration/Divination/Transmutation}.",
             "crude fishing supplies, including a box of maggots, several {rusty/bent} hooks and a {10/12/15}ft length of wire.",
             "a set of clothes, appearing {Dwarvish/Elvish/Human/Halfling} in size and design. They appear {partially burnt/wet and ragged}, and have a large, black stain on the chest.",
-            "a corked vial of cloudy, {crimson/charcoal/green/teal} coloured liquid. The vial is wrapped in {cloth/fabric} inside a leather pouch. The leather pouch has a {skull/symbol of Bhaal/symbol of Kelemvor/symbol of Myrkul} etched onto it. Investigation will reveal the liquid to be a dosage of {Assassin’s blood/Crawler mucus/Drow poiso/Essence of ether/Malice/Pale tincture/Serpent veno}. ",
+            "a corked vial of cloudy, {crimson/charcoal/green/teal} coloured liquid. The vial is wrapped in {cloth/fabric} inside a leather pouch. The leather pouch has a {skull/symbol of Bhaal/symbol of Kelemvor/symbol of Myrkul} etched onto it. Investigation will reveal the liquid to be a dosage of {Assassin’s blood/Crawler mucus/Drow poison/Essence of ether/Malice/Pale tincture/Serpent venom}. ",
             "{2/3} torches, tied together with rope.",
             "a large {stone/bronze/iron} jar with a fastened lid, which is then secured even further with tightly would twine. Inside the jar is a live {tarantula/rat/snake/giant millipede}.",
             "a crudely fashioned hunting trap. It is made of {blackened/gnarled} wood and jagged {iron/steel} {hooks/spikes}. It could be used to trap small creatures, such as boar or deer.",
