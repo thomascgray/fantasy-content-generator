@@ -95,10 +95,21 @@ const forCount = (number, func) => {
 
 const titleCase = string => string.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 
+const formatRace = race => {
+    switch (race) {
+        case 'halfOrc':
+            return 'Half-Orc'
+        case 'halfElf':
+            return 'Half-Elf'
+        default:
+            return titleCase(race);
+    }
+}
 module.exports = {
     pick,
     parseTemplate,
     rand,
     forCount,
-    titleCase
+    titleCase,
+    formatRace
 }

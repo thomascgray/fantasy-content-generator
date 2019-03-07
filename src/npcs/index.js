@@ -11,12 +11,21 @@ const generate = (props = {}) => {
     const traits = Utils.pick(NPCData.traits, 2, true).map(Utils.parseTemplate);
     const desires = Utils.pick(NPCData.desires, 1, true).map(Utils.parseTemplate);
 
+    const formattedData = {
+        name,
+        gender: Utils.titleCase(gender),
+        race: Utils.formatRace(race),
+        traits,
+        desires
+    }
+
     return {
         name,
         gender,
         race,
         traits,
-        desires
+        desires,
+        formattedData
     }
 }
 
