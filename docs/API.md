@@ -68,17 +68,29 @@ Generate NPCs
 
 - `generate();`
 
-A generated NPC will have a race, a gender and a name (based on the race and gender).
+A generated NPC will have;
 
-**NPC character traits, desires, flaws and relationships coming soon!**
+- `race`
+- `gender`
+- `name`
+- `traits`
+- `desires`
+
 ```js
 FCG.NPCs.generate();
 
 /*
 {
-  name: 'Silaqui Liadon',
+  name: 'Biri Drachedandion',
   gender: 'female',
-  race: 'elf',
+  race: 'dragonborn',
+  traits: [
+    'I am unusually tall for my race.',
+    'I\'m very clumsy.'
+  ],
+  desires: [
+    'I want to prove myself in combat, so I\'m going to win a tournament.'
+  ]
 }
 */
 ```
