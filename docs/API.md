@@ -68,8 +68,9 @@ Generate NPCs
 
 - `generate();`
 
-A generated NPC will have a race, a gender, a name (based on the race and gender), 1-2 random character traits, and 1-2 random character flaws.
+A generated NPC will have a race, a gender and a name (based on the race and gender).
 
+**NPC character traits, desires, flaws and relationships coming soon!**
 ```js
 FCG.NPCs.generate();
 
@@ -78,18 +79,11 @@ FCG.NPCs.generate();
   name: 'Silaqui Liadon',
   gender: 'female',
   race: 'elf',
-  traits: [
-    'Collects hair of slain opponents'
-  ],
-  flaws: [
-    'Deep down, I know I only do this for the thrill.',
-    'I am very impatient. I must have everything immediately.'
-  ]
 }
 */
 ```
 
-Race and gender parameters can be given to generate to ensure those values.
+You can pass an object with `race` or `gender` params into `generate()` to ensure those values.
 
 ## Magic Items
 
