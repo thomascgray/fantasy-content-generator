@@ -4,9 +4,8 @@ const Data = require('../data/names.json')
 /**
  * generate a name for a race and gender.
  * 
- * @param {object} props 
- * @param {string} props.race
- * @param {string} props.gender
+ * @param {string} props.race generate with a specific race
+ * @param {string} props.gender generate with a specific gender
  */
 const _generate = (props) => {
     if (!props) {
