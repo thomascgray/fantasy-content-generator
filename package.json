@@ -1,9 +1,17 @@
 {
   "name": "fantasy-content-generator",
-  "version": "2.7.1",
+  "version": "2.7.2",
   "homepage": "https://github.com/thomascgray/fantasy-content-generator",
   "description": "Generates fantasy themed content, such as names, NPCs, storyhooks, and more",
-  "keywords": ["dungeons and dragons", "dnd", "dnd5e", "rpg", "procgen", "rpg-tool", "dnd-tool"],
+  "keywords": [
+    "dungeons and dragons",
+    "dnd",
+    "dnd5e",
+    "rpg",
+    "procgen",
+    "rpg-tool",
+    "dnd-tool"
+  ],
   "main": "dist/index.js",
   "scripts": {
     "preversion": "npm test",
