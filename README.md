@@ -39,8 +39,6 @@ Download [`fantasy_content_generator.js`](https://raw.githubusercontent.com/thom
 
 # Usage
 
-Below are some usage examples of the library
-
 ```js
 const FCG = require('fantasy-content-generator');
 
@@ -78,7 +76,7 @@ There are a number of "sets" available. These are
 
 and can all be found on the base Fantasy Content Generator object.
 
-Most sets exposes a `generate()` function, some expose others unique to that set.
+Most sets expose a `generate()` function, some expose others unique to that set.
 
 See our [API Reference](./docs/API.md) for full details of the API methods available.
 
