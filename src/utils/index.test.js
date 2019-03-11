@@ -329,4 +329,13 @@ describe('formatRace', () => {
     expect(Utils.formatRace('human')).toEqual('Human')
     expect(Utils.formatRace('tiefling')).toEqual('Tiefling')
   });
+});
+
+describe('seedrandom', () => {
+  test('given a seed, generate the same 10 numbers in a row', () => {
+    console.log('ahh');
+    expect(true).toEqual(false);
+
+
+  });
 })

@@ -7,12 +7,12 @@ const SeedRandom = require('./seedrandom');
  * @param {number} count how many unique array values to pick out
  * @param {boolean} returnAsArray if true, always return result as an array, even if only 1 item is picked
  */
-const pick = (array, count = 1, returnAsArray = false) => {
+const pick = (array, count = 1, returnAsArray = false, seed = null) => {
     const arrayCopy = Array.from(array)
     const pickedValues = []
 
     for (let i = 0; i < count; i++) {
-        let pickedIndex = rand(0, arrayCopy.length - 1);
+        let pickedIndex = rand(0, arrayCopy.length - 1, seed);
         pickedValues.push(arrayCopy[pickedIndex]);
         arrayCopy.splice(pickedIndex, 1);
     }
@@ -36,7 +36,7 @@ const pick = (array, count = 1, returnAsArray = false) => {
  * 
  * @param {string} string 
  */
-const parseTemplate = (string, content = {}) => {
+const parseTemplate = (string, content = {}, seed = null) => {
     const regex = /{(.+?)}/gm;
 
     const matches = string.match(regex);
@@ -54,7 +54,7 @@ const parseTemplate = (string, content = {}) => {
                     string = string.replace(match, replacement);
                 } else { // if not, we need to do the first one and add the index into the linkedPlaceholderIndexes
                     const allPlaceholderChunks = linkedPlaceholderMatches[2].split('/');
-                    const newIndex = rand(0, allPlaceholderChunks.length - 1);
+                    const newIndex = rand(0, allPlaceholderChunks.length - 1, seed);
                     let replacement = allPlaceholderChunks[newIndex];
                     linkedPlaceholderIndexes[rawLinkToken] = newIndex; // set it up for further matches
                     string = string.replace(match, replacement);
@@ -81,11 +81,27 @@ const parseTemplate = (string, content = {}) => {
  * 
  * @param {number} min minimum number to return (inclusive)
  * @param {number} max maximum number to return (inclusive)
+ * @param {any} seed
  */
-const rand = (min, max) => {
+const rand = (min, max, seed = null) => {
+    let randomFunc = Math.random;
+    if (seed) {
+        randomFunc = getSeededRandomFunc(seed);
+    }
     min = parseInt(min);
     max = parseInt(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+    return Math.floor(randomFunc * (max - min + 1)) + min;
+}
+
+let lastSeed = null;
+let lastSeededRandomFunc = null;
+const getSeededRandomFunc = seed => {
+    if (seed === lastSeed) {
+        return lastSeededRandomFunc
+    }
+    lastSeed = seed;
+    lastSeededRandomFunc = SeedRandom(seed);
+    return lastSeededRandomFunc;
 }
 
 /**
