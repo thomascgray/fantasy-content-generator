@@ -1,3 +1,5 @@
+const SeedRandom = require('./seedrandom');
+
 /**
  * pick 1 or more unique values from an array, and return a new array of those picked values
  * 
@@ -109,6 +111,7 @@ const formatRace = race => {
             return titleCase(race);
     }
 }
+
 module.exports = {
     pick,
     parseTemplate,

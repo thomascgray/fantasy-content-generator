@@ -298,3 +298,35 @@ describe('forCount', () => {
     expect(vals[1]).toBe('a');
   });
 });
+
+describe('titleCase', () => {
+  test('single word negative', () => {
+    expect(Utils.titleCase('alpha')).not.toEqual('alpha')
+  });
+
+  test('single word', () => {
+    expect(Utils.titleCase('alpha')).toEqual('Alpha')
+  });
+
+  test('multiple words', () => {
+    expect(Utils.titleCase('alpha beta gamma')).toEqual('Alpha Beta Gamma')
+  });
+
+  test('hyphens dont count as word breaks', () => {
+    expect(Utils.titleCase('half-orc')).toEqual('Half-orc')
+  });
+});
+
+describe('formatRace', () => {
+  test('PHB races', () => {
+    expect(Utils.formatRace('dragonborn')).toEqual('Dragonborn')
+    expect(Utils.formatRace('dwarf')).toEqual('Dwarf')
+    expect(Utils.formatRace('elf')).toEqual('Elf')
+    expect(Utils.formatRace('gnome')).toEqual('Gnome')
+    expect(Utils.formatRace('halfElf')).toEqual('Half-Elf')
+    expect(Utils.formatRace('halfOrc')).toEqual('Half-Orc')
+    expect(Utils.formatRace('halfling')).toEqual('Halfling')
+    expect(Utils.formatRace('human')).toEqual('Human')
+    expect(Utils.formatRace('tiefling')).toEqual('Tiefling')
+  });
+})
