@@ -332,10 +332,56 @@ describe('formatRace', () => {
 });
 
 describe('seedrandom', () => {
-  test('given a seed, generate the same 10 numbers in a row', () => {
-    console.log('ahh');
-    expect(true).toEqual(false);
+  test('pass the same seed and get the same random 10 numbers', () => {
+    expect(Utils.rand(1, 1000, 'A')).toEqual(796);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(96);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(790);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(37);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(905);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(823);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(771);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(61);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(885);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(119);
+  });
 
+  test('passing the seed, then not passing the seed, then passing the same seed should NOT reset the seed', () => {
+    expect(Utils.rand(1, 1000, 'A')).toEqual(796);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(96);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(790);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(37);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(905);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(823);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(771);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(61);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(885);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(119);
+    expect(typeof Utils.rand(1, 1000)).toEqual('number');
+    expect(Utils.rand(1, 1000, 'A')).toEqual(997);
+  });
 
+  test.only('passing a seed, then passing a DIFFERENT seed, then passing the first seed SHOULD reset the seed', () => {
+    expect(Utils.rand(1, 1000, 'A')).toEqual(796);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(96);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(790);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(37);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(905);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(823);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(771);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(61);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(885);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(119);
+    expect(Utils.rand(1, 1000, 'B')).toEqual(423);
+    expect(Utils.rand(1, 1000, 'B')).toEqual(964);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(796); // same as start
+    expect(Utils.rand(1, 1000, 'A')).toEqual(96);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(790);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(37);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(905);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(823);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(771);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(61);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(885);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(119);
   });
 })

@@ -84,24 +84,26 @@ const parseTemplate = (string, content = {}, seed = null) => {
  * @param {any} seed
  */
 const rand = (min, max, seed = null) => {
-    let randomFunc = Math.random;
+    let randomFunc = Utils_rand_unseededRand;
     if (seed) {
         randomFunc = getSeededRandomFunc(seed);
     }
     min = parseInt(min);
     max = parseInt(max);
-    return Math.floor(randomFunc * (max - min + 1)) + min;
+    return Math.floor(randomFunc() * (max - min + 1)) + min;
 }
 
-let lastSeed = null;
-let lastSeededRandomFunc = null;
+// these all have crazy names until i can prove they wont conflict in browser land
+let Utils_rand_unseededRand = SeedRandom();
+let Utils_rand_lastSeed = null;
+let Utils_rand_lastSeededRandomFunc = null;
 const getSeededRandomFunc = seed => {
-    if (seed === lastSeed) {
-        return lastSeededRandomFunc
+    if (seed === Utils_rand_lastSeed) {
+        return Utils_rand_lastSeededRandomFunc
     }
-    lastSeed = seed;
-    lastSeededRandomFunc = SeedRandom(seed);
-    return lastSeededRandomFunc;
+    Utils_rand_lastSeed = seed;
+    Utils_rand_lastSeededRandomFunc = SeedRandom(seed);
+    return Utils_rand_lastSeededRandomFunc;
 }
 
 /**
