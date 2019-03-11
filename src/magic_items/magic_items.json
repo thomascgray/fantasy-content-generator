@@ -172,5 +172,16 @@
                 "This weapon has 2 charges. While holding this weapon, the wielder can expend a charge to cast the spell Gaseous Form on themselves or an ally. The charges are regained at dawn"
             ]
         }
-    }
+    },
+    "tagline_owned_words": [
+        "Bane",
+        "Curse",
+        "Luck",
+        "Hope",
+        "Wrath",
+        "Pain"
+    ],
+    "tagline_templates": [
+        "{$owner_first_name_possessive} {$tagline_owned_word}"
+    ]
 }

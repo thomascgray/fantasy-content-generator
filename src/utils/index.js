@@ -20,10 +20,14 @@ const pick = (array, count = 1, returnAsArray = false) => {
 
 /**
  * parse our special template syntax
+ * 
  * handles multiple "kinds" of template syntax
+ * 
  * a string container '{alpha/beta}' will choose one at random
+ * 
  * a string starting with a $ symbol is a reference for any passed content
  *   so '{$colour}' becomes 'blue' if `content` was passed as { colour: 'blue' }
+ * 
  * a string container using the linked format (symbol, double colon) e.g {X::aplha/beta}
  *   will ensure that any other placeholder in the string that uses the same linked symbol
  *   returns the same index of random that the first placeholder with that symbol did
