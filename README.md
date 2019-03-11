@@ -10,6 +10,7 @@ Features:
 - Easy to understand API
 - Zero dependencies
 - Can be used in both Node & browser
+- Optional seeding for random content
 - Flavoursome content, designed for roleplaying and quick inspiration for DMs
 - Ties-in to D&D 5E mechanics (weapon stats, magic effects, etc.)
 
@@ -106,3 +107,5 @@ _If you want to use content taken from other sources, please check with their li
 [tmcgry](https://twitter.com/tmcgry) - Code & Content
 
 [SkyD1vingNun](https://twitter.com/SkyD1vingNun) - Additional Content
+
+[https://github.com/davidbau/seedrandom](https://github.com/davidbau/seedrandom) - Random seeding code, huge thank you
