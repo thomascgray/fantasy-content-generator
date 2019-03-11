@@ -298,3 +298,90 @@ describe('forCount', () => {
     expect(vals[1]).toBe('a');
   });
 });
+
+describe('titleCase', () => {
+  test('single word negative', () => {
+    expect(Utils.titleCase('alpha')).not.toEqual('alpha')
+  });
+
+  test('single word', () => {
+    expect(Utils.titleCase('alpha')).toEqual('Alpha')
+  });
+
+  test('multiple words', () => {
+    expect(Utils.titleCase('alpha beta gamma')).toEqual('Alpha Beta Gamma')
+  });
+
+  test('hyphens dont count as word breaks', () => {
+    expect(Utils.titleCase('half-orc')).toEqual('Half-orc')
+  });
+});
+
+describe('formatRace', () => {
+  test('PHB races', () => {
+    expect(Utils.formatRace('dragonborn')).toEqual('Dragonborn')
+    expect(Utils.formatRace('dwarf')).toEqual('Dwarf')
+    expect(Utils.formatRace('elf')).toEqual('Elf')
+    expect(Utils.formatRace('gnome')).toEqual('Gnome')
+    expect(Utils.formatRace('halfElf')).toEqual('Half-Elf')
+    expect(Utils.formatRace('halfOrc')).toEqual('Half-Orc')
+    expect(Utils.formatRace('halfling')).toEqual('Halfling')
+    expect(Utils.formatRace('human')).toEqual('Human')
+    expect(Utils.formatRace('tiefling')).toEqual('Tiefling')
+  });
+});
+
+describe('seedrandom', () => {
+  test('pass the same seed and get the same random 10 numbers', () => {
+    expect(Utils.rand(1, 1000, 'A')).toEqual(796);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(96);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(790);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(37);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(905);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(823);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(771);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(61);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(885);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(119);
+  });
+
+  test('passing the seed, then not passing the seed, then passing the same seed should NOT reset the seed', () => {
+    expect(Utils.rand(1, 1000, 'A')).toEqual(796);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(96);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(790);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(37);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(905);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(823);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(771);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(61);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(885);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(119);
+    expect(typeof Utils.rand(1, 1000)).toEqual('number');
+    expect(Utils.rand(1, 1000, 'A')).toEqual(997);
+  });
+
+  test.only('passing a seed, then passing a DIFFERENT seed, then passing the first seed SHOULD reset the seed', () => {
+    expect(Utils.rand(1, 1000, 'A')).toEqual(796);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(96);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(790);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(37);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(905);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(823);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(771);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(61);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(885);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(119);
+    expect(Utils.rand(1, 1000, 'B')).toEqual(423);
+    expect(Utils.rand(1, 1000, 'B')).toEqual(964);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(796); // same as start
+    expect(Utils.rand(1, 1000, 'A')).toEqual(96);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(790);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(37);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(905);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(823);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(771);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(61);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(885);
+    expect(Utils.rand(1, 1000, 'A')).toEqual(119);
+  });
+})

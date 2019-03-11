@@ -19,14 +19,18 @@ const _effects = (schoolOfMagic, powerLevel) => {
 
 const _tagline = formattedData => {
     const taglineTemplate = Utils.pick(MagicItemData.tagline_templates);
-    const ownerFirstName = formattedData.owner.split(' ')[0]
-    const ownerFirstNamePossessive = (ownerFirstName.substr(-1) === 's') ? `${ownerFirstName}'` : `${ownerFirstName}'s`;
-    const taglineOwnedWord = Utils.pick(MagicItemData.tagline_owned_words)
+    const generationContent = {}
 
-    return Utils.parseTemplate(taglineTemplate, {
-        owner_first_name_possessive: ownerFirstNamePossessive,
-        tagline_owned_word: taglineOwnedWord
-    })
+    if (taglineTemplate.includes('tagline_owned_word')) {
+        generationContent.tagline_owned_word = Utils.pick(MagicItemData.tagline_owned_words)
+    }
+
+    if (taglineTemplate.includes('owner_first_name_possessive')) {
+        const ownerFirstName = formattedData.owner.split(' ')[0]
+        generationContent.owner_first_name_possessive = (ownerFirstName.substr(-1) === 's') ? `${ownerFirstName}'` : `${ownerFirstName}'s`;
+    }
+
+    return Utils.parseTemplate(taglineTemplate, generationContent);
 }
 
 const generate = props => {
