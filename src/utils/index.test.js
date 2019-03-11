@@ -333,6 +333,7 @@ describe('formatRace', () => {
 
 describe('seedrandom', () => {
   test('pass the same seed and get the same random 10 numbers', () => {
+    Utils.resetSeed();
     expect(Utils.rand(1, 1000, 'A')).toEqual(796);
     expect(Utils.rand(1, 1000, 'A')).toEqual(96);
     expect(Utils.rand(1, 1000, 'A')).toEqual(790);
@@ -346,6 +347,7 @@ describe('seedrandom', () => {
   });
 
   test('passing the seed, then not passing the seed, then passing the same seed should NOT reset the seed', () => {
+    Utils.resetSeed();
     expect(Utils.rand(1, 1000, 'A')).toEqual(796);
     expect(Utils.rand(1, 1000, 'A')).toEqual(96);
     expect(Utils.rand(1, 1000, 'A')).toEqual(790);
@@ -360,7 +362,8 @@ describe('seedrandom', () => {
     expect(Utils.rand(1, 1000, 'A')).toEqual(997);
   });
 
-  test.only('passing a seed, then passing a DIFFERENT seed, then passing the first seed SHOULD reset the seed', () => {
+  test('passing a seed, then passing a DIFFERENT seed, then passing the first seed SHOULD reset the seed', () => {
+    Utils.resetSeed();
     expect(Utils.rand(1, 1000, 'A')).toEqual(796);
     expect(Utils.rand(1, 1000, 'A')).toEqual(96);
     expect(Utils.rand(1, 1000, 'A')).toEqual(790);

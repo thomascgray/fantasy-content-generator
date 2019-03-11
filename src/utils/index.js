@@ -84,9 +84,11 @@ const parseTemplate = (string, content = {}, seed = null) => {
  * @param {any} seed
  */
 const rand = (min, max, seed = null) => {
-    let randomFunc = Utils_rand_unseededRand;
+    let randomFunc
     if (seed) {
         randomFunc = getSeededRandomFunc(seed);
+    } else {
+        randomFunc = Utils_rand_unseededRand;
     }
     min = parseInt(min);
     max = parseInt(max);
@@ -130,11 +132,17 @@ const formatRace = race => {
     }
 }
 
+const resetSeed = () => {
+    Utils_rand_lastSeed = null;
+    Utils_rand_lastSeededRandomFunc = null;
+}
+
 module.exports = {
     pick,
     parseTemplate,
     rand,
     forCount,
     titleCase,
-    formatRace
+    formatRace,
+    resetSeed
 }
