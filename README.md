@@ -9,9 +9,9 @@ Features:
 
 - Easy to understand API
 - Zero dependencies
+- Interesting, flavoursome content, designed for roleplaying and quick inspiration for DMs
 - Can be used in both Node & browser
 - Optional seeding for random content
-- Flavoursome content, designed for roleplaying and quick inspiration for DMs
 - Ties-in to D&D 5E mechanics (weapon stats, magic effects, etc.)
 
 ---
