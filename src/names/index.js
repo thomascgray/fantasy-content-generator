@@ -12,7 +12,7 @@ const _generate = (props) => {
         props = {}
     }
 
-    const shouldResetSeed = (props.shouldResetSeed !== null) ? props.shouldResetSeed : true;
+    const shouldResetSeed = (props.shouldResetSeed != null) ? props.shouldResetSeed : true;
 
     if (shouldResetSeed) {
         Utils.resetSeed();
