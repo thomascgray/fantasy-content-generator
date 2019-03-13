@@ -20,8 +20,8 @@ const _generate = (props) => {
 
     const seed = props.seed ? props.seed : Utils.generateUUID();
     
-    const race = props.race ? props.race : Utils.pick(Object.keys(Data), 1, false, seed)
-    const gender = props.gender ? props.gender : Utils.pick(['male', 'female'], 1, false, seed)
+    const race = props.race ? props.race : Utils.pick(Object.keys(Data), undefined, undefined, seed)
+    const gender = props.gender ? props.gender : Utils.pick(['male', 'female'], undefined, undefined, seed)
 
     const raceTemplates = Data[race].templates
 
@@ -29,7 +29,7 @@ const _generate = (props) => {
         throw new Error(`could not find race templates for ${race}`)
     }
 
-    const template = Utils.pick(raceTemplates);
+    const template = Utils.pick(raceTemplates, undefined, undefined, seed);
 
     switch (race) {
         case 'dragonborn':
