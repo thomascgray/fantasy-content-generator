@@ -12,7 +12,11 @@ const _generate = (props) => {
         props = {}
     }
 
-    Utils.resetSeed();
+    const shouldResetSeed = (props.shouldResetSeed !== null) ? props.shouldResetSeed : true;
+
+    if (shouldResetSeed) {
+        Utils.resetSeed();
+    }
 
     const seed = props.seed ? props.seed : Utils.generateUUID();
     

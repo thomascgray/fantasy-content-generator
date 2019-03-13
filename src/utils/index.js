@@ -67,7 +67,7 @@ const parseTemplate = (string, content = {}, seed = null) => {
                 replacementVarName = match.substring(2, match.length - 1)
                 string = string.replace(match, content[replacementVarName]);
             } else {
-                let replacement = pick(match.substring(1).substring(0, match.length - 2).split('/'));
+                let replacement = pick(match.substring(1).substring(0, match.length - 2).split('/'), undefined, undefined, seed);
                 string = string.replace(match, replacement);
             }
         })
