@@ -53,17 +53,17 @@ FCG.Storyhooks.npcActs(); // 'An NPC becomes fearful'
 
 # `NPCs`
 
-Generate NPCs
+Generate NPCs.
 
-## `generate({ [race], [gender] })`
+## `generate({ [race], [gender], [seed] })`
 
 A generated NPC will have;
 
 - `race`
 - `gender`
 - `name`
-- `traits`
-- `desires`
+- `traits` physical characteristics, mannerisms
+- `desires` things the NPC wants to achieve for themselves or others
 
 ```js
 FCG.NPCs.generate();
@@ -73,6 +73,7 @@ FCG.NPCs.generate();
   name: 'Biri Drachedandion',
   gender: 'female',
   race: 'dragonborn',
+  seed: '8fd7f407-ac19-4bac-b9cf-d50e1f2df15f'
   traits: [
     'I am unusually tall for my race.',
     'I\'m very clumsy.'
@@ -83,6 +84,8 @@ FCG.NPCs.generate();
 }
 */
 ```
+
+A `seed` can be passed to ensure the same generated NPC. If no seed is passed, a UUID will be generated and used as the seed, so you can recreate that NPC in future. 
 
 # `MagicItems`
 
