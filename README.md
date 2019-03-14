@@ -3,7 +3,7 @@
 
 [![npm](https://img.shields.io/npm/v/fantasy-content-generator.svg?style=flat-square)](https://www.npmjs.com/package/fantasy-content-generator)
 
-**Like [Faker.js](https://github.com/marak/Faker.js/), but for D&D 5E themed pieces of content. Need an NPC? A name? A magic item? We gotchu'**
+**Like [Faker.js](https://github.com/marak/Faker.js/), but for D&D 5E themed pieces of content. Need an NPC? A name? A magic item? You came to the right place.**
 
 Features:
 
@@ -13,6 +13,8 @@ Features:
 - Can be used in both Node & browser
 - Optional seeding for deterministic generation
 - Ties-in to D&D 5E mechanics (weapon stats, magic effects, etc.)
+
+_Using this library in a project? [Please let me know!](https://twitter.com/tmcgry)_
 
 ---
 
@@ -62,6 +64,25 @@ FCG.NPCs.generate();
   desires: [
     'I want to prove myself in combat, so I\'m going to win a tournament.'
   ]
+}
+*/
+
+FCG.Settlements.generate();
+// { type: 'large_city', population: '45,760' }
+
+FCG.MagicItems.generate();
+/*
+{
+  type: 'weapon',
+  subtype: 'Battleaxe',
+  powerLevel: 'minor',
+  schoolOfMagic: 'necromancy',
+  effects: [
+    'On a successful attack, target must make a DC 12 CON save or take an extra 1d2 of Necrotic damage. This effect occurs once per day'
+  ],
+  formattedData: {
+    title: 'Battleaxe of Minor Necromancy'
+  }
 }
 */
 ```
