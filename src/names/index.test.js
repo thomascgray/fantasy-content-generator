@@ -43,38 +43,38 @@ describe('Names', () => {
     });
 
     test('generate() w/ seed - nothing set', () => {
-        expect(Names.generate({ seed: 'a' })).toEqual('Mardnab Ningel');
-        expect(Names.generate({ seed: 'a' })).toEqual('Mardnab Ningel');
-        expect(Names.generate({ seed: 'a' })).toEqual('Mardnab Ningel');
-        expect(Names.generate({ seed: 'b' })).toEqual('Urth Kao');
-        expect(Names.generate({ seed: 'b' })).toEqual('Urth Kao');
-        expect(Names.generate({ seed: 'b' })).toEqual('Urth Kao');
-        expect(Names.generate({ seed: 'c' })).toEqual('Perrin Brushgather');
-        expect(Names.generate({ seed: 'c' })).toEqual('Perrin Brushgather');
-        expect(Names.generate({ seed: 'c' })).toEqual('Perrin Brushgather');
+        expect(Names.generate({ seed: 'a' })).toEqual('gnomeFemale2 gnomeLast2');
+        expect(Names.generate({ seed: 'a' })).toEqual('gnomeFemale2 gnomeLast2');
+        expect(Names.generate({ seed: 'a' })).toEqual('gnomeFemale2 gnomeLast2');
+        expect(Names.generate({ seed: 'b' })).toEqual('humanMale2 humanLast3');
+        expect(Names.generate({ seed: 'b' })).toEqual('humanMale2 humanLast3');
+        expect(Names.generate({ seed: 'b' })).toEqual('humanMale2 humanLast3');
+        expect(Names.generate({ seed: 'c' })).toEqual('halflingMale3 halflingLast1');
+        expect(Names.generate({ seed: 'c' })).toEqual('halflingMale3 halflingLast1');
+        expect(Names.generate({ seed: 'c' })).toEqual('halflingMale3 halflingLast1');
     });
 
     test('generate() /w seed & race - race set', () => {
-        expect(Names.generate({ race: 'dwarf', seed: 'a' })).toEqual('Einkil Ironfist');
-        expect(Names.generate({ race: 'dwarf', seed: 'a' })).toEqual('Einkil Ironfist');
-        expect(Names.generate({ race: 'dwarf', seed: 'a' })).toEqual('Einkil Ironfist');
-        expect(Names.generate({ race: 'dwarf', seed: 'b' })).toEqual('Torgga Holderhek');
-        expect(Names.generate({ race: 'dwarf', seed: 'b' })).toEqual('Torgga Holderhek');
-        expect(Names.generate({ race: 'dwarf', seed: 'b' })).toEqual('Torgga Holderhek');
-        expect(Names.generate({ race: 'dwarf', seed: 'c' })).toEqual('Finellen Rumnaheim');
-        expect(Names.generate({ race: 'dwarf', seed: 'c' })).toEqual('Finellen Rumnaheim');
-        expect(Names.generate({ race: 'dwarf', seed: 'c' })).toEqual('Finellen Rumnaheim');
+        expect(Names.generate({ race: 'dwarf', seed: 'a' })).toEqual('dwarfMale2 dwarfLast2');
+        expect(Names.generate({ race: 'dwarf', seed: 'a' })).toEqual('dwarfMale2 dwarfLast2');
+        expect(Names.generate({ race: 'dwarf', seed: 'a' })).toEqual('dwarfMale2 dwarfLast2');
+        expect(Names.generate({ race: 'dwarf', seed: 'b' })).toEqual('dwarfFemale3 dwarfLast2');
+        expect(Names.generate({ race: 'dwarf', seed: 'b' })).toEqual('dwarfFemale3 dwarfLast2');
+        expect(Names.generate({ race: 'dwarf', seed: 'b' })).toEqual('dwarfFemale3 dwarfLast2');
+        expect(Names.generate({ race: 'dwarf', seed: 'c' })).toEqual('dwarfFemale2 dwarfLast3');
+        expect(Names.generate({ race: 'dwarf', seed: 'c' })).toEqual('dwarfFemale2 dwarfLast3');
+        expect(Names.generate({ race: 'dwarf', seed: 'c' })).toEqual('dwarfFemale2 dwarfLast3');
     });
 
     test('generate() /w seed & gender', () => {
-        expect(Names.generate({ gender: 'male', seed: 'a' })).toEqual('Fonkin Ningel');
-        expect(Names.generate({ gender: 'male', seed: 'a' })).toEqual('Fonkin Ningel');
-        expect(Names.generate({ gender: 'female', seed: 'a' })).toEqual('Ellyjobell Ningel');
-        expect(Names.generate({ gender: 'female', seed: 'a' })).toEqual('Ellyjobell Ningel');
-        expect(Names.generate({ gender: 'male', seed: 'b' })).toEqual('Marcon Fezim');
-        expect(Names.generate({ gender: 'male', seed: 'b' })).toEqual('Marcon Fezim');
-        expect(Names.generate({ gender: 'female', seed: 'b' })).toEqual('Luisa Fezim');
-        expect(Names.generate({ gender: 'female', seed: 'b' })).toEqual('Luisa Fezim');
+        expect(Names.generate({ gender: 'male', seed: 'a' })).toEqual('gnomeMale2 gnomeLast2');
+        expect(Names.generate({ gender: 'male', seed: 'a' })).toEqual('gnomeMale2 gnomeLast2');
+        expect(Names.generate({ gender: 'female', seed: 'a' })).toEqual('gnomeFemale2 gnomeLast2');
+        expect(Names.generate({ gender: 'female', seed: 'a' })).toEqual('gnomeFemale2 gnomeLast2');
+        expect(Names.generate({ gender: 'male', seed: 'b' })).toEqual('humanMale3 humanLast2');
+        expect(Names.generate({ gender: 'male', seed: 'b' })).toEqual('humanMale3 humanLast2');
+        expect(Names.generate({ gender: 'female', seed: 'b' })).toEqual('humanFemale3 humanLast2');
+        expect(Names.generate({ gender: 'female', seed: 'b' })).toEqual('humanFemale3 humanLast2');
     });
 
     test('generate() w/ seed, race & gender', () => {
