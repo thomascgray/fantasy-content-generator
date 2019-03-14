@@ -92,6 +92,8 @@ See our [API Reference](https://github.com/thomascgray/fantasy-content-generator
 npm test
 ```
 
+If you want to run a specific test file manually, ensure you set `ENVIRONMENT=test`
+
 # Contributing
 
 Open up a PR!

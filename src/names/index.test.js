@@ -1,9 +1,6 @@
 const Names = require('./index.js');
 const Utils = require('../utils');
-let NameData = require('../data/names.json')
-const NamesStubData = require('../../stubData/names.json')
-
-NameData = NamesStubData
+const NameData = require('../data/names.json')
 
 describe('Names', () => {
     const races = Object.keys(NameData);

@@ -1,7 +1,12 @@
 const Names = require('../names');
 const Utils = require('../utils');
-const NameData = require('../data/names.json')
-const NPCData = require('../data/npcs.json')
+let NameData = require('../data/names.json')
+let NPCData = require('../data/npcs.json')
+
+if (process.env.ENVIRONMENT === 'test') {
+    NameData = require('../../stubData/names.json')
+    NPCData = require('../../stubData/npcs.json')
+}
 
 const generate = (props = {}) => {
     Utils.resetSeed();

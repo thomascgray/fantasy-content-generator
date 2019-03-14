@@ -1,12 +1,5 @@
 const NPCs = require('./index');
 const Utils = require('../utils');
-const Names = require('../data/names.json');
-const NamesStubData = require('../../stubData/names.json')
-const NpcData = require('../data/npcs.json')
-const NpcStubData = require('../../stubData/npcs.json')
-
-Names = NamesStubData;
-NpcData = NpcStubData
 
 describe('NPCs', () => {
     test('generate()', () => {
@@ -19,29 +12,23 @@ describe('NPCs', () => {
         });
     });
 
-    test.only('seeded npc - props: {}', () => {
-        const npcSeeded = {
-            name: 'Urth Marivaldi',
-            gender: 'male',
-            race: 'halfElf',
-            traits:
-                ['I am known to complain constantly.',
-                    'I crack my knuckles when I\'m nervous.'],
-            desires:
-                ['I want revenge against my brother for murdering our father for his own financial gain.'],
-            seed: '7a12d861-3760-4cb7-8fb9-8ea111a794f0',
-            formattedData:
-            {
-                name: 'Urth Marivaldi',
-                gender: 'Male',
-                race: 'Half-Elf',
-                traits:
-                    ['I am known to complain constantly.',
-                        'I crack my knuckles when I\'m nervous.'],
-                desires:
-                    ['I want revenge against my brother for murdering our father for his own financial gain.']
-            }
-        }
+    test('seeded npc - props: {}', () => {
+        const npcSeeded = { name: 'elfFemale1 humanLast1',
+        gender: 'female',
+        race: 'halfElf',
+        traits:
+         [ 'My eyes are very piercing, and bright green.',
+           'I have soft, full hair.' ],
+        desires: [ 'I want justice for the crimes committed against my clan.' ],
+        seed: '7a12d861-3760-4cb7-8fb9-8ea111a794f0',
+        formattedData:
+         { name: 'elfFemale1 humanLast1',
+           gender: 'Female',
+           race: 'Half-Elf',
+           traits:
+            [ 'My eyes are very piercing, and bright green.',
+              'I have soft, full hair.' ],
+           desires: [ 'I want justice for the crimes committed against my clan.' ] } }
 
         for (let i = 0; i < 100; i++) {
             expect(NPCs.generate({ seed: '7a12d861-3760-4cb7-8fb9-8ea111a794f0' })).toEqual(npcSeeded);
@@ -49,45 +36,43 @@ describe('NPCs', () => {
     });
 
     test('seeded npc - props: {race}', () => {
-        const seededDwarf = {
-            name: 'Alberich Battlehammer',
-            gender: 'male',
-            race: 'dwarf',
-            traits: ['I never remember a face.',
-                'I lost my right eye protecting my family.'
-            ],
-            desires: ['I want to see my brother succeed.'],
-            seed: '7a12d861-3760-4cb7-8fb9-8ea835a794f0',
-            formattedData: {
-                name: 'Alberich Battlehammer',
-                gender: 'Male',
-                race: 'Dwarf',
-                traits: ['I never remember a face.',
-                    'I lost my right eye protecting my family.'
-                ],
-                desires: ['I want to see my brother succeed.']
-            }
-        }
+        const seededDwarf = { name: 'dwarfMale1 dwarfLast1',
+        gender: 'male',
+        race: 'dwarf',
+        traits:
+         [ 'I have thick, shaggy hair.',
+           'I lost my right eye protecting my family.' ],
+        desires:
+         [ 'I want to find an ancient shield that I was told of as a child.' ],
+        seed: '7a12d861-3760-4cb7-8fb9-8ea835a794f0',
+        formattedData:
+         { name: 'dwarfMale1 dwarfLast1',
+           gender: 'Male',
+           race: 'Dwarf',
+           traits:
+            [ 'I have thick, shaggy hair.',
+              'I lost my right eye protecting my family.' ],
+           desires:
+            [ 'I want to find an ancient shield that I was told of as a child.' ] } }
 
-        const seededElf = {
-            name: 'Shanairra Ilphelkiir',
-            gender: 'female',
-            race: 'elf',
-            traits: ['My hair is an unusual colour for my race.',
-                'I lost my right eye protecting my family.'
-            ],
-            desires: ['I want to be taken more seriously by the guild of my profession...even if it means playing dirty.'],
-            seed: '7a12d861-3060-4cb7-8fb9-7ea835a794f0',
-            formattedData: {
-                name: 'Shanairra Ilphelkiir',
-                gender: 'Female',
-                race: 'Elf',
-                traits: ['My hair is an unusual colour for my race.',
-                    'I lost my right eye protecting my family.'
-                ],
-                desires: ['I want to be taken more seriously by the guild of my profession...even if it means playing dirty.']
-            }
-        }
+        const seededElf = { name: 'elfFemale1 elfLast3',
+        gender: 'female',
+        race: 'elf',
+        traits:
+         [ 'I have soft, full hair.',
+           'I lost my left eye in a bar brawl.' ],
+        desires:
+         [ 'I want to find an ancient shield that I was told of as a child.' ],
+        seed: '7a12d861-3060-4cb7-8fb9-7ea835a794f0',
+        formattedData:
+         { name: 'elfFemale1 elfLast3',
+           gender: 'Female',
+           race: 'Elf',
+           traits:
+            [ 'I have soft, full hair.',
+              'I lost my left eye in a bar brawl.' ],
+           desires:
+            [ 'I want to find an ancient shield that I was told of as a child.' ] } }
 
         for (let i = 0; i < 100; i++) {
             expect(NPCs.generate({ race: 'dwarf', seed: '7a12d861-3760-4cb7-8fb9-8ea835a794f0' })).toEqual(seededDwarf);
@@ -99,47 +84,39 @@ describe('NPCs', () => {
     });
 
     test('seeded npc - props: {gender}', () => {
-        const seededMale = {
-            name: 'Alton Goodbarrel',
-            gender: 'male',
-            race: 'halfling',
-            traits:
-                ['I am deaf in my right ear.',
-                    'I have an unusually small nose.'],
-            desires:
-                ['I want to travel and see the world, but I can\'t because of I\'m scared of danger.'],
-            seed: '7a12d861-3760-4cb7-8fb9-8ea820a794f0',
-            formattedData:
-            {
-                name: 'Alton Goodbarrel',
-                gender: 'Male',
-                race: 'Halfling',
-                traits:
-                    ['I am deaf in my right ear.',
-                        'I have an unusually small nose.'],
-                desires:
-                    ['I want to travel and see the world, but I can\'t because of I\'m scared of danger.']
-            }
-        }
+        const seededMale = { name: 'halflingMale1 halflingLast1',
+        gender: 'male',
+        race: 'halfling',
+        traits:
+         [ 'My eyes are very piercing, and bright green.',
+           'I lost my right eye hunting a great beast.' ],
+        desires: [ 'All I want is enough money to pay off my debts.' ],
+        seed: '7a12d861-3760-4cb7-8fb9-8ea820a794f0',
+        formattedData:
+         { name: 'halflingMale1 halflingLast1',
+           gender: 'Male',
+           race: 'Halfling',
+           traits:
+            [ 'My eyes are very piercing, and bright green.',
+              'I lost my right eye hunting a great beast.' ],
+           desires: [ 'All I want is enough money to pay off my debts.' ] } }
 
-        const seededFemale = {
-            name: 'Lia Amastacia',
-            gender: 'female',
-            race: 'elf',
-            traits: ['I am germaphobic.', 'I have a very quiet voice.'],
-            desires:
-                ['I want to find my brother - he left to be a cleric and I don\'t know where he is.'],
-            seed: '7a12d231-3760-4cb7-8fb9-8ea820a794f0',
-            formattedData:
-            {
-                name: 'Lia Amastacia',
-                gender: 'Female',
-                race: 'Elf',
-                traits: ['I am germaphobic.', 'I have a very quiet voice.'],
-                desires:
-                    ['I want to find my brother - he left to be a cleric and I don\'t know where he is.']
-            }
-        }
+        const seededFemale = { name: 'elfFemale2 elfLast1',
+        gender: 'female',
+        race: 'elf',
+        traits:
+         [ 'My eyes are very piercing, and bright green.',
+           'I lost my right eye hunting a great beast.' ],
+        desires: [ 'All I want is enough money to pay off my debts.' ],
+        seed: '7a12d231-3760-4cb7-8fb9-8ea820a794f0',
+        formattedData:
+         { name: 'elfFemale2 elfLast1',
+           gender: 'Female',
+           race: 'Elf',
+           traits:
+            [ 'My eyes are very piercing, and bright green.',
+              'I lost my right eye hunting a great beast.' ],
+           desires: [ 'All I want is enough money to pay off my debts.' ] } }
 
         for (let i = 0; i < 100; i++) {
             expect(NPCs.generate({ gender: 'male', seed: '7a12d861-3760-4cb7-8fb9-8ea820a794f0' })).toEqual(seededMale);
@@ -151,51 +128,43 @@ describe('NPCs', () => {
     });
 
     test('seeded npc - props: {race, gender}', () => {
-        const seededTieflingMale = {
-            name: 'Aseir',
-            gender: 'male',
-            race: 'tiefling',
-            traits:
-                ['I am unusually tall for my race.',
-                    'I talk too much when I get nervous.'],
-            desires:
-                ['I want to prove myself in combat, so I\'m going to beat the local champion.'],
-            seed: '1a11d111-3160-4cb1-8fb9-8ea820a194f0',
-            formattedData:
-            {
-                name: 'Aseir',
-                gender: 'Male',
-                race: 'Tiefling',
-                traits:
-                    ['I am unusually tall for my race.',
-                        'I talk too much when I get nervous.'],
-                desires:
-                    ['I want to prove myself in combat, so I\'m going to beat the local champion.']
-            }
-        }
+        const seededTieflingMale = { name: 'tieflingMale3',
+        gender: 'male',
+        race: 'tiefling',
+        traits:
+         [ 'I lost my left eye in a bar brawl.',
+           'My eyes are very piercing, and bright blue.' ],
+        desires:
+         [ 'I want justice for the crimes committed against my family.' ],
+        seed: '1a11d111-3160-4cb1-8fb9-8ea820a194f0',
+        formattedData:
+         { name: 'tieflingMale3',
+           gender: 'Male',
+           race: 'Tiefling',
+           traits:
+            [ 'I lost my left eye in a bar brawl.',
+              'My eyes are very piercing, and bright blue.' ],
+           desires:
+            [ 'I want justice for the crimes committed against my family.' ] } }
 
-        const seededGnomeFemale = {
-            name: 'Donella Beren',
-            gender: 'female',
-            race: 'gnome',
-            traits:
-                ['My eyes are very piercing, and bright green.',
-                    'I am deaf in my left ear.'],
-            desires:
-                ['I want to disappear from the law - I\'m on the run for a crime I didn\'t commit.'],
-            seed: '7a12d861-3760-2cb2-2fb2-2ea220a794f0',
-            formattedData:
-            {
-                name: 'Donella Beren',
-                gender: 'Female',
-                race: 'Gnome',
-                traits:
-                    ['My eyes are very piercing, and bright green.',
-                        'I am deaf in my left ear.'],
-                desires:
-                    ['I want to disappear from the law - I\'m on the run for a crime I didn\'t commit.']
-            }
-        }
+        const seededGnomeFemale = { name: 'gnomeFemale1 gnomeLast1',
+        gender: 'female',
+        race: 'gnome',
+        traits:
+         [ 'I lost my right eye protecting my family.',
+           'I have soft, full hair.' ],
+        desires:
+         [ 'I want clear my name of false wrongdoings - I didn\'t murder the noble!' ],
+        seed: '7a12d861-3760-2cb2-2fb2-2ea220a794f0',
+        formattedData:
+         { name: 'gnomeFemale1 gnomeLast1',
+           gender: 'Female',
+           race: 'Gnome',
+           traits:
+            [ 'I lost my right eye protecting my family.',
+              'I have soft, full hair.' ],
+           desires:
+            [ 'I want clear my name of false wrongdoings - I didn\'t murder the noble!' ] } }
 
         for (let i = 0; i < 100; i++) {
             expect(NPCs.generate({ race: 'tiefling', gender: 'male', seed: '1a11d111-3160-4cb1-8fb9-8ea820a194f0' })).toEqual(seededTieflingMale);
