@@ -1,5 +1,12 @@
 const NPCs = require('./index');
 const Utils = require('../utils');
+const Names = require('../data/names.json');
+const NamesStubData = require('../../stubData/names.json')
+const NpcData = require('../data/npcs.json')
+const NpcStubData = require('../../stubData/npcs.json')
+
+Names = NamesStubData;
+NpcData = NpcStubData
 
 describe('NPCs', () => {
     test('generate()', () => {
@@ -12,14 +19,14 @@ describe('NPCs', () => {
         });
     });
 
-    test('seeded npc - props: {}', () => {
+    test.only('seeded npc - props: {}', () => {
         const npcSeeded = {
             name: 'Urth Marivaldi',
             gender: 'male',
             race: 'halfElf',
             traits:
-                ['I am germaphobic.',
-                    'My right leg is false. I lost it in an accident.'],
+                ['I am known to complain constantly.',
+                    'I crack my knuckles when I\'m nervous.'],
             desires:
                 ['I want revenge against my brother for murdering our father for his own financial gain.'],
             seed: '7a12d861-3760-4cb7-8fb9-8ea111a794f0',
@@ -29,8 +36,8 @@ describe('NPCs', () => {
                 gender: 'Male',
                 race: 'Half-Elf',
                 traits:
-                    ['I am germaphobic.',
-                        'My right leg is false. I lost it in an accident.'],
+                    ['I am known to complain constantly.',
+                        'I crack my knuckles when I\'m nervous.'],
                 desires:
                     ['I want revenge against my brother for murdering our father for his own financial gain.']
             }

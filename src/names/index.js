@@ -1,5 +1,8 @@
 const Utils = require('../utils');
-const Data = require('../data/names.json')
+let Data = require('../data/names.json')
+if (process.env.ENVIRONMENT === 'test') {
+    Data = require('../../stubData/names.json')
+}
 
 /**
  * generate a name for a race and gender.

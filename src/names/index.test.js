@@ -1,6 +1,9 @@
 const Names = require('./index.js');
 const Utils = require('../utils');
-const NameData = require('../data/names.json')
+let NameData = require('../data/names.json')
+const NamesStubData = require('../../stubData/names.json')
+
+NameData = NamesStubData
 
 describe('Names', () => {
     const races = Object.keys(NameData);
@@ -75,13 +78,13 @@ describe('Names', () => {
     });
 
     test('generate() w/ seed, race & gender', () => {
-        const tieflingMaleXxx = 'Kairon';
-        const tieflingMaleYyy = 'Grigor';
-        const tieflingMaleZzz = 'Akmenos Pisacar';
+        const tieflingMaleXxx = 'tieflingMale2';
+        const tieflingMaleYyy = 'humanMale1';
+        const tieflingMaleZzz = 'tieflingMale1 humanLast3';
 
-        const halflingFemaleXxx = 'Seraphina Thorngage';
-        const halflingFemaleYyy = 'Euphemia Greenbottle';
-        const halflingFemaleZzz = 'Portia Underbough';
+        const halflingFemaleXxx = 'halflingFemale3 halflingLast3';
+        const halflingFemaleYyy = 'halflingFemale1 halflingLast1';
+        const halflingFemaleZzz = 'halflingFemale3 halflingLast3';
         
         // duplicates are deliberate, to test state
         for (let i = 0; i < 100; i++) {
