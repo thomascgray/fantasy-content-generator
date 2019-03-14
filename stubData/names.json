@@ -1,0 +1,166 @@
+{
+    "dragonborn": {
+        "male": [
+            "dragonBornMale1",
+            "dragonBornMale2",
+            "dragonBornMale3"
+        ],
+        "female": [
+            "dragonBornFemale1",
+            "dragonBornFemale2",
+            "dragonBornFemale3"
+        ],
+        "last": [
+            "dragonBornLast1",
+            "dragonBornLast2",
+            "dragonBornLast3"
+        ],
+        "templates": [
+            "{$first} {$last}"
+        ]
+    },
+    "dwarf": {
+        "male": [
+            "dwarfMale1",
+            "dwarfMale2",
+            "dwarfMale3"
+        ],
+        "female": [
+            "dwarfFemale1",
+            "dwarfFemale2",
+            "dwarfFemale3"
+        ],
+        "last": [
+            "dwarfLast1",
+            "dwarfLast2",
+            "dwarfLast3"
+        ],
+        "templates": [
+            "{$first} {$last}"
+        ]
+    },
+    "elf": {
+        "male": [
+            "elfMale1",
+            "elfMale2",
+            "elfMale3"
+        ],
+        "female": [
+            "elfFemale1",
+            "elfFemale2",
+            "elfFemale3"
+        ],
+        "last": [
+            "elfLast1",
+            "elfLast2",
+            "elfLast3"
+        ],
+        "templates": [
+            "{$first} {$last}"
+        ]
+    },
+    "gnome": {
+        "male": [
+            "gnomeMale1",
+            "gnomeMale2",
+            "gnomeMale3"
+        ],
+        "female": [
+            "gnomeFemale1",
+            "gnomeFemale2",
+            "gnomeFemale3"
+        ],
+        "last": [
+            "gnomeLast1",
+            "gnomeLast2",
+            "gnomeLast3"
+        ],
+        "templates": [
+            "{$first} {$last}"
+        ]
+    },
+    "halfElf": {
+        "templates": [
+            "{$humanFirst} {$humanLast}",
+            "{$elfFirst} {$elfLast}",
+            "{$humanFirst} {$elfLast}",
+            "{$elfFirst} {$humanLast}"
+        ]
+    },
+    "halfOrc": {
+        "male": [
+            "halfOrcMale1",
+            "halfOrcMale2",
+            "halfOrcMale3"
+        ],
+        "female": [
+            "halfOrcFemale1",
+            "halfOrcFemale2",
+            "halfOrcFemale3"
+        ],
+        "templates": [
+            "{$humanFirst} {$humanLast}",
+            "{$humanFirst}",
+            "{$orcFirst} {$humanLast}",
+            "{$orcFirst}"
+        ]
+    },
+    "halfling": {
+        "male": [
+            "halflingMale1",
+            "halflingMale2",
+            "halflingMale3"
+        ],
+        "female": [
+            "halflingFemale1",
+            "halflingFemale2",
+            "halflingFemale3"
+        ],
+        "last": [
+            "halflingLast1",
+            "halflingLast2",
+            "halflingLast3"
+        ],
+        "templates": [
+            "{$first} {$last}"
+        ]
+    },
+    "human": {
+        "male": [
+            "humanMale1",
+            "humanMale2",
+            "humanMale3"
+        ],
+        "female": [
+            "humanFemale1",
+            "humanFemale2",
+            "humanFemale3"
+        ],
+        "last": [
+            "humanLast1",
+            "humanLast2",
+            "humanLast3"
+        ],
+        "templates": [
+            "{$first} {$last}"
+        ]
+    },
+    "tiefling": {
+        "male": [
+            "tieflingMale1",
+            "tieflingMale2",
+            "tieflingMale3"
+        ],
+        "female": [
+            "tieflingFemale1",
+            "tieflingFemale2",
+            "tieflingFemale3"
+        ],
+        "templates": [
+            "{$humanFirst} {$humanLast}",
+            "{$humanFirst}",
+            "{$tieflingFirst} {$humanLast}",
+            "{$tieflingFirst}"
+        ]
+    }
+}

@@ -1,4 +1,5 @@
 .cache
+.vscode
 examples
 src
-fantasy_content_generator.js
+stubData

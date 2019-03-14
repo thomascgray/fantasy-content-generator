@@ -1,15 +1,22 @@
 const Names = require('../names');
 const Utils = require('../utils');
-const NameData = require('../data/names.json')
-const NPCData = require('../data/npcs.json')
+let NameData = require('../data/names.json')
+let NPCData = require('../data/npcs.json')
+
+if (process.env.ENVIRONMENT === 'test') {
+    NameData = require('../../stubData/names.json')
+    NPCData = require('../../stubData/npcs.json')
+}
 
 const generate = (props = {}) => {
-    const race = props.race ? props.race : Utils.pick(Object.keys(NameData))
-    const gender = props.gender ? props.gender : Utils.pick(['male', 'female'])
-    const name = Names.generate({ race, gender });
+    Utils.resetSeed();
 
-    const traits = Utils.pick(NPCData.traits, 2, true).map(Utils.parseTemplate);
-    const desires = Utils.pick(NPCData.desires, 1, true).map(Utils.parseTemplate);
+    const seed = props.seed ? props.seed : Utils.generateUUID();
+    const traits = Utils.pick(NPCData.traits, 2, true, seed).map(val => Utils.parseTemplate(val, null, seed));
+    const desires = Utils.pick(NPCData.desires, 1, true, seed).map(val => Utils.parseTemplate(val, null, seed));
+    const race = props.race ? props.race : Utils.pick(Object.keys(NameData), 1, false, seed)
+    const gender = props.gender ? props.gender : Utils.pick(['male', 'female'], 1, false, seed)
+    const name = Names.generate({ race, gender, seed, shouldResetSeed: false });
 
     const formattedData = {
         name,
@@ -25,6 +32,7 @@ const generate = (props = {}) => {
         race,
         traits,
         desires,
+        seed,
         formattedData
     }
 }

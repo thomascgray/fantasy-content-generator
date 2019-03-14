@@ -3,15 +3,15 @@
 
 [![npm](https://img.shields.io/npm/v/fantasy-content-generator.svg?style=flat-square)](https://www.npmjs.com/package/fantasy-content-generator)
 
-**Kinda like [Faker.js](https://github.com/marak/Faker.js/), but for D&D 5E themed pieces of content. Need an NPC? A name? A magic item? We gotchu'**
+**Like [Faker.js](https://github.com/marak/Faker.js/), but for D&D 5E themed pieces of content. Need an NPC? A name? A magic item? We gotchu'**
 
 Features:
 
 - Easy to understand API
 - Zero dependencies
+- Interesting, flavoursome content, designed for roleplaying and quick inspiration for DMs
 - Can be used in both Node & browser
-- Optional seeding for random content
-- Flavoursome content, designed for roleplaying and quick inspiration for DMs
+- Optional seeding for deterministic generation
 - Ties-in to D&D 5E mechanics (weapon stats, magic effects, etc.)
 
 ---
@@ -67,25 +67,32 @@ FCG.NPCs.generate();
 ```
 # API
 
+[API Reference](https://github.com/thomascgray/fantasy-content-generator/blob/master/docs/API.md)
+
 There are a number of "sets" available. These are 
 
 - `Names` - generates names based on race and gender
-- `Storyhooks` - generates storyhooks
 - `NPCs` - generates full NPCs
-- `Settlements` - generates settlement information
+- `Loots` - generates loot and treasure
 - `MagicItems` - generates magic items
+- `Storyhooks` - generates storyhooks
+- `Settlements` - generates settlement information
 
 and can all be found on the base Fantasy Content Generator object.
 
 Most sets expose a `generate()` function, some expose others unique to that set.
 
-See our [API Reference](./docs/API.md) for full details of the API methods available.
+See our [API Reference](https://github.com/thomascgray/fantasy-content-generator/blob/master/docs/API.md) for full details of the API methods available.
+
+*Many of the sets are currently WIP and quite limited. More content to come soon! Follow [me on Twitter](https://twitter.com/tmcgry)  for release and update details.*
 
 # Tests
 
 ```
 npm test
 ```
+
+If you want to run a specific test file manually, ensure you set `ENVIRONMENT=test`
 
 # Contributing
 
