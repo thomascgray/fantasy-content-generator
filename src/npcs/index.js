@@ -38,7 +38,9 @@ const generate = (props = {}) => {
 }
 
 const functions = {
-    generate
+    generate,
+    trait: () => Utils.parseTemplate(Utils.pick(NPCData.traits)),
+    desire: () => Utils.parseTemplate(Utils.pick(NPCData.desires))
 }
 
 module.exports = functions

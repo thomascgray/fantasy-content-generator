@@ -174,4 +174,18 @@ describe('NPCs', () => {
             expect(NPCs.generate({ race: 'gnome', gender: 'female', seed: '7a12d861-3760-2cb2-2fb2-2ea220a794f0' })).toEqual(seededGnomeFemale);
         }
     });
+
+    test('trait()', () => {
+      const trait = NPCs.trait();
+
+      expect(typeof trait).toBe('string')
+      expect(trait).not.toBe('undefined')
+    });
+
+    test('desire()', () => {
+      const desire = NPCs.desire();
+
+      expect(typeof desire).toBe('string')
+      expect(desire).not.toBe('undefined')
+    });
 });
