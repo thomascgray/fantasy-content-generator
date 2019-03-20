@@ -55,7 +55,7 @@ FCG.Storyhooks.npcActs(); // 'An NPC becomes fearful'
 
 Generate NPCs.
 
-## `generate({ [race], [gender], [seed] })`
+## `generate({ [race:string], [gender:string], [seed:string], [shouldGenerateRelations:bool] })`
 
 A generated NPC will have;
 
@@ -85,7 +85,11 @@ FCG.NPCs.generate();
 */
 ```
 
-A `seed` can be passed to ensure the same generated NPC. If no seed is passed, a UUID will be generated and used as the seed, so you can recreate that NPC in future. 
+A `seed` can be passed to ensure the same generated NPC. If no seed is passed, a UUID will be generated and used as the seed, so you can recreate that NPC in future.
+
+### NPC Generated Relations
+
+If `shouldGenerateRelations` is passed as `true` to `generate()`, relations will be generated on your NPC for you. These are based off keywords from all your NPCs generated `desires`. For example, an NPC with a desire of "I want to find my father" will generate a father relation (a male NPC of the same race). These generated relations will also have seeds attached, so they can be readily generated in future.
 
 # `MagicItems`
 

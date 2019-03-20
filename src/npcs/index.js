@@ -24,6 +24,7 @@ const RelationshipKeyWords = [
  * @param {string} props.race
  * @param {string} props.gender
  * @param {string} props.name
+ * @param {bool} props.shouldGenerateRelations
  */
 const generate = (props = {}) => {
     Utils.resetSeed();
@@ -37,7 +38,7 @@ const generate = (props = {}) => {
 
     const relations = []
 
-    if (props.shouldGenerateRelationships) {
+    if (props.shouldGenerateRelations) {
         relations = generateRelationships({ race, gender, desires })
     }
 
@@ -49,7 +50,7 @@ const generate = (props = {}) => {
         desires,
     }
 
-    if (props.shouldGenerateRelationships) {
+    if (props.shouldGenerateRelations) {
         formattedData.relations = relations;
     }
 
@@ -63,7 +64,7 @@ const generate = (props = {}) => {
         formattedData
     }
 
-    if (props.shouldGenerateRelationships) {
+    if (props.shouldGenerateRelations) {
         npc.relations = relations;
     }
 
