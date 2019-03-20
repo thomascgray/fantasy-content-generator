@@ -5,11 +5,11 @@
 
 **Like [Faker.js](https://github.com/marak/Faker.js/), but for D&D 5E themed pieces of content. Need an NPC? A name? A magic item? You came to the right place.**
 
-Features:
+Top Features Include:
 
 - Easy to understand API
 - Zero dependencies
-- Interesting, flavoursome content, designed for roleplaying and quick inspiration for DMs
+- Interesting, flavoursome content, designed for roleplaying and inspiration for DMs
 - Can be used in both Node & browser
 - Optional seeding for deterministic generation
 - Ties-in to D&D 5E mechanics (weapon stats, magic effects, etc.)
