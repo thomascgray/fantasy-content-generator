@@ -188,4 +188,78 @@ describe('NPCs', () => {
       expect(typeof desire).toBe('string')
       expect(desire).not.toBe('undefined')
     });
+
+    describe('getRelationTitlesFromDesires()', () => {
+      test('get father', () => {
+        const desires = [ 'i want to find my father' ]
+        const titles = NPCs.getRelationTitlesFromDesires(desires);
+
+        expect(titles.length).toEqual(1);
+        expect(titles).toContain('father');
+      });
+      test('get brother and sister', () => {
+        const desires = [ 'i want to find my brother', 'i want to kill my sister' ]
+        const titles = NPCs.getRelationTitlesFromDesires(desires);
+
+        expect(titles.length).toEqual(2);
+        expect(titles).toContain('brother');
+        expect(titles).toContain('sister');
+      });
+      test('get nothing', () => {
+        const desires = [ 'i want to find my dog' ]
+        const titles = NPCs.getRelationTitlesFromDesires(desires);
+
+        expect(titles.length).toEqual(0);
+      });
+    });
+
+    describe('generateRelationships()', () => {
+      test('generates a father', () => {
+        const desires = [ 'i want to kill my father' ];
+
+        const relations = NPCs.generateRelationships({
+          race: 'dwarf',
+          gender: 'male',
+          desires
+        });
+
+        expect(relations.length).toEqual(1);
+        expect(relations[0].relationTitle).toEqual('father');
+        expect(relations[0].npc.formattedData.gender).toEqual('Male');
+        expect(relations[0].npc.formattedData.race).toEqual('Dwarf');
+      });
+
+      test('generates a sister', () => {
+        const desires = [ 'i want to kill my sister' ];
+
+        const relations = NPCs.generateRelationships({
+          race: 'tiefling',
+          gender: 'male',
+          desires
+        });
+
+        expect(relations.length).toEqual(1);
+        expect(relations[0].relationTitle).toEqual('sister');
+        expect(relations[0].npc.formattedData.gender).toEqual('Female');
+        expect(relations[0].npc.formattedData.race).toEqual('Tiefling');
+      });
+
+      test('generates a mother and a daughter', () => {
+        const desires = [ 'i want to find my mother', 'i want to find my daughter' ];
+
+        const relations = NPCs.generateRelationships({
+          race: 'tiefling',
+          gender: 'male',
+          desires
+        });
+
+        expect(relations.length).toEqual(2);
+        expect(relations[0].relationTitle).toEqual('mother');
+        expect(relations[0].npc.formattedData.gender).toEqual('Female');
+        expect(relations[0].npc.formattedData.race).toEqual('Tiefling');
+        expect(relations[1].relationTitle).toEqual('daughter');
+        expect(relations[1].npc.formattedData.gender).toEqual('Female');
+        expect(relations[1].npc.formattedData.race).toEqual('Tiefling');
+      });
+    });
 });
