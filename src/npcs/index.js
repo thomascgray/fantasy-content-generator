@@ -36,7 +36,7 @@ const generate = (props = {}) => {
     const gender = props.gender ? props.gender : Utils.pick(['male', 'female'], 1, false, seed)
     const name = Names.generate({ race, gender, seed, shouldResetSeed: false });
 
-    const relations = []
+    let relations = []
 
     if (props.shouldGenerateRelations) {
         relations = generateRelationships({ race, gender, desires })

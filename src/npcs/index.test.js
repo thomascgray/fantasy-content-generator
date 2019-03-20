@@ -12,6 +12,16 @@ describe('NPCs', () => {
         });
     });
 
+    test('generate() with relations', () => {
+      Utils.forCount(50, () => {
+          const npc = NPCs.generate({ shouldGenerateRelations: true });
+          expect(typeof npc).toBe('object')
+          Object.keys(npc).forEach(key => {
+              expect(npc[key]).not.toEqual('undefined');
+          })
+      });
+  });
+
     test('seeded npc - props: {}', () => {
         const npcSeeded = { name: 'elfFemale1 humanLast1',
         gender: 'female',
