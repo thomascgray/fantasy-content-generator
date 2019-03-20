@@ -20,7 +20,7 @@ describe('NPCs', () => {
               expect(npc[key]).not.toEqual('undefined');
           })
       });
-  });
+    });
 
     test('seeded npc - props: {}', () => {
         const npcSeeded = { name: 'elfFemale1 humanLast1',
