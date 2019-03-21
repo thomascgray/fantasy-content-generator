@@ -272,6 +272,23 @@ describe('NPCs', () => {
         expect(relations[1].npc.formattedData.gender).toEqual('Female');
         expect(relations[1].npc.formattedData.race).toEqual('Tiefling');
       });
+
+      test('generate a family member with same surname', () => {
+        const desires = [ 'i want to kill my father' ];
+
+        const relations = NPCs.generateRelationships({
+          name: 'tim jones',
+          race: 'dwarf',
+          gender: 'male',
+          desires
+        });
+
+        expect(relations.length).toEqual(1);
+        expect(relations[0].relationTitle).toEqual('father');
+        expect(relations[0].npc.formattedData.gender).toEqual('Male');
+        expect(relations[0].npc.formattedData.race).toEqual('Dwarf');
+        expect(relations[0].npc.formattedData.name.endsWith('jones')).toEqual(true);
+      })
     });
 
     describe('getSurname()', () => {
