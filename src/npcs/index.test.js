@@ -228,6 +228,7 @@ describe('NPCs', () => {
         const desires = [ 'i want to kill my father' ];
 
         const relations = NPCs.generateRelationships({
+          name: 'tim smith',
           race: 'dwarf',
           gender: 'male',
           desires
@@ -272,4 +273,44 @@ describe('NPCs', () => {
         expect(relations[1].npc.formattedData.race).toEqual('Tiefling');
       });
     });
+
+    describe('getSurname()', () => {
+      test('2 names', () => {
+        const fullName = 'tim smith';
+        const surname = NPCs.getSurname(fullName);
+        expect(surname).toEqual('smith');
+      });
+      test('2 names with extra space', () => {
+        const fullName = 'tim smith ';
+        const surname = NPCs.getSurname(fullName);
+        expect(surname).toEqual('smith');
+      });
+      test('3 names', () => {
+        const fullName = 'tim smith jones';
+        const surname = NPCs.getSurname(fullName);
+        expect(surname).toEqual('jones');
+      });
+      test('3 names with weird middle space', () => {
+        const fullName = 'tim    smith     jones';
+        const surname = NPCs.getSurname(fullName);
+        expect(surname).toEqual('jones');
+      });
+      test('1 name', () => {
+        const fullName = 'tim';
+        const surname = NPCs.getSurname(fullName);
+        expect(surname).toEqual(null);
+      });
+    })
+
+    describe('generateFamilyMember()', () => {
+      test('normalize surname', () => {
+        const relation = NPCs.generateFamilyMember({
+          name: 'tim smith',
+          race: 'dwarf',
+          relationTitle: 'father'
+        });
+
+        expect(relation.formattedData.name.endsWith('smith')).toEqual(true);
+      })
+    })
 });

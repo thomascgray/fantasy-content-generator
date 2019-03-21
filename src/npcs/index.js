@@ -39,7 +39,7 @@ const generate = (props = {}) => {
     let relations = []
 
     if (props.shouldGenerateRelations) {
-        relations = generateRelationships({ race, gender, desires })
+        relations = generateRelationships({ name, race, gender, desires })
     }
 
     const formattedData = {
@@ -78,51 +78,60 @@ const getRelationTitlesFromDesires = desires => {
         .filter(relationKeyword => concatonatedDesires.includes(relationKeyword))
 }
 
-const generateRelationships = ({ race, gender, desires }) => {
+const generateRelationships = ({ name, race, gender, desires }) => {
     const relationTitles = getRelationTitlesFromDesires(desires);
-
     return relationTitles.map(relationTitle => {
         switch (relationTitle) {
             case 'father':
-                return {
-                    relationTitle,
-                    npc: generateFather(race)
-                }
             case 'mother':
-                return {
-                    relationTitle,
-                    npc: generateMother(race)
-                }
             case 'brother':
-                return {
-                    relationTitle,
-                    npc: generateBrother(race)
-                }
             case 'sister':
-                return {
-                    relationTitle,
-                    npc: generateSister(race)
-                }
             case 'son':
-                return {
-                    relationTitle,
-                    npc: generateSon(race)
-                }
             case 'daughter':
-                return {
-                    relationTitle,
-                    npc: generateDaughter(race)
-                }
+            return {
+                relationTitle,
+                npc: generateFamilyMember({ name, race, relationTitle })
+            }
         }
     })
 }
 
-const generateFather = (race) => generate({ race, gender: 'male' })
-const generateMother = (race) => generate({ race, gender: 'female' })
-const generateBrother = (race) => generate({ race, gender: 'male' })
-const generateSister = (race) => generate({ race, gender: 'female' })
-const generateSon = (race) => generate({ race, gender: 'male' })
-const generateDaughter = (race) => generate({ race, gender: 'female' })
+const getSurname = name => {
+    if (name == null) {
+        return null;
+    }
+    const names = name.trim().split(' ');
+    if (names.length <= 1) {
+        return null;
+    }
+    return names[names.length - 1].trim();
+}
+
+const generateFamilyMember = ({ name, race, relationTitle }) => {
+    let gender = null;
+    switch (relationTitle) {
+        case 'father':
+        case 'brother':
+        case 'son':
+            gender = 'male';
+            break;
+        case 'mother':
+        case 'sister':
+        case 'daughter':
+            gender = 'female';
+            break;
+    }
+    const npc = generate({ race, gender })
+    const passedSurname = getSurname(name);
+    const npcSurname = getSurname(npc.formattedData.name);
+    
+    if (passedSurname != null && npcSurname != null) { // both have a surname - normalize it
+        npc.name = npc.name.replace(npcSurname, passedSurname);
+        npc.formattedData.name = npc.formattedData.name.replace(npcSurname, passedSurname);
+    }
+
+    return npc;
+}
 
 const functions = {
     generate,
@@ -133,6 +142,8 @@ const functions = {
 if (process.env.ENVIRONMENT === 'test') {
     functions.getRelationTitlesFromDesires = getRelationTitlesFromDesires
     functions.generateRelationships = generateRelationships;
+    functions.getSurname = getSurname;
+    functions.generateFamilyMember = generateFamilyMember;
 }
 
 module.exports = functions
