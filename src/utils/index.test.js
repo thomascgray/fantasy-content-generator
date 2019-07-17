@@ -390,7 +390,7 @@ describe('seedrandom', () => {
 });
 
 describe('generateUUID', () => {
-  test.only('generate some uuids that are different and the correct length', () => {
+  test('generate some uuids that are different and the correct length', () => {
     let uuid = Utils.generateUUID();
 
     expect(uuid.length).toEqual(36);
