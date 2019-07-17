@@ -30,9 +30,9 @@
   "devDependencies": {
     "browserify": "^16.2.3",
     "jest": "^24.1.0",
-    "lodash": "^4.17.11",
-    "parcel-bundler": "^1.10.3",
-    "release-it": "^8.0.1",
+    "lodash": "^4.17.14",
+    "parcel-bundler": "^1.12.3",
+    "release-it": "^12.3.3",
     "require-globify": "^1.4.1",
     "terser": "^3.16.1",
     "uglify-js": "^3.4.9"
