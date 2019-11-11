@@ -20,17 +20,12 @@ describe("Names", () => {
       expect(nameObject1).not.toMatchObject(nameObject2);
     });
 
-    it("generating with same race and gender should give a different name and seed each time", () => {
+    it("generating with same race and gender should give a different seed each time", () => {
       const nameObject1 = Names.generate({ race: "tiefling", gender: "male" });
       const nameObject2 = Names.generate({ race: "tiefling", gender: "male" });
       const nameObject3 = Names.generate({ race: "tiefling", gender: "male" });
 
       expect([nameObject1.seed]).not.toContain(nameObject2.seed);
-      expect([nameObject1.name]).not.toContain(nameObject2.name);
-
-      expect([nameObject1.name, nameObject2.name]).not.toContain(
-        nameObject3.name
-      );
       expect([nameObject1.seed, nameObject2.seed]).not.toContain(
         nameObject3.seed
       );
