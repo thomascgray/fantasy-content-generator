@@ -9,6 +9,7 @@
     "dnd5e",
     "rpg",
     "procgen",
+    "procedural generation",
     "rpg-tool",
     "dnd-tool"
   ],
@@ -29,11 +30,13 @@
   "license": "MIT",
   "devDependencies": {
     "browserify": "^16.2.3",
+    "eslint": "^6.6.0",
     "jest": "^24.1.0",
     "lodash": "^4.17.14",
-    "parcel-bundler": "^1.12.3",
+    "parcel-bundler": "^1.12.4",
     "release-it": "^12.3.3",
     "require-globify": "^1.4.1",
+    "seedrandom": "^3.0.5",
     "terser": "^3.16.1",
     "uglify-js": "^3.4.9"
   },

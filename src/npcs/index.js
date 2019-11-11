@@ -1,25 +1,20 @@
-const Names = require('../names');
-const Utils = require('../utils');
-let NameData = require('../data/names.json')
-let NPCData = require('../data/npcs.json')
-
-if (process.env.ENVIRONMENT === 'test') {
-    NameData = require('../../stubData/names.json')
-    NPCData = require('../../stubData/npcs.json')
-}
+const Names = require("../names");
+const Utils = require("../utils");
+let NameData = require("../data/names.json");
+let NPCData = require("../data/npcs.json");
 
 const RelationshipKeyWords = [
-    'mother',
-    'father',
-    'son',
-    'daughter',
-    'brother',
-    'sister'
-]
+  "mother",
+  "father",
+  "son",
+  "daughter",
+  "brother",
+  "sister"
+];
 
 /**
- * 
- * @param {object} props 
+ *
+ * @param {object} props
  * @param {string} props.seed
  * @param {string} props.race
  * @param {string} props.gender
@@ -27,123 +22,129 @@ const RelationshipKeyWords = [
  * @param {bool} props.shouldGenerateRelations
  */
 const generate = (props = {}) => {
-    Utils.resetSeed();
+  let { seed, race, gender, shouldGenerateRelations = true } = props;
 
-    const seed = props.seed ? props.seed : Utils.generateUUID();
-    const traits = Utils.pick(NPCData.traits, 2, true, seed).map(val => Utils.parseTemplate(val, null, seed));
-    const desires = Utils.pick(NPCData.desires, 1, true, seed).map(val => Utils.parseTemplate(val, null, seed));
-    const race = props.race ? props.race : Utils.pick(Object.keys(NameData), 1, false, seed)
-    const gender = props.gender ? props.gender : Utils.pick(['male', 'female'], 1, false, seed)
-    const name = Names.generate({ race, gender, seed, shouldResetSeed: false });
+  // use the given seed, or one set by withSeed, or generate one
+  seed = seed || globalThis.FantasyContentGeneratorSeed || Utils.generateUUID(); // eslint-disable-line
 
-    let relations = []
+  return Utils.withSeed(seed, () => {
+    race = race ? race : Utils.pick(Object.keys(NameData));
+    gender = gender ? gender : Utils.pick(["male", "female"]);
 
-    if (props.shouldGenerateRelations) {
-        relations = generateRelationships({ name, race, gender, desires })
+    // generate a name
+    const nameObject = Names.generate({ seed, race, gender });
+
+    // get 2 traits and 1 desire
+    const traits = Utils.pickMany(NPCData.traits, 2).map(Utils.parseTemplate);
+    const desires = Utils.pickMany(NPCData.desires, 1).map(Utils.parseTemplate);
+
+    let relations = [];
+
+    if (shouldGenerateRelations) {
+      relations = generateRelationships({
+        name: nameObject.name,
+        race,
+        gender,
+        desires
+      });
     }
 
-    const formattedData = {
-        name,
+    const npc = {
+      seed,
+      nameObject,
+      gender,
+      race,
+      traits,
+      desires,
+      formattedData: {
+        name: nameObject.name,
         gender: Utils.titleCase(gender),
         race: Utils.formatRace(race),
         traits,
         desires,
-    }
-
-    if (props.shouldGenerateRelations) {
-        formattedData.relations = relations;
-    }
-
-    const npc = {
-        name,
-        gender,
-        race,
-        traits,
-        desires,
-        seed,
-        formattedData
-    }
-
-    if (props.shouldGenerateRelations) {
-        npc.relations = relations;
-    }
-
-    return npc
-}
-
-const getRelationTitlesFromDesires = desires => {
-    const concatonatedDesires = desires.join(':');
-
-    return RelationshipKeyWords
-        .filter(relationKeyword => concatonatedDesires.includes(relationKeyword))
-}
-
-const generateRelationships = ({ name, race, gender, desires }) => {
-    const relationTitles = getRelationTitlesFromDesires(desires);
-    return relationTitles.map(relationTitle => {
-        switch (relationTitle) {
-            case 'father':
-            case 'mother':
-            case 'brother':
-            case 'sister':
-            case 'son':
-            case 'daughter':
-            return {
-                relationTitle,
-                npc: generateFamilyMember({ name, race, relationTitle })
-            }
-        }
-    })
-}
-
-const getSurname = name => {
-    if (name == null) {
-        return null;
-    }
-    const names = name.trim().split(' ');
-    if (names.length <= 1) {
-        return null;
-    }
-    return names[names.length - 1].trim();
-}
-
-const generateFamilyMember = ({ name, race, relationTitle }) => {
-    let gender = null;
-    switch (relationTitle) {
-        case 'father':
-        case 'brother':
-        case 'son':
-            gender = 'male';
-            break;
-        case 'mother':
-        case 'sister':
-        case 'daughter':
-            gender = 'female';
-            break;
-    }
-    const npc = generate({ race, gender })
-    const passedSurname = getSurname(name);
-    const npcSurname = getSurname(npc.formattedData.name);
-    
-    if (passedSurname != null && npcSurname != null) { // both have a surname - normalize it
-        npc.name = npc.name.replace(npcSurname, passedSurname);
-        npc.formattedData.name = npc.formattedData.name.replace(npcSurname, passedSurname);
-    }
+        relations
+      },
+      relations
+    };
 
     return npc;
-}
+  });
+};
+
+const getRelationTitlesFromDesires = desires => {
+  const concatonatedDesires = desires.join(":");
+
+  return RelationshipKeyWords.filter(relationKeyword =>
+    concatonatedDesires.includes(relationKeyword)
+  );
+};
+
+const generateRelationships = ({ name, race, desires }) => {
+  const relationTitles = getRelationTitlesFromDesires(desires);
+  return relationTitles.map(relationTitle => {
+    switch (relationTitle) {
+      case "father":
+      case "mother":
+      case "brother":
+      case "sister":
+      case "son":
+      case "daughter":
+        return {
+          relationTitle,
+          npc: generateFamilyMember({ name, race, relationTitle })
+        };
+    }
+  });
+};
+
+const getSurname = name => {
+  if (name == null) {
+    return null;
+  }
+  const names = name.trim().split(" ");
+  if (names.length <= 1) {
+    return null;
+  }
+  return names[names.length - 1].trim();
+};
+
+const generateFamilyMember = ({ name, race, relationTitle }) => {
+  let gender = null;
+  switch (relationTitle) {
+    case "father":
+    case "brother":
+    case "son":
+      gender = "male";
+      break;
+    case "mother":
+    case "sister":
+    case "daughter":
+      gender = "female";
+      break;
+  }
+  const npc = generate({ race, gender });
+  const passedSurname = getSurname(name);
+  const npcSurname = getSurname(npc.formattedData.name);
+
+  if (passedSurname != null && npcSurname != null) {
+    // both have a surname - normalize it
+    npc.nameObject.name = npc.nameObject.name.replace(
+      npcSurname,
+      passedSurname
+    );
+    npc.formattedData.name = npc.formattedData.name.replace(
+      npcSurname,
+      passedSurname
+    );
+  }
+
+  return npc;
+};
 
 const functions = {
-    generate,
-    trait: () => Utils.parseTemplate(Utils.pick(NPCData.traits)),
-    desire: () => Utils.parseTemplate(Utils.pick(NPCData.desires))
-}
+  generate,
+  trait: () => Utils.parseTemplate(Utils.pick(NPCData.traits)),
+  desire: () => Utils.parseTemplate(Utils.pick(NPCData.desires))
+};
 
-if (process.env.ENVIRONMENT === 'test') {
-    functions.getRelationTitlesFromDesires = getRelationTitlesFromDesires
-    functions.generateRelationships = generateRelationships;
-    functions.getSurname = getSurname;
-    functions.generateFamilyMember = generateFamilyMember;
-}
-
-module.exports = functions
+module.exports = functions;
