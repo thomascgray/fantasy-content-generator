@@ -53,7 +53,7 @@ const generate = (props = {}) => {
   let { race, gender, seed } = props;
 
   // use the given seed, or one set by withSeed, or generate one
-  seed = seed || globalThis.FantasyContentGeneratorSeed || Utils.generateUUID();
+  seed = seed || globalThis.FantasyContentGeneratorSeed || Utils.generateUUID(); //eslint-disable-line
 
   // use withSeed to ensure seeded output for all `picks`
   return Utils.withSeed(seed, () => {
@@ -67,7 +67,12 @@ const generate = (props = {}) => {
       seed,
       name,
       race,
-      gender
+      gender,
+      formattedData: {
+        name,
+        race: Utils.formatRace(race),
+        gender: Utils.titleCase(gender)
+      }
     };
   });
 };

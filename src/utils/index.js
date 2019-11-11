@@ -153,9 +153,9 @@ const generateUUID = () => {
 };
 
 const withSeed = (seed, callback) => {
-  globalThis.FantasyContentGeneratorSeed = seed;
+  globalThis.FantasyContentGeneratorSeed = seed; //eslint-disable-line
   const returnValue = callback();
-  globalThis.FantasyContentGeneratorSeed = null;
+  globalThis.FantasyContentGeneratorSeed = null; //eslint-disable-line
   return returnValue;
 };
 
