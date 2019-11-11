@@ -1,94 +1,90 @@
-const Utils = require('../utils');
-let Data = require('../data/names.json')
-if (process.env.ENVIRONMENT === 'test') {
-    Data = require('../../stubData/names.json')
-}
+const Utils = require("../utils");
+let Data = require("../data/names.json");
 
 /**
  * generate a name for a race and gender.
- * 
+ *
  * @param {string} props.race generate with a specific race
  * @param {string} props.gender generate with a specific gender
  */
-const _generate = (props) => {
-    if (!props) {
-        props = {}
-    }
+const generateName = (race, gender) => {
+  const raceTemplates = Data[race].templates;
 
-    const shouldResetSeed = (props.shouldResetSeed != null) ? props.shouldResetSeed : true;
+  if (!raceTemplates) {
+    throw new Error(`could not find race templates for ${race}`);
+  }
 
-    if (shouldResetSeed) {
-        Utils.resetSeed();
-    }
+  const template = Utils.pick(raceTemplates);
 
-    const seed = props.seed ? props.seed : Utils.generateUUID();
-    
-    const race = props.race ? props.race : Utils.pick(Object.keys(Data), undefined, undefined, seed)
-    const gender = props.gender ? props.gender : Utils.pick(['male', 'female'], undefined, undefined, seed)
+  switch (race) {
+    case "dragonborn":
+    case "dwarf":
+    case "elf":
+    case "gnome":
+    case "halfling":
+    case "human":
+      return Utils.parseTemplate(template, {
+        first: Utils.pick(Data[race][gender]),
+        last: Utils.pick(Data[race].last)
+      });
+    case "halfOrc":
+      return Utils.parseTemplate(template, {
+        humanFirst: Utils.pick(Data.human[gender]),
+        humanLast: Utils.pick(Data.human.last),
+        orcFirst: Utils.pick(Data.halfOrc[gender])
+      });
+    case "halfElf":
+      return Utils.parseTemplate(template, {
+        humanFirst: Utils.pick(Data.human[gender]),
+        humanLast: Utils.pick(Data.human.last),
+        elfFirst: Utils.pick(Data.elf[gender]),
+        elfLast: Utils.pick(Data.elf.last)
+      });
+    case "tiefling":
+      return Utils.parseTemplate(template, {
+        humanFirst: Utils.pick(Data.human[gender]),
+        humanLast: Utils.pick(Data.human.last),
+        tieflingFirst: Utils.pick(Data.tiefling[gender])
+      });
+  }
+};
 
-    const raceTemplates = Data[race].templates
+const generate = (props = {}) => {
+  let { race, gender, seed } = props;
 
-    if (!raceTemplates) {
-        throw new Error(`could not find race templates for ${race}`)
-    }
+  // use the given seed, or one set by withSeed, or generate one
+  seed = seed || globalThis.FantasyContentGeneratorSeed || Utils.generateUUID();
 
-    const template = Utils.pick(raceTemplates, undefined, undefined, seed);
+  // use withSeed to ensure seeded output for all `picks`
+  return Utils.withSeed(seed, () => {
+    race = race ? race : Utils.pick(Object.keys(Data));
 
-    switch (race) {
-        case 'dragonborn':
-        case 'dwarf':
-        case 'elf':
-        case 'gnome':
-        case 'halfling':
-        case 'human':
-            return Utils.parseTemplate(template, {
-                first: Utils.pick(Data[race][gender], 1, false, seed),
-                last: Utils.pick(Data[race].last, 1, false, seed),
-            });
-        case 'halfOrc':
-            return Utils.parseTemplate(template, {
-                humanFirst: Utils.pick(Data.human[gender], 1, false, seed),
-                humanLast: Utils.pick(Data.human.last, 1, false, seed),
-                orcFirst: Utils.pick(Data.halfOrc[gender], 1, false, seed),
-            });
-        case 'halfElf':
-            return Utils.parseTemplate(template, {
-                humanFirst: Utils.pick(Data.human[gender], 1, false, seed),
-                humanLast: Utils.pick(Data.human.last, 1, false, seed),
-                elfFirst: Utils.pick(Data.elf[gender], 1, false, seed),
-                elfLast: Utils.pick(Data.elf.last, 1, false, seed),
-            });
-        case 'tiefling':
-            return Utils.parseTemplate(template, {
-                humanFirst: Utils.pick(Data.human[gender], 1, false, seed),
-                humanLast: Utils.pick(Data.human.last, 1, false, seed),
-                tieflingFirst: Utils.pick(Data.tiefling[gender], 1, false, seed),
-            });
-    }
-}
+    gender = gender ? gender : Utils.pick(["male", "female"]);
 
-const sanitise = name => {
-    return name;
-}
+    const name = generateName(race, gender);
 
-const generate = props => {
-    const name = _generate(props);
-    return sanitise(name);
-}
+    return {
+      seed,
+      name,
+      race,
+      gender
+    };
+  });
+};
 
 const functions = {
-    generate
-}
+  generate
+};
 
 // setup a function for each race
 Object.keys(Data).forEach(race => {
-    functions[race] = props => {
-        if (props == null) {
-            props = {}
-        }
-        props.race = race;
-        return generate(props);
+  functions[race] = props => {
+    if (props == null) {
+      props = {};
     }
+    props.race = race;
+    return generate(props);
+  };
 });
 
-module.exports = functions
+module.exports = functions;
