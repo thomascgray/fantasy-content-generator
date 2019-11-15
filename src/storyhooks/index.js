@@ -14,9 +14,23 @@ const generate = (props = {}, storyhookBank) => {
   });
 };
 
+const npcActs = (props = {}) => generate(props, require("./npc_acts.json"));
+
+const pcRelated = (props = {}) => generate(props, require("./pc_related.json"));
+
 const functions = {
-  npcActs: (props = {}) => generate(props, require("./npc_acts.json")),
-  pcRelated: (props = {}) => generate(props, require("./pc_related.json"))
+  generate: (props = {}) => {
+    const seed =
+      props.seed ||
+      globalThis.FantasyContentGeneratorSeed || // eslint-disable-line
+      Utils.generateUUID();
+
+    return Utils.withSeed(seed, () => {
+      return Utils.pick([npcActs, pcRelated])(props);
+    });
+  },
+  npcActs,
+  pcRelated
 };
 
 module.exports = functions;

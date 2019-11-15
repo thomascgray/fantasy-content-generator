@@ -1,6 +1,5 @@
 const Names = require("./index.js");
 const Utils = require("../utils");
-// const NameData = require("../data/names.json");
 
 describe("Names", () => {
   describe("generating without seed", () => {

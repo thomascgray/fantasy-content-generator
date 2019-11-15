@@ -1,7 +1,7 @@
 const NPCs = require("./index");
 const Utils = require("../utils");
 
-describe("Settlements", () => {
+describe("NPCs", () => {
   test("generate()", () => {
     Utils.forCount(50, () => {
       const npc = NPCs.generate();

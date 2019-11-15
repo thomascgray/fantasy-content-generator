@@ -1,5 +1,5 @@
 const Utils = require("../utils");
-const SettlementData = require("../data/settlements.json");
+const SettlementData = require("./settlements.json");
 
 const settlementType = () => Utils.pick(Object.keys(SettlementData));
 

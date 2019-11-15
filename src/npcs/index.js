@@ -1,7 +1,7 @@
 const Names = require("../names");
 const Utils = require("../utils");
-let NameData = require("../data/names.json");
-let NPCData = require("../data/npcs.json");
+let NameData = require("../names/names.json");
+let NPCData = require("./npcs.json");
 
 const RelationshipKeyWords = [
   "mother",
@@ -38,18 +38,19 @@ const generate = (props = {}) => {
     const traits = Utils.pickMany(NPCData.traits, 2).map(Utils.parseTemplate);
     const desires = Utils.pickMany(NPCData.desires, 1).map(Utils.parseTemplate);
 
+    // if we should generate relations, generate them
     let relations = [];
-
     if (shouldGenerateRelations) {
       relations = generateRelationships({
-        name: nameObject.name,
+        originalNpcNameObject: nameObject,
         race,
         gender,
         desires
       });
     }
 
-    const npc = {
+    // build the whole together and return it
+    return {
       seed,
       nameObject,
       gender,
@@ -58,6 +59,8 @@ const generate = (props = {}) => {
       desires,
       formattedData: {
         name: nameObject.name,
+        firstName: nameObject.firstName,
+        lastName: nameObject.lastName,
         gender: Utils.titleCase(gender),
         race: Utils.formatRace(race),
         traits,
@@ -66,21 +69,12 @@ const generate = (props = {}) => {
       },
       relations
     };
-
-    return npc;
   });
 };
 
-const getRelationTitlesFromDesires = desires => {
-  const concatonatedDesires = desires.join(":");
-
-  return RelationshipKeyWords.filter(relationKeyword =>
-    concatonatedDesires.includes(relationKeyword)
-  );
-};
-
-const generateRelationships = ({ name, race, desires }) => {
+const generateRelationships = ({ originalNpcNameObject, race, desires }) => {
   const relationTitles = getRelationTitlesFromDesires(desires);
+
   return relationTitles.map(relationTitle => {
     switch (relationTitle) {
       case "father":
@@ -91,24 +85,33 @@ const generateRelationships = ({ name, race, desires }) => {
       case "daughter":
         return {
           relationTitle,
-          npc: generateFamilyMember({ name, race, relationTitle })
+          npc: generateFamilyMember({
+            originalNpcNameObject,
+            race,
+            relationTitle
+          })
         };
     }
   });
 };
 
-const getSurname = name => {
-  if (name == null) {
-    return null;
-  }
-  const names = name.trim().split(" ");
-  if (names.length <= 1) {
-    return null;
-  }
-  return names[names.length - 1].trim();
+/**
+ * given a list of desires, return any relationship keywords that are mentioned in the desires
+ * @param {string} desires
+ */
+const getRelationTitlesFromDesires = desires => {
+  const concatonatedDesires = desires.join(":");
+
+  return RelationshipKeyWords.filter(relationKeyword =>
+    concatonatedDesires.includes(relationKeyword)
+  );
 };
 
-const generateFamilyMember = ({ name, race, relationTitle }) => {
+const generateFamilyMember = ({
+  originalNpcNameObject,
+  race,
+  relationTitle
+}) => {
   let gender = null;
   switch (relationTitle) {
     case "father":
@@ -122,23 +125,28 @@ const generateFamilyMember = ({ name, race, relationTitle }) => {
       gender = "female";
       break;
   }
-  const npc = generate({ race, gender });
-  const passedSurname = getSurname(name);
-  const npcSurname = getSurname(npc.formattedData.name);
+  const generatedRelation = generate({ race, gender });
 
-  if (passedSurname != null && npcSurname != null) {
+  // if both the original NPC and the generated NPC have a surname, set the generated NPC's
+  // surname to the original NPCs surname
+  if (
+    originalNpcNameObject.formattedData.lastName != null &&
+    generatedRelation.formattedData.lastName != null
+  ) {
     // both have a surname - normalize it
-    npc.nameObject.name = npc.nameObject.name.replace(
-      npcSurname,
-      passedSurname
+    generatedRelation.nameObject.name = generatedRelation.nameObject.name.replace(
+      generatedRelation.formattedData.lastName,
+      originalNpcNameObject.formattedData.lastName
     );
-    npc.formattedData.name = npc.formattedData.name.replace(
-      npcSurname,
-      passedSurname
+    generatedRelation.nameObject.lastName = originalNpcNameObject.lastName;
+    generatedRelation.formattedData.name = generatedRelation.formattedData.name.replace(
+      generatedRelation.formattedData.lastName,
+      originalNpcNameObject.formattedData.lastName
     );
+    generatedRelation.formattedData.lastName = originalNpcNameObject.lastName;
   }
 
-  return npc;
+  return generatedRelation;
 };
 
 const functions = {

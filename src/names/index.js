@@ -1,5 +1,5 @@
 const Utils = require("../utils");
-let Data = require("../data/names.json");
+let Data = require("./names.json");
 
 /**
  * generate a name for a race and gender.
@@ -63,15 +63,21 @@ const generate = (props = {}) => {
 
     const name = generateName(race, gender);
 
+    const [firstName, lastName] = name.split(" ");
+
     return {
       seed,
       name,
       race,
       gender,
+      firstName,
+      lastName,
       formattedData: {
         name,
         race: Utils.formatRace(race),
-        gender: Utils.titleCase(gender)
+        gender: Utils.titleCase(gender),
+        firstName: firstName ? Utils.titleCase(firstName) : undefined,
+        lastName: lastName ? Utils.titleCase(lastName) : undefined
       }
     };
   });
