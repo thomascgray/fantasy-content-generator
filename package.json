@@ -38,7 +38,6 @@
     "parcel-bundler": "^1.12.4",
     "release-it": "^12.3.3",
     "require-globify": "^1.4.1",
-    "seedrandom": "^3.0.5",
     "terser": "^3.16.1",
     "ts-jest": "^24.2.0",
     "typescript": "^3.7.3",
@@ -46,5 +45,8 @@
   },
   "jest": {
     "testEnvironment": "node"
+  },
+  "dependencies": {
+    "seedrandom": "^3.0.5"
   }
 }
