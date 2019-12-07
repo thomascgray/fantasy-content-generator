@@ -1,5 +1,5 @@
-const MagicItems = require("./index");
-const Utils = require("../utils");
+import MagicItems from "./index";
+import * as Utils from "../utils";
 
 describe("Magic Items", () => {
   test("generate()", () => {

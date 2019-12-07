@@ -1,6 +1,7 @@
 const MagicItemData = require("./magic_items.json");
-const Utils = require("../utils");
-const Names = require("../names");
+import Names from "../names";
+import * as Utils from "../utils";
+import { IMagicItemGenerateProps } from "../interfaces";
 
 const _type = () => Utils.pick(MagicItemData.types);
 const _powerLevel = () => Utils.pick(MagicItemData.power_levels);
@@ -30,7 +31,7 @@ const _effects = (schoolOfMagic, powerLevel) => {
 
 const _tagline = formattedData => {
   const taglineTemplate = Utils.pick(MagicItemData.tagline_templates);
-  const generationContent = {};
+  const generationContent: any = {};
 
   if (taglineTemplate.includes("tagline_owned_word")) {
     generationContent.tagline_owned_word = Utils.pick(
@@ -49,14 +50,7 @@ const _tagline = formattedData => {
   return Utils.parseTemplate(taglineTemplate, generationContent);
 };
 
-/**
- * generate a magic item
- *
- * magic items have a bunch of different properties
- *
- * @param {object} props
- */
-const generate = (props = {}) => {
+const generate = (props: IMagicItemGenerateProps = {}) => {
   let { seed, type, powerLevel, schoolOfMagic, effects, subtype } = props;
 
   seed = seed || globalThis.FantasyContentGeneratorSeed || Utils.generateUUID(); // eslint-disable-line
@@ -68,7 +62,7 @@ const generate = (props = {}) => {
     effects = effects ? effects : _effects(schoolOfMagic, powerLevel);
     subtype = subtype ? subtype : Utils.pick(MagicItemData.subtypes[type]);
 
-    const formattedData = {};
+    const formattedData: any = {};
 
     switch (powerLevel) {
       case "greater":
@@ -97,4 +91,4 @@ const functions = {
   generate
 };
 
-module.exports = functions;
+export default functions;

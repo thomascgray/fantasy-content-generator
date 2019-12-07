@@ -1,3 +1,5 @@
+import { IGender } from "../interfaces";
+
 const seedrandom = require("seedrandom");
 /**
  * pick 1 or more unique values from an array, and return a new array of those picked values
@@ -5,11 +7,17 @@ const seedrandom = require("seedrandom");
  * @param {any[]} array an array of values to pick from
  * @param {number} count how many unique array values to pick out
  */
-const pick = array => {
+export const pick = array => {
   return pickMany(array, 1)[0];
 };
 
-const pickMany = (array, count = 1) => {
+export const randomRace = () => {};
+
+export const randomGender = (): IGender => {
+  return pick(["male", "female"]);
+};
+
+export const pickMany = (array, count = 1) => {
   const arrayCopy = Array.from(array);
   const pickedValues = [];
 
@@ -38,7 +46,7 @@ const pickMany = (array, count = 1) => {
  *
  * @param {string} string
  */
-const parseTemplate = (string, content = {}, seed = null) => {
+export const parseTemplate = (string, content = {}, seed = null) => {
   const regex = /{(.+?)}/gm;
 
   const matches = string.match(regex);
@@ -60,7 +68,7 @@ const parseTemplate = (string, content = {}, seed = null) => {
         } else {
           // if not, we need to do the first one and add the index into the linkedPlaceholderIndexes
           const allPlaceholderChunks = linkedPlaceholderMatches[2].split("/");
-          const newIndex = rand(0, allPlaceholderChunks.length - 1, seed);
+          const newIndex = rand(0, allPlaceholderChunks.length - 1);
           let replacement = allPlaceholderChunks[newIndex];
           linkedPlaceholderIndexes[rawLinkToken] = newIndex; // set it up for further matches
           string = string.replace(match, replacement);
@@ -70,17 +78,14 @@ const parseTemplate = (string, content = {}, seed = null) => {
 
     matches.forEach(match => {
       if (match.charAt(1) === "$") {
-        replacementVarName = match.substring(2, match.length - 1);
+        const replacementVarName = match.substring(2, match.length - 1);
         string = string.replace(match, content[replacementVarName]);
       } else {
         let replacement = pick(
           match
             .substring(1)
             .substring(0, match.length - 2)
-            .split("/"),
-          undefined,
-          undefined,
-          seed
+            .split("/")
         );
         string = string.replace(match, replacement);
       }
@@ -97,7 +102,7 @@ const parseTemplate = (string, content = {}, seed = null) => {
  * @param {number} max maximum number to return (inclusive)
  * @param {any} seed
  */
-const rand = (min, max) => {
+export const rand = (min, max) => {
   let randomFunc;
   if (globalThis.FantasyContentGeneratorSeed) {
     randomFunc = seedrandom(globalThis.FantasyContentGeneratorSeed);
@@ -114,18 +119,18 @@ const rand = (min, max) => {
  * @param {number} number
  * @param {function} func
  */
-const forCount = (number, func) => {
+export const forCount = (number, func) => {
   for (let i = 0; i < number; i++) {
     func();
   }
 };
 
-const titleCase = string =>
+export const titleCase = string =>
   string.replace(/\w\S*/g, function(txt) {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
   });
 
-const formatRace = race => {
+export const formatRace = race => {
   switch (race) {
     case "halfOrc":
       return "Half-Orc";
@@ -136,7 +141,7 @@ const formatRace = race => {
   }
 };
 
-const generateUUID = () => {
+export const generateUUID = () => {
   // Public Domain/MIT
   var d = new Date().getTime();
   if (
@@ -152,21 +157,9 @@ const generateUUID = () => {
   });
 };
 
-const withSeed = (seed, callback) => {
+export const withSeed = (seed, callback) => {
   globalThis.FantasyContentGeneratorSeed = seed; //eslint-disable-line
   const returnValue = callback();
   globalThis.FantasyContentGeneratorSeed = null; //eslint-disable-line
   return returnValue;
-};
-
-module.exports = {
-  pick,
-  pickMany,
-  parseTemplate,
-  rand,
-  forCount,
-  titleCase,
-  formatRace,
-  generateUUID,
-  withSeed
 };

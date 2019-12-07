@@ -1,5 +1,5 @@
-const Settlements = require("./index");
-const Utils = require("../utils");
+import Settlements from "./index";
+import * as Utils from "../utils";
 
 describe("Settlements", () => {
   test("generate()", () => {

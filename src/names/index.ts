@@ -1,5 +1,11 @@
-const Utils = require("../utils");
 let Data = require("./names.json");
+import * as Utils from "../utils";
+import {
+  INameGenerateProps,
+  IRace,
+  IGender,
+  INameDomainObject
+} from "../interfaces";
 
 /**
  * generate a name for a race and gender.
@@ -7,7 +13,7 @@ let Data = require("./names.json");
  * @param {string} props.race generate with a specific race
  * @param {string} props.gender generate with a specific gender
  */
-const generateName = (race, gender) => {
+const generateName = (race: IRace, gender: IGender): string => {
   const raceTemplates = Data[race].templates;
 
   if (!raceTemplates) {
@@ -49,7 +55,7 @@ const generateName = (race, gender) => {
   }
 };
 
-const generate = (props = {}) => {
+export const generate = (props: INameGenerateProps = {}): INameDomainObject => {
   let { race, gender, seed } = props;
 
   // use the given seed, or one set by withSeed, or generate one
@@ -59,7 +65,7 @@ const generate = (props = {}) => {
   return Utils.withSeed(seed, () => {
     race = race ? race : Utils.pick(Object.keys(Data));
 
-    gender = gender ? gender : Utils.pick(["male", "female"]);
+    gender = gender ? gender : Utils.randomGender();
 
     const name = generateName(race, gender);
 
@@ -88,14 +94,11 @@ const functions = {
 };
 
 // setup a function for each race
-Object.keys(Data).forEach(race => {
+Object.keys(Data).forEach((race: IRace) => {
   functions[race] = props => {
-    if (props == null) {
-      props = {};
-    }
     props.race = race;
     return generate(props);
   };
 });
 
-module.exports = functions;
+export default functions;

@@ -1,4 +1,9 @@
-const Utils = require("../utils");
+import {
+  ISettlementGenerateProps,
+  ISettlementDomainObject
+} from "../interfaces";
+
+import * as Utils from "../utils";
 const SettlementData = require("./settlements.json");
 
 const settlementType = () => Utils.pick(Object.keys(SettlementData));
@@ -15,7 +20,9 @@ const population = settlementType => {
   return population.toLocaleString();
 };
 
-const generate = (props = {}) => {
+export const generate = (
+  props: ISettlementGenerateProps = {}
+): ISettlementDomainObject => {
   let { type, seed } = props;
 
   seed = seed || globalThis.FantasyContentGeneratorSeed || Utils.generateUUID(); // eslint-disable-line
@@ -35,4 +42,4 @@ const functions = {
   generate
 };
 
-module.exports = functions;
+export default functions;

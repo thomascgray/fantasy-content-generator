@@ -1,7 +1,15 @@
-const Names = require("../names");
-const Utils = require("../utils");
+import Names from "../names";
+import * as Utils from "../utils";
 let NameData = require("../names/names.json");
+
 let NPCData = require("./npcs.json");
+
+import {
+  INPCGenerateProps,
+  INameDomainObject,
+  IRace,
+  INPCDomainObject
+} from "../interfaces";
 
 const RelationshipKeyWords = [
   "mother",
@@ -12,16 +20,7 @@ const RelationshipKeyWords = [
   "sister"
 ];
 
-/**
- *
- * @param {object} props
- * @param {string} props.seed
- * @param {string} props.race
- * @param {string} props.gender
- * @param {string} props.name
- * @param {bool} props.shouldGenerateRelations
- */
-const generate = (props = {}) => {
+const generate = (props: INPCGenerateProps = {}): INPCDomainObject => {
   let { seed, race, gender, shouldGenerateRelations = true } = props;
 
   // use the given seed, or one set by withSeed, or generate one
@@ -29,14 +28,18 @@ const generate = (props = {}) => {
 
   return Utils.withSeed(seed, () => {
     race = race ? race : Utils.pick(Object.keys(NameData));
-    gender = gender ? gender : Utils.pick(["male", "female"]);
+    gender = gender ? gender : Utils.randomGender();
 
     // generate a name
     const nameObject = Names.generate({ seed, race, gender });
 
     // get 2 traits and 1 desire
-    const traits = Utils.pickMany(NPCData.traits, 2).map(Utils.parseTemplate);
-    const desires = Utils.pickMany(NPCData.desires, 1).map(Utils.parseTemplate);
+    const traits: string[] = Utils.pickMany(NPCData.traits, 2).map(
+      Utils.parseTemplate
+    );
+    const desires: string[] = Utils.pickMany(NPCData.desires, 1).map(
+      Utils.parseTemplate
+    );
 
     // if we should generate relations, generate them
     let relations = [];
@@ -44,7 +47,6 @@ const generate = (props = {}) => {
       relations = generateRelationships({
         originalNpcNameObject: nameObject,
         race,
-        gender,
         desires
       });
     }
@@ -72,7 +74,15 @@ const generate = (props = {}) => {
   });
 };
 
-const generateRelationships = ({ originalNpcNameObject, race, desires }) => {
+const generateRelationships = ({
+  originalNpcNameObject,
+  race,
+  desires
+}: {
+  originalNpcNameObject: INameDomainObject;
+  race: IRace;
+  desires: string[];
+}) => {
   const relationTitles = getRelationTitlesFromDesires(desires);
 
   return relationTitles.map(relationTitle => {
@@ -99,7 +109,7 @@ const generateRelationships = ({ originalNpcNameObject, race, desires }) => {
  * given a list of desires, return any relationship keywords that are mentioned in the desires
  * @param {string} desires
  */
-const getRelationTitlesFromDesires = desires => {
+const getRelationTitlesFromDesires = (desires: string[]) => {
   const concatonatedDesires = desires.join(":");
 
   return RelationshipKeyWords.filter(relationKeyword =>
@@ -111,6 +121,10 @@ const generateFamilyMember = ({
   originalNpcNameObject,
   race,
   relationTitle
+}: {
+  originalNpcNameObject: INameDomainObject;
+  race: IRace;
+  relationTitle: string;
 }) => {
   let gender = null;
   switch (relationTitle) {
@@ -149,10 +163,16 @@ const generateFamilyMember = ({
   return generatedRelation;
 };
 
+const randomTrait = (): string =>
+  Utils.parseTemplate(Utils.pick(NPCData.traits));
+
+const generateDesire = (): string =>
+  Utils.parseTemplate(Utils.pick(NPCData.desires));
+
 const functions = {
   generate,
-  trait: () => Utils.parseTemplate(Utils.pick(NPCData.traits)),
-  desire: () => Utils.parseTemplate(Utils.pick(NPCData.desires))
+  trait: randomTrait,
+  desire: generateDesire
 };
 
-module.exports = functions;
+export default functions;

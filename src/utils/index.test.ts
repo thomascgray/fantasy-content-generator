@@ -205,7 +205,7 @@ describe("parseTemplate", () => {
   });
 });
 
-describe.only("pick", () => {
+describe("pick", () => {
   test("pick an item from array", () => {
     const items = ["a", "b", "c"];
     const item = Utils.pick(items);

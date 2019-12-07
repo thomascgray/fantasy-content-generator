@@ -1,5 +1,5 @@
-const NPCs = require("./index");
-const Utils = require("../utils");
+import NPCs from "./index";
+import * as Utils from "../utils";
 
 describe("NPCs", () => {
   test("generate()", () => {
