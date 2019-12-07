@@ -3,7 +3,9 @@
     "allowJs": true,
     "outDir": "./dist",
     "target": "ES5",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
   },
   "include": ["./src/**/*"]
 }

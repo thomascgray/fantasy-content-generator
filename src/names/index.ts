@@ -1,5 +1,5 @@
-let Data = require("./names.json");
 import * as Utils from "../utils";
+import Data from "./names.json";
 import {
   INameGenerateProps,
   IRace,

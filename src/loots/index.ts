@@ -1,5 +1,5 @@
-const LootData = require("./loots.json");
 import * as Utils from "../utils";
+import LootData from "./loots.json";
 import { ILootGenerateProps, ILootDomainObject } from "../interfaces";
 
 export const generate = (props: ILootGenerateProps = {}): ILootDomainObject => {

@@ -1,6 +1,6 @@
-const MagicItemData = require("./magic_items.json");
-import Names from "../names";
 import * as Utils from "../utils";
+import MagicItemData from "./magic_items.json";
+import Names from "../names";
 import { IMagicItemGenerateProps } from "../interfaces";
 
 const _type = () => Utils.pick(MagicItemData.types);

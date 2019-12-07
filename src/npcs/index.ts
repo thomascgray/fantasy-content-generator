@@ -1,8 +1,7 @@
-import Names from "../names";
 import * as Utils from "../utils";
-let NameData = require("../names/names.json");
-
-let NPCData = require("./npcs.json");
+import Names from "../names";
+import NameData from "../names/names.json";
+import NPCData from "./npcs.json";
 
 import {
   INPCGenerateProps,

@@ -1,5 +1,7 @@
 import * as Utils from "../utils";
 import { IStoryhookGenerateProps, IStoryhookDomainObject } from "../interfaces";
+import NPCActs from "./npc_acts.json";
+import PCRelated from "./pc_related.json";
 
 const generate = (
   props: IStoryhookGenerateProps = {},
@@ -18,10 +20,10 @@ const generate = (
 };
 
 const npcActs = (props: IStoryhookGenerateProps = {}) =>
-  generate(props, require("./npc_acts.json"));
+  generate(props, NPCActs);
 
 const pcRelated = (props: IStoryhookGenerateProps = {}) =>
-  generate(props, require("./pc_related.json"));
+  generate(props, PCRelated);
 
 const functions = {
   generate,

@@ -1,10 +1,9 @@
+import * as Utils from "../utils";
 import {
   ISettlementGenerateProps,
   ISettlementDomainObject
 } from "../interfaces";
-
-import * as Utils from "../utils";
-const SettlementData = require("./settlements.json");
+import SettlementData from "./settlements.json";
 
 const settlementType = () => Utils.pick(Object.keys(SettlementData));
 
