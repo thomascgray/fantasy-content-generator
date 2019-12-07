@@ -1,8 +1,8 @@
 const LootData = require("./loots.json");
 import * as Utils from "../utils";
-import { ILootGenerateProps } from "../interfaces";
+import { ILootGenerateProps, ILootDomainObject } from "../interfaces";
 
-export const generate = (props: ILootGenerateProps = {}) => {
+export const generate = (props: ILootGenerateProps = {}): ILootDomainObject => {
   let { source, seed } = props;
 
   seed = seed || globalThis.FantasyContentGeneratorSeed || Utils.generateUUID(); // eslint-disable-line

@@ -113,3 +113,9 @@ export interface ILootGenerateProps {
   source?: string;
   seed?: string;
 }
+
+export interface ILootDomainObject {
+  seed: ISeed;
+  source: string;
+  lootItem: string;
+}
