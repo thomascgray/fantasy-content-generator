@@ -1,5 +1,5 @@
-const Utils = require("./index");
-const _ = require("lodash");
+import * as Utils from "./index";
+import _ from "lodash";
 
 describe("parseTemplate", () => {
   test("no placeholders returns same", () => {

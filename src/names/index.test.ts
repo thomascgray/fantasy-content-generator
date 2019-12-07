@@ -1,7 +1,5 @@
-// const Names = require("./index.js");
-// const Utils = require("../utils");
-import Names from "./index";
 import * as Utils from "../utils";
+import Names from "./index";
 
 describe("Names", () => {
   describe("generating without seed", () => {

@@ -1,6 +1,7 @@
 import { IGender } from "../interfaces";
 
-const seedrandom = require("seedrandom");
+import SeedRandom from "seedrandom";
+
 /**
  * pick 1 or more unique values from an array, and return a new array of those picked values
  *
@@ -105,7 +106,7 @@ export const parseTemplate = (string, content = {}, seed = null) => {
 export const rand = (min, max) => {
   let randomFunc;
   if (globalThis.FantasyContentGeneratorSeed) {
-    randomFunc = seedrandom(globalThis.FantasyContentGeneratorSeed);
+    randomFunc = SeedRandom(globalThis.FantasyContentGeneratorSeed);
   } else {
     randomFunc = Math.random;
   }

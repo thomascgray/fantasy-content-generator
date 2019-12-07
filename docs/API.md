@@ -3,7 +3,7 @@
 Examples given from a base of
 
 ```js
-const FCG = require("fantasy-content-generator");
+import FCG from "fantasy-content-generator";
 ```
 
 but all API methods work with the direct `<script>` include too.

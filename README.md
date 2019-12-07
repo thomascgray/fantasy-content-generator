@@ -24,7 +24,7 @@ _Using this library in a project? [Please let me know!](https://twitter.com/tmcg
 `npm install --save fantasy-content-generator`
 
 ```js
-const FCG = require("fantasy-content-generator");
+import FCG from "fantasy-content-generator";
 ```
 
 ### Browser/Direct `<script>` Include
@@ -42,7 +42,7 @@ Download [`fantasy_content_generator.js`](https://raw.githubusercontent.com/thom
 # Usage
 
 ```js
-const FCG = require("fantasy-content-generator");
+import FCG from "fantasy-content-generator";
 
 FCG.Names.generate();
 /*
