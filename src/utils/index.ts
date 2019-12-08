@@ -2,6 +2,8 @@ import { IGender } from "../interfaces";
 
 import SeedRandom from "seedrandom";
 
+let RandomFunction = Math.random;
+
 /**
  * pick 1 or more unique values from an array, and return a new array of those picked values
  *
@@ -104,16 +106,9 @@ export const parseTemplate = (string, content = {}, seed = null) => {
  * @param {any} seed
  */
 export const rand = (min, max) => {
-  let randomFunc;
-
-  if (globalThis.FantasyContentGeneratorSeed) {
-    randomFunc = SeedRandom(globalThis.FantasyContentGeneratorSeed);
-  } else {
-    randomFunc = Math.random;
-  }
   min = parseInt(min);
   max = parseInt(max);
-  return Math.floor(randomFunc() * (max - min + 1)) + min;
+  return Math.floor(RandomFunction() * (max - min + 1)) + min;
 };
 
 /**
@@ -145,29 +140,20 @@ export const formatRace = race => {
 
 export const generateUUID = () => {
   // Public Domain/MIT
-  var d = new Date().getTime();
-  if (
-    typeof performance !== "undefined" &&
-    typeof performance.now === "function"
-  ) {
-    d += performance.now(); //use high-precision timer if available
-  }
-  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
-    var r = (d + Math.random() * 16) % 16 | 0;
-    d = Math.floor(d / 16);
-    return (c === "x" ? r : (r & 0x3) | 0x8).toString(16);
-  });
+  return `${Math.random()}-${Math.random()}`;
 };
 
 export const withSeed = (seed, callback) => {
   let isFirstPass = globalThis.FantasyContentGeneratorSeed == null;
 
-  globalThis.FantasyContentGeneratorSeed = seed; //eslint-disable-line
+  globalThis.FantasyContentGeneratorSeed = seed;
+  RandomFunction = SeedRandom(globalThis.FantasyContentGeneratorSeed);
 
   const returnValue = callback();
 
   if (isFirstPass) {
-    globalThis.FantasyContentGeneratorSeed = null; //eslint-disable-line
+    globalThis.FantasyContentGeneratorSeed = null;
+    RandomFunction = Math.random;
   }
 
   return returnValue;
