@@ -48,7 +48,7 @@ const generate = (props: INPCGenerateProps = {}): INPCDomainObject => {
         originalNpcNameObject: nameObject,
         race,
         desires,
-        seed: `RELATIONS-${seed}`
+        seed
       });
     }
 
@@ -102,7 +102,7 @@ const generateRelationships = ({
             originalNpcNameObject,
             race,
             relationTitle,
-            seed
+            seed: `${relationTitle}-${seed}`
           })
         };
     }
