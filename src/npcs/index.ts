@@ -174,7 +174,7 @@ const generateFamilyMember = ({
   return generatedRelation;
 };
 
-const randomTrait = (): string =>
+const generateTrait = (): string =>
   Utils.parseTemplate(Utils.pick(NPCData.traits));
 
 const generateDesire = (): string =>
@@ -182,7 +182,7 @@ const generateDesire = (): string =>
 
 const functions = {
   generate,
-  trait: randomTrait,
+  trait: generateTrait,
   desire: generateDesire
 };
 
