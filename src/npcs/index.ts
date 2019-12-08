@@ -7,7 +7,8 @@ import {
   INPCGenerateProps,
   INameDomainObject,
   IRace,
-  INPCDomainObject
+  INPCDomainObject,
+  ISeed
 } from "../interfaces";
 
 const RelationshipKeyWords = [
@@ -30,7 +31,7 @@ const generate = (props: INPCGenerateProps = {}): INPCDomainObject => {
     gender = gender ? gender : Utils.randomGender();
 
     // generate a name
-    const nameObject = Names.generate({ seed, race, gender });
+    const nameObject = Names.generate({ race, gender });
 
     // get 2 traits and 1 desire
     const traits: string[] = Utils.pickMany(NPCData.traits, 2).map(
@@ -46,7 +47,8 @@ const generate = (props: INPCGenerateProps = {}): INPCDomainObject => {
       relations = generateRelationships({
         originalNpcNameObject: nameObject,
         race,
-        desires
+        desires,
+        seed: `RELATIONS-${seed}`
       });
     }
 
@@ -76,11 +78,13 @@ const generate = (props: INPCGenerateProps = {}): INPCDomainObject => {
 const generateRelationships = ({
   originalNpcNameObject,
   race,
-  desires
+  desires,
+  seed
 }: {
   originalNpcNameObject: INameDomainObject;
   race: IRace;
   desires: string[];
+  seed: ISeed;
 }) => {
   const relationTitles = getRelationTitlesFromDesires(desires);
 
@@ -97,7 +101,8 @@ const generateRelationships = ({
           npc: generateFamilyMember({
             originalNpcNameObject,
             race,
-            relationTitle
+            relationTitle,
+            seed
           })
         };
     }
@@ -119,11 +124,13 @@ const getRelationTitlesFromDesires = (desires: string[]) => {
 const generateFamilyMember = ({
   originalNpcNameObject,
   race,
-  relationTitle
+  relationTitle,
+  seed
 }: {
   originalNpcNameObject: INameDomainObject;
   race: IRace;
   relationTitle: string;
+  seed: ISeed;
 }) => {
   let gender = null;
   switch (relationTitle) {
@@ -138,7 +145,12 @@ const generateFamilyMember = ({
       gender = "female";
       break;
   }
-  const generatedRelation = generate({ race, gender });
+  const generatedRelation = generate({
+    race,
+    gender,
+    shouldGenerateRelations: false, // lets stop some infinite recursion
+    seed
+  });
 
   // if both the original NPC and the generated NPC have a surname, set the generated NPC's
   // surname to the original NPCs surname

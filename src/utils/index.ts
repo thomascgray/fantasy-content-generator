@@ -160,13 +160,13 @@ export const generateUUID = () => {
 };
 
 export const withSeed = (seed, callback) => {
-  const isNotFirstPass = seed === globalThis.FantasyContentGeneratorSeed;
+  let isFirstPass = globalThis.FantasyContentGeneratorSeed == null;
 
   globalThis.FantasyContentGeneratorSeed = seed; //eslint-disable-line
 
   const returnValue = callback();
 
-  if (!isNotFirstPass) {
+  if (isFirstPass) {
     globalThis.FantasyContentGeneratorSeed = null; //eslint-disable-line
   }
 

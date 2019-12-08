@@ -12,7 +12,7 @@ describe("NPCs", () => {
     });
   });
 
-  it.only("test with seed", () => {
+  it("test with seed", () => {
     const baseNpc = NPCs.generate({ seed: "123" });
 
     Utils.forCount(50, () => {
