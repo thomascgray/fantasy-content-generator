@@ -12,9 +12,9 @@ describe("Names", () => {
       expect(nameObject.seed).not.toBeUndefined();
     });
 
-    it("generate 2 names, should be different name, race and gender", () => {
-      const nameObject1 = Names.generate();
-      const nameObject2 = Names.generate();
+    it("generate 2 names with different seeds should be different name, race and gender", () => {
+      const nameObject1 = Names.generate({ seed: "123" });
+      const nameObject2 = Names.generate({ seed: "456" });
 
       expect(nameObject1).not.toMatchObject(nameObject2);
     });
