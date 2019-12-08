@@ -105,6 +105,7 @@ export const parseTemplate = (string, content = {}, seed = null) => {
  */
 export const rand = (min, max) => {
   let randomFunc;
+
   if (globalThis.FantasyContentGeneratorSeed) {
     randomFunc = SeedRandom(globalThis.FantasyContentGeneratorSeed);
   } else {
@@ -159,8 +160,15 @@ export const generateUUID = () => {
 };
 
 export const withSeed = (seed, callback) => {
+  const firstPass = globalThis.FantasyContentGeneratorSeed === null;
+
   globalThis.FantasyContentGeneratorSeed = seed; //eslint-disable-line
+
   const returnValue = callback();
-  globalThis.FantasyContentGeneratorSeed = null; //eslint-disable-line
+
+  if (firstPass) {
+    globalThis.FantasyContentGeneratorSeed = null; //eslint-disable-line
+  }
+
   return returnValue;
 };
