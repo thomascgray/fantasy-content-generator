@@ -109,15 +109,11 @@ const generateRelationships = ({
   });
 };
 
-/**
- * given a list of desires, return any relationship keywords that are mentioned in the desires
- * @param {string} desires
- */
 const getRelationTitlesFromDesires = (desires: string[]) => {
   const concatonatedDesires = desires.join(":");
 
   return RelationshipKeyWords.filter(relationKeyword =>
-    concatonatedDesires.includes(relationKeyword)
+    concatonatedDesires.includes(" " + relationKeyword)
   );
 };
 
