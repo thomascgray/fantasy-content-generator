@@ -142,6 +142,17 @@ If you want to run a specific test file manually, ensure you set `ENVIRONMENT=te
 
 # Contributing
 
+## Development
+
+If you're wanting to quickly test some changes, the best way is to
+
+- `npm run build` to build your changes
+- `node` to run a node instance locally
+- `const FCG = require('./dist/index.js');` to load FCG into memory
+- `FCG.NPCs.generate();` you can then start running generators, and seeing the JSON output in your console
+
+## Open Sourcery
+
 Open up a PR!
 
 Please make sure your PR includes;
