@@ -8,7 +8,7 @@ Top Features Include:
 
 - Easy to understand API
 - Zero dependencies
-- Interesting, flavoursome content, designed for roleplaying and inspiration for DMs
+- Interesting, flavoursome, and narrative-focused content, designed for roleplaying and inspiration for DMs
 - Can be used in both Node & browser
 - Optional seeding for deterministic generation
 - Ties-in to D&D 5E mechanics (weapon stats, magic effects, etc.)
@@ -102,7 +102,7 @@ FCG.MagicItems.generate();
   powerLevel: 'minor',
   schoolOfMagic: 'necromancy',
   effects: [
-    'On a successful attack, target must make a DC 12 CON save or take an extra 1d2 of Necrotic damage. This effect occurs once per day'
+    'On a successful attack, target must make a DC 12 CON save or take an extra 1d2 of Necrotic damage. This effect occurs once per day.'
   ],
   formattedData: {
     title: 'Battleaxe of Minor Necromancy'

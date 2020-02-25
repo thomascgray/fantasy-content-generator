@@ -11,7 +11,7 @@ import PointOfInterestData from "./points_of_interest.json";
 export const generate = (props: any = {}): any => {
   let { type, seed } = props;
 
-  seed = seed || Utils.FantasyContentGeneratorSeed || Utils.generateUUID(); // eslint-disable-line
+  seed = seed || Utils.FantasyContentGeneratorSeed || Utils.generateUUID();
 
   return {};
   // return Utils.withSeed(seed, () => {

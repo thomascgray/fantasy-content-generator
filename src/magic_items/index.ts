@@ -53,7 +53,7 @@ const _tagline = formattedData => {
 const generate = (props: IMagicItemGenerateProps = {}) => {
   let { seed, type, powerLevel, schoolOfMagic, effects, subtype } = props;
 
-  seed = seed || Utils.FantasyContentGeneratorSeed || Utils.generateUUID(); // eslint-disable-line
+  seed = seed || Utils.FantasyContentGeneratorSeed || Utils.generateUUID();
 
   return Utils.withSeed(seed, () => {
     type = type ? type : _type();
@@ -77,6 +77,7 @@ const generate = (props: IMagicItemGenerateProps = {}) => {
     )} ${Utils.titleCase(schoolOfMagic)}`;
 
     return {
+      seed,
       type,
       subtype,
       powerLevel,
