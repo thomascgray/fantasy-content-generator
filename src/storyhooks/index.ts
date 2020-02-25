@@ -11,7 +11,7 @@ const generate = (
 ): IStoryhookDomainObject => {
   let { seed } = props;
 
-  seed = seed || globalThis.FantasyContentGeneratorSeed || Utils.generateUUID(); // eslint-disable-line
+  seed = seed || Utils.FantasyContentGeneratorSeed || Utils.generateUUID(); // eslint-disable-line
 
   return Utils.withSeed(seed, () => {
     return {

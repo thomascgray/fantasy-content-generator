@@ -4,6 +4,8 @@ import SeedRandom from "seedrandom";
 
 let RandomFunction = Math.random;
 
+export let FantasyContentGeneratorSeed;
+
 /**
  * pick 1 or more unique values from an array, and return a new array of those picked values
  *
@@ -155,15 +157,15 @@ export const generateUUID = () => {
 };
 
 export const withSeed = (seed, callback) => {
-  let isFirstPass = globalThis.FantasyContentGeneratorSeed == null;
+  let isFirstPass = FantasyContentGeneratorSeed == null;
 
-  globalThis.FantasyContentGeneratorSeed = seed;
-  RandomFunction = SeedRandom(globalThis.FantasyContentGeneratorSeed);
+  FantasyContentGeneratorSeed = seed;
+  RandomFunction = SeedRandom(FantasyContentGeneratorSeed);
 
   const returnValue = callback();
 
   if (isFirstPass) {
-    globalThis.FantasyContentGeneratorSeed = null;
+    FantasyContentGeneratorSeed = null;
     RandomFunction = Math.random;
   }
 

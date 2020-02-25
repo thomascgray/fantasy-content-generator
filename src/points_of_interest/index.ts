@@ -11,15 +11,16 @@ import PointOfInterestData from "./points_of_interest.json";
 export const generate = (props: any = {}): any => {
   let { type, seed } = props;
 
-  seed = seed || globalThis.FantasyContentGeneratorSeed || Utils.generateUUID(); // eslint-disable-line
+  seed = seed || Utils.FantasyContentGeneratorSeed || Utils.generateUUID(); // eslint-disable-line
 
-  return Utils.withSeed(seed, () => {
-    type = type ? type : settlementType();
+  return {};
+  // return Utils.withSeed(seed, () => {
+  //   type = type ? type : settlementType();
 
-    return {
-      seed,
-      type,
-      population: population(type)
-    };
-  });
+  //   return {
+  //     seed,
+  //     type,
+  //     population: population(type)
+  //   };
+  // });
 };

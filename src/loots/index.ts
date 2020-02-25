@@ -5,7 +5,7 @@ import { ILootGenerateProps, ILootDomainObject } from "../interfaces";
 export const generate = (props: ILootGenerateProps = {}): ILootDomainObject => {
   let { source, seed } = props;
 
-  seed = seed || globalThis.FantasyContentGeneratorSeed || Utils.generateUUID(); // eslint-disable-line
+  seed = seed || Utils.FantasyContentGeneratorSeed || Utils.generateUUID(); // eslint-disable-line
 
   return Utils.withSeed(seed, () => {
     source = source || Utils.pick(LootData.loot_source);

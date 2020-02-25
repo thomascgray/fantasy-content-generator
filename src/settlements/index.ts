@@ -24,7 +24,7 @@ export const generate = (
 ): ISettlementDomainObject => {
   let { type, seed } = props;
 
-  seed = seed || globalThis.FantasyContentGeneratorSeed || Utils.generateUUID(); // eslint-disable-line
+  seed = seed || Utils.FantasyContentGeneratorSeed || Utils.generateUUID(); // eslint-disable-line
 
   return Utils.withSeed(seed, () => {
     type = type ? type : settlementType();

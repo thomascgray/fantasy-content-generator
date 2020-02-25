@@ -24,7 +24,7 @@ const generate = (props: INPCGenerateProps = {}): INPCDomainObject => {
   let { seed, race, gender, shouldGenerateRelations = true } = props;
 
   // use the given seed, or one set by withSeed, or generate one
-  seed = seed || globalThis.FantasyContentGeneratorSeed || Utils.generateUUID(); // eslint-disable-line
+  seed = seed || Utils.FantasyContentGeneratorSeed || Utils.generateUUID(); // eslint-disable-line
 
   return Utils.withSeed(seed, () => {
     race = race ? race : Utils.pick(Object.keys(NameData));

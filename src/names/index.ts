@@ -59,7 +59,7 @@ export const generate = (props: INameGenerateProps = {}): INameDomainObject => {
   let { race, gender, seed } = props;
 
   // use the given seed, or one set by withSeed, or generate one
-  seed = seed || globalThis.FantasyContentGeneratorSeed || Utils.generateUUID(); //eslint-disable-line
+  seed = seed || Utils.FantasyContentGeneratorSeed || Utils.generateUUID(); //eslint-disable-line
 
   // use withSeed to ensure seeded output for all `picks`
   return Utils.withSeed(seed, () => {
