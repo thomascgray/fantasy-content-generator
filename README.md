@@ -164,6 +164,16 @@ Please make sure your PR includes;
 
 _If you want to use content taken from other sources, please check with their licensing first. For example, D&D 5E content is OK, as long its from the SRD._
 
+## Releasing
+
+With permission to release, simply run any one of;
+
+- `npm run publish:patch`
+- `npm run publish:minor`
+- `npm run publish:major`
+
+from your CLI and follow the steps. Requires NPM to be installed locally on your machine.
+
 # Credits
 
 [d100 Community](https://www.reddit.com/r/d100/) - Endless Inspiration
