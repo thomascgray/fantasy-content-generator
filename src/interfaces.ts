@@ -121,3 +121,16 @@ export interface ILootDomainObject {
   source: string;
   lootItem: string;
 }
+
+export interface IEstablishmentGenerateProps {
+  seed?: ISeed;
+  type?: string;
+}
+
+export interface IEstablishmentDomainObject {
+  seed: ISeed;
+  type: string;
+  name: string;
+  npcs: INPCDomainObject[];
+  secret: string;
+}

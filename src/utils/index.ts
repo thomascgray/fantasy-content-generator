@@ -45,7 +45,7 @@ export const randomGender = (): IGender => {
  *
  * handles multiple "kinds" of template syntax
  *
- * a string container '{alpha/beta}' will choose one at random
+ * a string containing '{alpha/beta}' will choose one at random
  *
  * a string starting with a $ symbol is a reference for any passed content
  *   so '{$colour}' becomes 'blue' if `content` was passed as { colour: 'blue' }

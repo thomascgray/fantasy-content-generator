@@ -66,33 +66,5 @@
       "natural_landmark_count": "3-6",
       "establishments": 1
     }
-  },
-  "establishments": [
-    "general_store",
-    "stable",
-    "inn",
-    "tavern",
-    "armorsmith",
-    "weaponsmith",
-    "carpenter",
-    "leatherworker",
-    "tanner",
-    "cobbler"
-  ],
-  "establishmentVocationsRequired": ["owner", "manager"],
-  "establishmentVocationsOptional": ["assistant", "aprentice"],
-  "establishmentVocationsOptionalPerType": {
-    "general_store": ["cleaner"],
-    "stable": ["stable hand", "farrier"],
-    "inn": ["landlord", "bar tender", "glass collector"],
-    "tavern": ["landlord", "bar tender", "glass collector"]
-  },
-  "establishmentSecrets": [
-    "Built on an ancient {Dwarven/Elven/Dragonborn/Orcish} burial ground.",
-    "Built with money stolen from {a local religious institution/a local government}.",
-    "No one knows where the owner came from.",
-    "There are secret {chambers/tunnels/caverns} under the foundations.",
-    "The walls are hollow, for unknown reasons.",
-    "A magical portal to the {}"
-  ]
+  }
 }
