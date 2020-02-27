@@ -7,21 +7,20 @@ let RandomFunction = Math.random;
 export let FantasyContentGeneratorSeed;
 
 /**
- * pick 1 or more unique values from an array, and return a new array of those picked values
+ * pick 1 unique values from an array, and return that value
  *
  * @param {any[]} array an array of values to pick from
- * @param {number} count how many unique array values to pick out
  */
 export const pick = array => {
   return pickMany(array, 1)[0];
 };
 
-export const randomRace = () => {};
-
-export const randomGender = (): IGender => {
-  return pick(["male", "female"]);
-};
-
+/**
+ * pick 1 or more unique values from an array, and return a new array of those picked values
+ *
+ * @param {any[]} array an array of values to pick from
+ * @param {number} count how many unique array values to pick out
+ */
 export const pickMany = (array, count = 1) => {
   const arrayCopy = Array.from(array);
   const pickedValues = [];
@@ -33,6 +32,12 @@ export const pickMany = (array, count = 1) => {
   }
 
   return pickedValues;
+};
+
+export const randomRace = () => {};
+
+export const randomGender = (): IGender => {
+  return pick(["male", "female"]);
 };
 
 /**
@@ -51,7 +56,7 @@ export const pickMany = (array, count = 1) => {
  *
  * @param {string} string
  */
-export const parseTemplate = (string, content = {}, seed = null) => {
+export const parseTemplate = (string, content = {}) => {
   const regex = /{(.+?)}/gm;
 
   const matches = string.match(regex);

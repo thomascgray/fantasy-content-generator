@@ -63,8 +63,10 @@ export interface INPCDomainObject {
     traits: string[];
     desires: string[];
     relations: INPCRelationObject[];
+    vocation?: string;
   };
   relations: INPCRelationObject[];
+  vocation?: string;
 }
 
 export interface ISettlementGenerateProps {
