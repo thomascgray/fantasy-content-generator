@@ -4,16 +4,14 @@ import {
   ISettlementDomainObject
 } from "../interfaces";
 import SettlementData from "./settlements.json";
+import Establishments from "../establishments";
 
-const settlementType = () => Utils.pick(Object.keys(SettlementData));
+const settlementType = () => Utils.pick(Object.keys(SettlementData.types));
 
-const population = settlementType => {
-  const populationRange = SettlementData[settlementType].population_range.split(
-    "-"
-  );
+const _population = settlementType => {
   const population = Utils.rand(
-    parseInt(populationRange[0]),
-    parseInt(populationRange[1])
+    SettlementData.types[settlementType].minPop,
+    SettlementData.types[settlementType].maxPop
   );
 
   return population.toLocaleString();
@@ -32,7 +30,8 @@ export const generate = (
     return {
       seed,
       type,
-      population: population(type)
+      population: _population(type),
+      establishments: Establishments.generate()
     };
   });
 };

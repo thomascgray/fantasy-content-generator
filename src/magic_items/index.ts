@@ -1,5 +1,6 @@
 import * as Utils from "../utils";
 import MagicItemData from "./magic_items.json";
+import GenericData from "../genericData.json";
 import Names from "../names";
 import { IMagicItemGenerateProps } from "../interfaces";
 
@@ -60,7 +61,7 @@ const generate = (props: IMagicItemGenerateProps = {}) => {
     powerLevel = powerLevel ? powerLevel : _powerLevel();
     schoolOfMagic = schoolOfMagic ? schoolOfMagic : _schoolOfMagic(type);
     effects = effects ? effects : _effects(schoolOfMagic, powerLevel);
-    subtype = subtype ? subtype : Utils.pick(MagicItemData.subtypes[type]);
+    subtype = subtype ? subtype : Utils.pick(GenericData[type]);
 
     const formattedData: any = {};
 

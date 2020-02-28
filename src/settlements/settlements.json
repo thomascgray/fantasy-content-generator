@@ -1,46 +1,70 @@
 {
-  "thorp": {
-    "population_range": "5-20",
-    "natural_landmark_count": "0-1"
-  },
-  "hamlet": {
-    "population_range": "20-80",
-    "natural_landmark_count": "0-1"
-  },
-  "village": {
-    "population_range": "80-400",
-    "natural_landmark_count": "0-1"
-  },
-  "small_town": {
-    "population_range": "400-900",
-    "natural_landmark_count": "0-2"
-  },
-  "medium_town": {
-    "population_range": "900-2000",
-    "natural_landmark_count": "0-2"
-  },
-  "large_town": {
-    "population_range": "2000-5000",
-    "natural_landmark_count": "0-3"
-  },
-  "small_city": {
-    "population_range": "5000-10000",
-    "natural_landmark_count": "0-4"
-  },
-  "medium_city": {
-    "population_range": "10000-20000",
-    "natural_landmark_count": "0-4"
-  },
-  "large_city": {
-    "population_range": "20000-50000",
-    "natural_landmark_count": "1-4"
-  },
-  "great_city": {
-    "population_range": "50000-100000",
-    "natural_landmark_count": "2-5"
-  },
-  "metropolis": {
-    "population_range": "100000-100500",
-    "natural_landmark_count": "3-6"
+  "types": {
+    "thorp": {
+      "minPop": 5,
+      "maxPop": 20,
+      "natural_landmark_count": "0-1",
+      "establishments": 1
+    },
+    "hamlet": {
+      "minPop": 20,
+      "maxPop": 80,
+      "natural_landmark_count": "0-1",
+      "establishments": 1
+    },
+    "village": {
+      "minPop": 80,
+      "maxPop": 400,
+      "natural_landmark_count": "0-1",
+      "establishments": 1
+    },
+    "small_town": {
+      "minPop": 400,
+      "maxPop": 900,
+      "natural_landmark_count": "0-2",
+      "establishments": 1
+    },
+    "medium_town": {
+      "minPop": 900,
+      "maxPop": 2000,
+      "natural_landmark_count": "0-2",
+      "establishments": 1
+    },
+    "large_town": {
+      "minPop": 2000,
+      "maxPop": 5000,
+      "natural_landmark_count": "0-3",
+      "establishments": 1
+    },
+    "small_city": {
+      "minPop": 5000,
+      "maxPop": 10000,
+      "natural_landmark_count": "0-4",
+      "establishments": 1
+    },
+    "medium_city": {
+      "minPop": 10000,
+      "maxPop": 20000,
+      "natural_landmark_count": "0-4",
+      "establishments": 1
+    },
+    "large_city": {
+      "minPop": 20000,
+      "maxPop": 50000,
+      "natural_landmark_count": "1-4",
+      "establishments": 1
+    },
+    "great_city": {
+      "minPop": 50000,
+      "maxPop": 100000,
+      "natural_landmark_count": "2-5",
+      "establishments": 1
+    },
+    "metropolis": {
+      "minPop": 100000,
+      "maxPop": -10050,
+      "natural_landmark_count": "3-6",
+      "establishments": 1
+    }
   }
 }

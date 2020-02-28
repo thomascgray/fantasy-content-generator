@@ -63,8 +63,10 @@ export interface INPCDomainObject {
     traits: string[];
     desires: string[];
     relations: INPCRelationObject[];
+    vocation?: string;
   };
   relations: INPCRelationObject[];
+  vocation?: string;
 }
 
 export interface ISettlementGenerateProps {
@@ -118,4 +120,17 @@ export interface ILootDomainObject {
   seed: ISeed;
   source: string;
   lootItem: string;
+}
+
+export interface IEstablishmentGenerateProps {
+  seed?: ISeed;
+  type?: string;
+}
+
+export interface IEstablishmentDomainObject {
+  seed: ISeed;
+  type: string;
+  name: string;
+  npcs: INPCDomainObject[];
+  secret: string;
 }

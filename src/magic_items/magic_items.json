@@ -1,37 +1,5 @@
 {
   "types": ["weapon"],
-  "subtypes": {
-    "weapon": [
-      "Club",
-      "Dagger",
-      "Greatclub",
-      "Handaxe",
-      "Javelin",
-      "Light Hammer",
-      "Mace",
-      "Quarterstaff",
-      "Sickle",
-      "Spear",
-      "Battleaxe",
-      "Flail",
-      "Glaive",
-      "Greataxe",
-      "Greatsword",
-      "Halberd",
-      "Lance",
-      "Longsword",
-      "Maul",
-      "Morningstar",
-      "Pike",
-      "Rapier",
-      "Scimitar",
-      "Shortsword",
-      "Trident",
-      "War Pick",
-      "Warhammer",
-      "Whip"
-    ]
-  },
   "power_levels": ["minor", "lesser", "greater", "supreme"],
   "schools_of_magic": [
     "abjuration",
