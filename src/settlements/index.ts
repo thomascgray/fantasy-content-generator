@@ -4,7 +4,7 @@ import {
   ISettlementDomainObject
 } from "../interfaces";
 import SettlementData from "./settlements.json";
-import NPCs from "../npcs";
+import Establishments from "../establishments";
 
 const settlementType = () => Utils.pick(Object.keys(SettlementData.types));
 
@@ -31,7 +31,7 @@ export const generate = (
       seed,
       type,
       population: _population(type),
-      establishments: _establishments(type)
+      establishments: Establishments.generate()
     };
   });
 };

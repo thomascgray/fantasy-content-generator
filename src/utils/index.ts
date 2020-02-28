@@ -56,7 +56,7 @@ export const randomGender = (): IGender => {
  *
  * @param {string} string
  */
-export const parseTemplate = (string, content = {}) => {
+export const parseTemplate = (string: string, content = {}) => {
   const regex = /{(.+?)}/gm;
 
   const matches = string.match(regex);

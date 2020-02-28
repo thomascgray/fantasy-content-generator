@@ -1,9 +1,12 @@
 import * as Utils from "../utils";
 import {
   IEstablishmentGenerateProps,
-  IEstablishmentDomainObject
+  IEstablishmentDomainObject,
+  INPCDomainObject,
+  ISeed
 } from "../interfaces";
 import EstablishmentData from "./establishments.json";
+import GenericData from "../genericData.json";
 import NPCs from "../npcs";
 
 const _establishmentSecret = () => {
@@ -12,36 +15,53 @@ const _establishmentSecret = () => {
   );
 };
 
-const _generalStoreName = () => {};
-const _innOrTavernName = () => {};
-const _armorSmithName = () => {};
-const _weaponsmithName = () => {};
+const getNpcLastNames = (npcs: INPCDomainObject[]) => {
+  const npcLastNames = npcs.map(npc => npc.formattedData.lastName);
+  return npcLastNames;
+};
 
-const _establishmentName = type => {
+const _establishmentNameSetA = (npcs: INPCDomainObject[]) => {
+  const npcLastNames = Utils.pickMany(getNpcLastNames(npcs), 2);
+  const anyItemPool = [
+    ...GenericData.weapon,
+    ...GenericData.armour,
+    ...GenericData.commonItem
+  ];
+
+  return Utils.parseTemplate(
+    Utils.pick(EstablishmentData.establishmentNameSetA),
+    {
+      anyItem: Utils.pick(anyItemPool),
+      animal: Utils.pick(GenericData.animalSingular),
+      sizeAdjective: Utils.pick(GenericData.sizeAdjectives),
+      colourAdjective: Utils.pick(GenericData.coloursAdjective),
+      nounPhysicalAdjective: Utils.pick(GenericData.nounPhysicalAdjectives),
+      positiveAdjective: Utils.pick(GenericData.positiveAdjective),
+      ownersLastName: npcs[0].formattedData.lastName,
+      lastNameA: npcLastNames[0],
+      lastNameB: npcLastNames[1]
+    }
+  );
+};
+
+const _establishmentName = (type, npcs) => {
   switch (type) {
     case "general_store":
-      return _generalStoreName();
-    case "stable":
-      return "";
     case "inn":
     case "tavern":
-      return _innOrTavernName();
     case "armorsmith":
-      return _armorSmithName();
     case "weaponsmith":
-      return _weaponsmithName();
+    case "stable":
     case "carpenter":
-      return "";
     case "leatherworker":
-      return "";
     case "tanner":
-      return "";
     case "cobbler":
-      return "";
+    default:
+      return _establishmentNameSetA(npcs);
   }
 };
 
-const _npcs = establishmentType => {
+const _npcs = (seed: ISeed, establishmentType: string) => {
   const poolOfOptionalVocationTypes = [
     ...EstablishmentData.establishmentVocationsOptional,
     ...(EstablishmentData.establishmentVocationsOptionalPerType[
@@ -49,13 +69,16 @@ const _npcs = establishmentType => {
     ] || [])
   ];
 
+  // generate with 1 required, and 1 or 2 optional ones
   const workerVocations = [
     Utils.pick(EstablishmentData.establishmentVocationsRequired),
     ...Utils.pickMany(poolOfOptionalVocationTypes, Utils.rand(1, 2))
   ];
 
-  return workerVocations.map(vocation => {
-    const npc = NPCs.generate();
+  return workerVocations.map((vocation, index) => {
+    const npc = NPCs.generate({
+      seed: `${seed}${vocation}${index}`
+    });
     npc.vocation = vocation;
     npc.formattedData.vocation = Utils.titleCase(vocation);
     return npc;
@@ -76,11 +99,13 @@ export const generate = (
   return Utils.withSeed(seed, () => {
     type = type ? type : _establishmentType();
 
+    const npcs = _npcs(seed, type);
+
     return {
       seed,
       type,
-      name: _establishmentName(type),
-      npcs: _npcs(type),
+      npcs,
+      name: Utils.titleCase(_establishmentName(type, npcs)),
       secret: _establishmentSecret()
     };
   });

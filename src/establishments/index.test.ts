@@ -2,12 +2,12 @@ import Establishments from "./index";
 import * as Utils from "../utils";
 
 describe("Establishments", () => {
-  test("generate()", () => {
+  test("generate an establishment", () => {
     Utils.forCount(50, () => {
-      const settlement = Establishments.generate();
-      expect(typeof settlement).toEqual("object");
-      Object.keys(settlement).forEach(key => {
-        expect(settlement[key]).not.toEqual("undefined");
+      const establishment = Establishments.generate();
+      expect(typeof establishment).toEqual("object");
+      Object.keys(establishment).forEach(key => {
+        expect(establishment[key]).not.toEqual("undefined");
       });
     });
   });

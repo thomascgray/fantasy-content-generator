@@ -12,7 +12,7 @@
     "cobbler"
   ],
   "establishmentVocationsRequired": ["owner", "manager"],
-  "establishmentVocationsOptional": ["assistant", "aprentice"],
+  "establishmentVocationsOptional": ["assistant", "apprentice"],
   "establishmentVocationsOptionalPerType": {
     "general_store": ["cleaner"],
     "stable": ["stable hand", "farrier"],
@@ -34,19 +34,16 @@
     "The owner never ages. Patrons who come to learn this keep their mouths shut, as they get discounted prices in return.",
     "The owner is secretly a {werewolf/demon/mimic/doppelganger} who just wants a quiet life."
   ],
-  "generalStoreNames": [
-    "The {$nounPhysicalAdjectives} {$commonItem}",
-    "{$lastNameA} & {$lastNameB}",
-    "{$ownersLastName}"
-  ],
-  "armorSmithNames": [
-    "The {$armour}",
-    "The {$nounPhysicalAdjectives} {$armour}"
-  ],
-  "innOrTavernName": [
-    "The {$weapon}",
-    "The {$armour}",
-    "The {$commonItem}",
-    "{$lastNameA} & {$lastNameB}"
+  "establishmentNameSetA": [
+    "The {$anyItem}",
+    "The {$nounPhysicalAdjective} {$anyItem}",
+    "The {$sizeAdjective} {$anyItem}",
+    "The {$colourAdjective} {$anyItem}",
+    "The {$nounPhysicalAdjective} {$animal}",
+    "The {$sizeAdjective} {$animal}",
+    "The {$colourAdjective} {$animal}",
+    "{$ownersLastName}'s {$positiveAdjective} {Market/Emporium/Bazaar/Outlet/Store/Boutique}",
+    "{$ownersLastName}'s",
+    "{$lastNameA} & {$lastNameB}'s"
   ]
 }
