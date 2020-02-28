@@ -100,13 +100,21 @@ export const generate = (
     type = type ? type : _establishmentType();
 
     const npcs = _npcs(seed, type);
+    const name = _establishmentName(type, npcs);
+    const secret = _establishmentSecret();
 
     return {
       seed,
+      name,
       type,
+      secret,
       npcs,
-      name: Utils.titleCase(_establishmentName(type, npcs)),
-      secret: _establishmentSecret()
+      formattedData: {
+        name: Utils.titleCase(name),
+        type: Utils.titleCase(type),
+        secret,
+        npcs
+      }
     };
   });
 };
