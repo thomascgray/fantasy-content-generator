@@ -26,7 +26,7 @@ const _effects = (schoolOfMagic, powerLevel) => {
   // we then run each effect through the template parser too, as the effects themselves contain parseable text
   return Utils.pickMany(
     MagicItemData.school_weapon_effects_per_level[schoolOfMagic][powerLevel],
-    effectsCount
+    parseInt(effectsCount)
   ).map(Utils.parseTemplate);
 };
 
