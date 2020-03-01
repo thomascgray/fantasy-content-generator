@@ -6,9 +6,9 @@ describe("Establishments", () => {
     Utils.forCount(50, () => {
       const establishment = Establishments.generate();
       expect(typeof establishment).toEqual("object");
-      Object.keys(establishment).forEach(key => {
-        expect(establishment[key]).not.toEqual("undefined");
-      });
+      expect(JSON.stringify(establishment)).not.toBe(
+        expect.stringContaining("undefined")
+      );
     });
   });
 });

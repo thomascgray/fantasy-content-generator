@@ -133,4 +133,10 @@ export interface IEstablishmentDomainObject {
   name: string;
   npcs: INPCDomainObject[];
   secret: string;
+  formattedData: {
+    name: string;
+    type: string;
+    secret: string;
+    npcs: INPCDomainObject[];
+  };
 }

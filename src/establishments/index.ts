@@ -15,13 +15,17 @@ const _establishmentSecret = () => {
   );
 };
 
-const getNpcLastNames = (npcs: INPCDomainObject[]) => {
-  const npcLastNames = npcs.map(npc => npc.formattedData.lastName);
-  return npcLastNames;
+const getNpcStoreFrontNames = (npcs: INPCDomainObject[]) => {
+  const names = npcs.map(npc =>
+    npc.formattedData.lastName
+      ? npc.formattedData.lastName
+      : npc.formattedData.firstName
+  );
+  return names;
 };
 
 const _establishmentNameSetA = (npcs: INPCDomainObject[]) => {
-  const npcLastNames = Utils.pickMany(getNpcLastNames(npcs), 2);
+  const npcStoreFrontNames = Utils.pickMany(getNpcStoreFrontNames(npcs), 2);
   const anyItemPool = [
     ...GenericData.weapon,
     ...GenericData.armour,
@@ -37,9 +41,9 @@ const _establishmentNameSetA = (npcs: INPCDomainObject[]) => {
       colourAdjective: Utils.pick(GenericData.coloursAdjective),
       nounPhysicalAdjective: Utils.pick(GenericData.nounPhysicalAdjectives),
       positiveAdjective: Utils.pick(GenericData.positiveAdjective),
-      ownersLastName: npcs[0].formattedData.lastName,
-      lastNameA: npcLastNames[0],
-      lastNameB: npcLastNames[1]
+      ownersLastName: npcStoreFrontNames[0],
+      lastNameA: npcStoreFrontNames[0],
+      lastNameB: npcStoreFrontNames[1]
     }
   );
 };
