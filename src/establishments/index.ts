@@ -24,31 +24,31 @@ const getNpcStoreFrontNames = (npcs: INPCDomainObject[]) => {
   return names;
 };
 
-const _establishmentNameSetA = (npcs: INPCDomainObject[]) => {
-  const npcStoreFrontNames = Utils.pickMany(getNpcStoreFrontNames(npcs), 2);
-  const anyItemPool = [
-    ...GenericData.weapon,
-    ...GenericData.armour,
-    ...GenericData.commonItem
-  ];
-
-  return Utils.parseTemplate(
-    Utils.pick(EstablishmentData.establishmentNameSetA),
-    {
-      anyItem: Utils.pick(anyItemPool),
-      animal: Utils.pick(GenericData.animalSingular),
-      sizeAdjective: Utils.pick(GenericData.sizeAdjectives),
-      colourAdjective: Utils.pick(GenericData.coloursAdjective),
-      nounPhysicalAdjective: Utils.pick(GenericData.nounPhysicalAdjectives),
-      positiveAdjective: Utils.pick(GenericData.positiveAdjective),
-      ownersLastName: npcStoreFrontNames[0],
-      lastNameA: npcStoreFrontNames[0],
-      lastNameB: npcStoreFrontNames[1]
-    }
-  );
-};
-
 const _establishmentName = (type, npcs) => {
+  const _establishmentNameSetA = (npcs: INPCDomainObject[]) => {
+    const npcStoreFrontNames = Utils.pickMany(getNpcStoreFrontNames(npcs), 2);
+    const anyItemPool = [
+      ...GenericData.weapon,
+      ...GenericData.armour,
+      ...GenericData.commonItem
+    ];
+
+    return Utils.parseTemplate(
+      Utils.pick(EstablishmentData.establishmentNameSetA),
+      {
+        anyItem: Utils.pick(anyItemPool),
+        animal: Utils.pick(GenericData.animalSingular),
+        sizeAdjective: Utils.pick(GenericData.sizeAdjectives),
+        colourAdjective: Utils.pick(GenericData.coloursAdjective),
+        nounPhysicalAdjective: Utils.pick(GenericData.nounPhysicalAdjectives),
+        positiveAdjective: Utils.pick(GenericData.positiveAdjective),
+        ownersLastName: npcStoreFrontNames[0],
+        lastNameA: npcStoreFrontNames[0],
+        lastNameB: npcStoreFrontNames[1]
+      }
+    );
+  };
+
   switch (type) {
     case "general_store":
     case "inn":
@@ -93,6 +93,45 @@ const _establishmentType = () => {
   return Utils.pick(EstablishmentData.establishments);
 };
 
+const _description = type => {
+  const lookAndAppearance =
+    "This establishment " +
+    Utils.pick(EstablishmentData.establishmentGeneralLookAndAppearances);
+  const builtFrom = Utils.pick(EstablishmentData.establishmentBuiltFrom);
+
+  const enteringAndPatrons = `${Utils.pick(
+    EstablishmentData.establishmentEnteringAndPatrons.i
+  )} ${Utils.pick(EstablishmentData.establishmentEnteringAndPatrons.ii)}`;
+
+  // get 2 random lines from the establishment specific descriptions, and format them correctly
+  let establishmentSpecificLines = [];
+
+  switch (type) {
+    case "inn":
+    case "tavern":
+      establishmentSpecificLines = Utils.pickMany(
+        EstablishmentData.establishmentDescriptionsInn,
+        2
+      );
+      break;
+    default:
+      establishmentSpecificLines = Utils.pickMany(
+        EstablishmentData.establishmentDescriptionsDefault,
+        2
+      );
+      break;
+  }
+
+  const typeSpecificLine = `${establishmentSpecificLines[0]}, and ${establishmentSpecificLines[1]}.`;
+
+  console.log("typeSpecificLine", typeSpecificLine);
+  return Utils.parseTemplate(
+    `${lookAndAppearance} ${builtFrom} ${enteringAndPatrons} ${Utils.firstCharacterUppercase(
+      typeSpecificLine
+    )}`
+  );
+};
+
 export const generate = (
   props: IEstablishmentGenerateProps = {}
 ): IEstablishmentDomainObject => {
@@ -106,6 +145,7 @@ export const generate = (
     const npcs = _npcs(seed, type);
     const name = _establishmentName(type, npcs);
     const secret = _establishmentSecret();
+    const description = _description(type);
 
     return {
       seed,
@@ -113,11 +153,13 @@ export const generate = (
       type,
       secret,
       npcs,
+      description,
       formattedData: {
         name: Utils.titleCase(name),
         type: Utils.titleCase(type),
         secret,
-        npcs
+        npcs,
+        description
       }
     };
   });

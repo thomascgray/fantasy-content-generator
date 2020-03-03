@@ -131,9 +131,12 @@ export const forCount = (number, func) => {
 
 // make every word in a sentence have a capital letter
 export const titleCase = string =>
-  string.replace(/\w\S*/g, function(txt) {
+  string.replace(/_/g, " ").replace(/\w\S*/g, function(txt) {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
   });
+
+export const firstCharacterUppercase = string =>
+  string.charAt(0).toUpperCase() + string.slice(1);
 
 export const formatRace = race => {
   switch (race) {

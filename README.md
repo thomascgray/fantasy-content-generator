@@ -6,9 +6,9 @@
 
 Top Features Include:
 
-- Easy to understand API
-- Zero dependencies
 - Interesting, flavoursome, and narrative-focused content, designed for roleplaying and inspiration for DMs
+- Easy to understand API
+- A single dependency (https://www.npmjs.com/package/seedrandom)
 - Can be used in both Node & browser
 - Optional seeding for deterministic generation
 - Ties-in to D&D 5E mechanics (weapon stats, magic effects, etc.)
