@@ -84,6 +84,14 @@
     "{large/small} {ornate/delicate/sturdy looking} lanterns adorn most of the {walls/pillars/walls and pillars}",
     "the windows are covered with simple wooden shutters"
   ],
+  "establishmentDescriptionsGeneralStore": [
+    "all manner of items are scattered across the counter",
+    "there are overflowing {boxes/chests/barrels} in all corners of the room - each labelled with {Dwarven runes/Elven script/an unknown language}",
+    "the sounds of animals {squarking/barking/meowing} can be heard coming from the store room",
+    "a small {copper/iron/bronze} bell above the door {chimes/rings/sounds} when the door opens and closes",
+    "posters of various {foods/vegetables} and {items/farming equipment} are nailed to the walls, with faded prices in large, bold letters",
+    "a {sweeping brush is/mop and bucket are} leaning against the {counter/far wall}"
+  ],
   "establishmentDescriptionsArmoursmith": ["there is a anvil"],
   "establishmentDescriptionsDefault": [
     "a {barking/meowing/squarking} noise can be heard from a back room somewhere",
