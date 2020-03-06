@@ -10,12 +10,18 @@ export const generate = (props: ILootGenerateProps = {}): ILootDomainObject => {
   return Utils.withSeed(seed, () => {
     source = source || Utils.pick(LootData.loot_source);
 
-    const lootItem = Utils.pick(LootData.loot_per_loot_source[source]);
+    const lootItem = Utils.parseTemplate(
+      Utils.pick(LootData.loot_per_loot_source[source])
+    );
 
     return {
       seed,
       source,
-      lootItem
+      lootItem,
+      formattedData: {
+        lootItem,
+        label: `${source} #${seed.substring(0, 8)}`
+      }
     };
   });
 };

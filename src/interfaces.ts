@@ -9,6 +9,19 @@ export type IRace =
   | "halfElf"
   | "tiefling";
 
+export type IEstablishmentType =
+  | "general_store"
+  | "stable"
+  | "inn"
+  | "tavern"
+  | "armoursmith"
+  | "weaponsmith"
+  | "carpenter"
+  | "leatherworker"
+  | "tanner"
+  | "cobbler"
+  | "bakery";
+
 export type IGender = "male" | "female";
 
 export type ISeed = string | number;
@@ -124,7 +137,7 @@ export interface ILootDomainObject {
 
 export interface IEstablishmentGenerateProps {
   seed?: ISeed;
-  type?: string;
+  type?: IEstablishmentType;
 }
 
 export interface IEstablishmentDomainObject {

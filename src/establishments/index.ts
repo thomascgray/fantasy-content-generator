@@ -3,7 +3,8 @@ import {
   IEstablishmentGenerateProps,
   IEstablishmentDomainObject,
   INPCDomainObject,
-  ISeed
+  ISeed,
+  IEstablishmentType
 } from "../interfaces";
 import EstablishmentData from "./establishments.json";
 import GenericData from "../genericData.json";
@@ -65,7 +66,7 @@ const _establishmentName = (type, npcs) => {
   }
 };
 
-const _npcs = (seed: ISeed, establishmentType: string) => {
+const _npcs = (seed: ISeed, establishmentType: IEstablishmentType) => {
   const poolOfOptionalVocationTypes = [
     ...EstablishmentData.establishmentVocationsOptional,
     ...(EstablishmentData.establishmentVocationsOptionalPerType[
@@ -93,7 +94,7 @@ const _establishmentType = () => {
   return Utils.pick(EstablishmentData.establishments);
 };
 
-const _description = type => {
+const _description = (type: IEstablishmentType) => {
   const lookAndAppearance =
     "This establishment " +
     Utils.pick(EstablishmentData.establishmentGeneralLookAndAppearances);
@@ -111,6 +112,13 @@ const _description = type => {
     case "tavern":
       establishmentSpecificLines = Utils.pickMany(
         EstablishmentData.establishmentDescriptionsInn,
+        2
+      );
+      break;
+    case "armoursmith":
+    case "weaponsmith":
+      establishmentSpecificLines = Utils.pickMany(
+        EstablishmentData.establishmentDescriptionsArmoursmith,
         2
       );
       break;

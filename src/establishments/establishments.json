@@ -6,10 +6,8 @@
     "tavern",
     "armoursmith",
     "weaponsmith",
-    "carpenter",
     "leatherworker",
     "tanner",
-    "cobbler",
     "bakery"
   ],
   "establishmentVocationsRequired": ["owner", "manager"],
@@ -65,7 +63,7 @@
   ],
   "establishmentEnteringAndPatrons": {
     "i": [
-      "As you {step/walk} into the building,",
+      "As you {step into/walk into/enter} the building,",
       "As you {step/walk/enter} through the door",
       "As you set foot on the threshold",
       "{Entering/Stepping into} the building"
@@ -92,7 +90,14 @@
     "posters of various {foods/vegetables} and {items/farming equipment} are nailed to the walls, with faded prices in large, bold letters",
     "a {sweeping brush is/mop and bucket are} leaning against the {counter/far wall}"
   ],
-  "establishmentDescriptionsArmoursmith": ["there is a anvil"],
+  "establishmentDescriptionsArmoursmith": [
+    "you {notice/eye} a large {iron/steel/bronze} anvil in the {nearest/far} corner",
+    "a selection of {tools/hammers} are hanging from a rack near the furnace",
+    "you realise there is a {thick/thin} coating of {dust/soot/coal dust} coats everything",
+    "a roaring furnace is situated in the centre of the room",
+    "a large {family crest/religious symbol/military insignia}, made of wrought iron, hangs on the {north/west/east/south} wall"
+  ],
+  "establishmentDescriptionsStable": ["horses", "more horses"],
   "establishmentDescriptionsDefault": [
     "a {barking/meowing/squarking} noise can be heard from a back room somewhere",
     "a large chandelier hangs in the centre of the room"
