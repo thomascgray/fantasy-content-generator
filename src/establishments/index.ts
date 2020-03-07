@@ -132,7 +132,6 @@ const _description = (type: IEstablishmentType) => {
 
   const typeSpecificLine = `${establishmentSpecificLines[0]}, and ${establishmentSpecificLines[1]}.`;
 
-  console.log("typeSpecificLine", typeSpecificLine);
   return Utils.parseTemplate(
     `${lookAndAppearance} ${builtFrom} ${enteringAndPatrons} ${Utils.firstCharacterUppercase(
       typeSpecificLine
