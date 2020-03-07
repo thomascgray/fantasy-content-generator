@@ -127,12 +127,19 @@ export interface IMagicItemDomainObject {
 export interface ILootGenerateProps {
   source?: string;
   seed?: string;
+  quantity?: number;
 }
 
 export interface ILootDomainObject {
-  seed: ISeed;
+  seed: string;
   source: string;
-  lootItem: string;
+  lootItems: string[];
+  quantity: number;
+  formattedData: {
+    lootItems: string[];
+    quantity: number;
+    label: string;
+  };
 }
 
 export interface IEstablishmentGenerateProps {
