@@ -4,7 +4,7 @@ import {
   INameGenerateProps,
   IRace,
   IGender,
-  INameDomainObject
+  INameDomainObject,
 } from "../interfaces";
 
 /**
@@ -31,26 +31,26 @@ const generateName = (race: IRace, gender: IGender): string => {
     case "human":
       return Utils.parseTemplate(template, {
         first: Utils.pick(Data[race][gender]),
-        last: Utils.pick(Data[race].last)
+        last: Utils.pick(Data[race].last),
       });
     case "halfOrc":
       return Utils.parseTemplate(template, {
         humanFirst: Utils.pick(Data.human[gender]),
         humanLast: Utils.pick(Data.human.last),
-        orcFirst: Utils.pick(Data.halfOrc[gender])
+        orcFirst: Utils.pick(Data.halfOrc[gender]),
       });
     case "halfElf":
       return Utils.parseTemplate(template, {
         humanFirst: Utils.pick(Data.human[gender]),
         humanLast: Utils.pick(Data.human.last),
         elfFirst: Utils.pick(Data.elf[gender]),
-        elfLast: Utils.pick(Data.elf.last)
+        elfLast: Utils.pick(Data.elf.last),
       });
     case "tiefling":
       return Utils.parseTemplate(template, {
         humanFirst: Utils.pick(Data.human[gender]),
         humanLast: Utils.pick(Data.human.last),
-        tieflingFirst: Utils.pick(Data.tiefling[gender])
+        tieflingFirst: Utils.pick(Data.tiefling[gender]),
       });
   }
 };
@@ -67,7 +67,7 @@ export const generate = (props: INameGenerateProps = {}): INameDomainObject => {
 
     gender = gender ? gender : Utils.randomGender();
 
-    const name = generateName(race, gender);
+    const name = Utils.parseTemplate(generateName(race, gender));
 
     const [firstName, lastName] = name.split(" ");
 
@@ -83,19 +83,19 @@ export const generate = (props: INameGenerateProps = {}): INameDomainObject => {
         race: Utils.formatRace(race),
         gender: Utils.titleCase(gender),
         firstName: firstName ? Utils.titleCase(firstName) : undefined,
-        lastName: lastName ? Utils.titleCase(lastName) : undefined
-      }
+        lastName: lastName ? Utils.titleCase(lastName) : undefined,
+      },
     };
   });
 };
 
 const functions = {
-  generate
+  generate,
 };
 
 // setup a function for each race
 Object.keys(Data).forEach((race: IRace) => {
-  functions[race] = props => {
+  functions[race] = (props) => {
     props.race = race;
     return generate(props);
   };

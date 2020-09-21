@@ -4,11 +4,45 @@ import {
   IEstablishmentDomainObject,
   INPCDomainObject,
   ISeed,
-  IEstablishmentType
+  IEstablishmentType,
 } from "../interfaces";
 import EstablishmentData from "./establishments.json";
 import GenericData from "../genericData.json";
 import NPCs from "../npcs";
+
+export const generate = (
+  props: IEstablishmentGenerateProps = {}
+): IEstablishmentDomainObject => {
+  let { type, seed, name } = props;
+
+  seed = seed || Utils.FantasyContentGeneratorSeed || Utils.generateUUID();
+
+  return Utils.withSeed(seed, () => {
+    type = type ? type : _establishmentType();
+    const npcs = _npcs(seed, type);
+
+    name = name ? name : _establishmentName(type, npcs);
+
+    const secret = _establishmentSecret();
+    const description = _description(type);
+
+    return {
+      seed,
+      name,
+      type,
+      secret,
+      npcs,
+      description,
+      formattedData: {
+        name: Utils.titleCase(name),
+        type: Utils.titleCase(type),
+        secret,
+        npcs,
+        description,
+      },
+    };
+  });
+};
 
 const _establishmentSecret = () => {
   return Utils.parseTemplate(
@@ -17,7 +51,7 @@ const _establishmentSecret = () => {
 };
 
 const getNpcStoreFrontNames = (npcs: INPCDomainObject[]) => {
-  const names = npcs.map(npc =>
+  const names = npcs.map((npc) =>
     npc.formattedData.lastName
       ? npc.formattedData.lastName
       : npc.formattedData.firstName
@@ -25,13 +59,20 @@ const getNpcStoreFrontNames = (npcs: INPCDomainObject[]) => {
   return names;
 };
 
-const _establishmentName = (type, npcs) => {
+/**
+ * generate a name for the establishment. takes the type of establishment
+ * and all the npcs
+ */
+const _establishmentName = (
+  type: IEstablishmentType,
+  npcs: INPCDomainObject[]
+) => {
   const _establishmentNameSetA = (npcs: INPCDomainObject[]) => {
     const npcStoreFrontNames = Utils.pickMany(getNpcStoreFrontNames(npcs), 2);
     const anyItemPool = [
       ...GenericData.weapon,
       ...GenericData.armour,
-      ...GenericData.commonItem
+      ...GenericData.commonItem,
     ];
 
     return Utils.parseTemplate(
@@ -45,49 +86,57 @@ const _establishmentName = (type, npcs) => {
         positiveAdjective: Utils.pick(GenericData.positiveAdjective),
         ownersLastName: npcStoreFrontNames[0],
         lastNameA: npcStoreFrontNames[0],
-        lastNameB: npcStoreFrontNames[1]
+        lastNameB: npcStoreFrontNames[1],
       }
     );
   };
 
   switch (type) {
     case "general_store":
-    case "inn":
-    case "tavern":
-    case "armorsmith":
-    case "weaponsmith":
     case "stable":
-    case "carpenter":
-    case "leatherworker":
-    case "tanner":
-    case "cobbler":
+    case "tavern":
+    case "grocers":
+    case "blacksmith":
+    case "tradehouse":
     default:
       return _establishmentNameSetA(npcs);
   }
 };
 
+// generate NPCs for the establishment, taking into account the establishment type
 const _npcs = (seed: ISeed, establishmentType: IEstablishmentType) => {
+  // build an array of all the optional vocations a worker here could have
   const poolOfOptionalVocationTypes = [
-    ...EstablishmentData.establishmentVocationsOptional,
+    ...EstablishmentData.establishmentVocationsOptional, // all establishments
     ...(EstablishmentData.establishmentVocationsOptionalPerType[
-      establishmentType
-    ] || [])
+      establishmentType // just the establishment type
+    ] || []),
   ];
 
-  // generate with 1 required, and 1 or 2 optional ones
+  // build 1 worker of the required vocations
+  const requiredVocation = Utils.pick(
+    EstablishmentData.establishmentVocationsRequired
+  );
+
+  const requiredNpc = NPCs.generate({
+    seed: `${seed}${requiredVocation}`,
+  });
+
+  // generate 1 or 2 optional ones
   const workerVocations = [
-    Utils.pick(EstablishmentData.establishmentVocationsRequired),
-    ...Utils.pickMany(poolOfOptionalVocationTypes, Utils.rand(1, 2))
+    ...Utils.pickMany(poolOfOptionalVocationTypes, Utils.rand(1, 2)),
   ];
 
-  return workerVocations.map((vocation, index) => {
+  const optionalNpcs = workerVocations.map((vocation, index) => {
     const npc = NPCs.generate({
-      seed: `${seed}${vocation}${index}`
+      seed: `${seed}${vocation}${index}`,
     });
     npc.vocation = vocation;
     npc.formattedData.vocation = Utils.titleCase(vocation);
     return npc;
   });
+
+  return [requiredNpc, ...optionalNpcs];
 };
 
 const _establishmentType = () => {
@@ -95,9 +144,23 @@ const _establishmentType = () => {
 };
 
 const _description = (type: IEstablishmentType) => {
+  /*
+  description schema, in order:
+
+  - The words "This establishment"
+  - a random `establishmentGeneralLookAndAppearances` 
+  - a random `establishmentBuiltFrom`
+  - a random `establishmentEnteringAndPatrons.i`
+  - a random `establishmentEnteringAndPatrons.ii`
+  - a random establishment specific line, title cased
+  - the words ", and"
+  - a random establishment specific line
+  */
+
   const lookAndAppearance =
     "This establishment " +
     Utils.pick(EstablishmentData.establishmentGeneralLookAndAppearances);
+
   const builtFrom = Utils.pick(EstablishmentData.establishmentBuiltFrom);
 
   const enteringAndPatrons = `${Utils.pick(
@@ -108,15 +171,13 @@ const _description = (type: IEstablishmentType) => {
   let establishmentSpecificLines = [];
 
   switch (type) {
-    case "inn":
     case "tavern":
       establishmentSpecificLines = Utils.pickMany(
         EstablishmentData.establishmentDescriptionsInn,
         2
       );
       break;
-    case "armoursmith":
-    case "weaponsmith":
+    case "blacksmith":
       establishmentSpecificLines = Utils.pickMany(
         EstablishmentData.establishmentDescriptionsArmoursmith,
         2
@@ -139,41 +200,8 @@ const _description = (type: IEstablishmentType) => {
   );
 };
 
-export const generate = (
-  props: IEstablishmentGenerateProps = {}
-): IEstablishmentDomainObject => {
-  let { type, seed } = props;
-
-  seed = seed || Utils.FantasyContentGeneratorSeed || Utils.generateUUID();
-
-  return Utils.withSeed(seed, () => {
-    type = type ? type : _establishmentType();
-
-    const npcs = _npcs(seed, type);
-    const name = _establishmentName(type, npcs);
-    const secret = _establishmentSecret();
-    const description = _description(type);
-
-    return {
-      seed,
-      name,
-      type,
-      secret,
-      npcs,
-      description,
-      formattedData: {
-        name: Utils.titleCase(name),
-        type: Utils.titleCase(type),
-        secret,
-        npcs,
-        description
-      }
-    };
-  });
-};
-
 const functions = {
-  generate
+  generate,
 };
 
 export default functions;

@@ -120,20 +120,20 @@
     ],
     "last": [
       "Balderk",
-      "Battlehammer",
+      "Battle{hammer/axe/maul}",
       "Brawnanvil",
       "Dankil",
-      "Fireforge",
-      "Frostbeard",
+      "{Fire/Flame/Ember}{forge}",
+      "{Frost/Ice/Snow}beard",
       "Gorunn",
       "Holderhek",
-      "Ironfist",
+      "{Iron/Steel/Bronze}{fist/foot}",
       "Loderr",
       "Lutgehr",
       "Rumnaheim",
       "Strakeln",
-      "Torunn",
-      "Ungart"
+      "{Tor/Tör/Dor/Dör}{unn/dunn/dan/den/man/men/mun}",
+      "{Un/Uhn/Ün/Ühn}g{a/ä/â}{rd/rt/r}"
     ],
     "templates": ["{$first} {$last}"]
   },
@@ -202,15 +202,16 @@
       "Xanaphia"
     ],
     "last": [
-      "Amakiir",
-      "Amastacia",
-      "Galanodel",
-      "Holimion",
+      "{Ata/Ama/Ada/Ana/Apa/Asa/Ema/Eda/Ena/Epa/Esa}{kiir/kyir/kiyr/kuyr}",
+      "{Ama/Ada/Ana/Apa/Aga/Ata/Ema/Éma/Éna}{ka/kâ/sta/sto/stö/}{siâ/sia/cia/cya/cyâ}",
+      "{Ga/Ka}{la}{no}{del/dil/dal/mal/mel/mil}",
+      "{Hol/Hil/Hal}{a/i/e/o/u}{mion/myon/moin/mien/nion/nyon/nien/nein}",
       "Ilphelkiir",
-      "Liadon",
+      "{Lia/Liâ/Lié/Lù/Liù}{don/den/dan/dun/din}",
       "Meliamne",
-      "Naïlo",
-      "Siannodel",
+      "{Nai/Nei/Noi/Naï/Naë/Nÿ}{lo/la/li/le/lu/lie/lae/loi/lio/pa/pe/pae/po}",
+      "{Sian/Syan/Sêan}{no/ne/ni/na/nu}{del/dyel/dal/dâl}",
+      "{Syrt/Dryt/Sum/Sun/Dym/Dum/Myt/Nyt/Ryt}{ari/aius/us/euis/is/ius/}",
       "Xiloscient"
     ],
     "templates": ["{$first} {$last}"]

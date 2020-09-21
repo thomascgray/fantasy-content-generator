@@ -12,15 +12,10 @@ export type IRace =
 export type IEstablishmentType =
   | "general_store"
   | "stable"
-  | "inn"
   | "tavern"
-  | "armoursmith"
-  | "weaponsmith"
-  | "carpenter"
-  | "leatherworker"
-  | "tanner"
-  | "cobbler"
-  | "bakery";
+  | "grocers"
+  | "blacksmith"
+  | "tradehouse";
 
 export type IGender = "male" | "female";
 
@@ -145,6 +140,7 @@ export interface ILootDomainObject {
 export interface IEstablishmentGenerateProps {
   seed?: ISeed;
   type?: IEstablishmentType;
+  name?: string;
 }
 
 export interface IEstablishmentDomainObject {

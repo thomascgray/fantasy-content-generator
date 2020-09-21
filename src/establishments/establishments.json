@@ -2,21 +2,17 @@
   "establishments": [
     "general_store",
     "stable",
-    "inn",
     "tavern",
-    "armoursmith",
-    "weaponsmith",
-    "leatherworker",
-    "tanner",
-    "bakery"
+    "grocers",
+    "blacksmith",
+    "tradehouse"
   ],
   "establishmentVocationsRequired": ["owner", "manager"],
   "establishmentVocationsOptional": ["assistant", "apprentice"],
   "establishmentVocationsOptionalPerType": {
     "general_store": ["cleaner"],
     "stable": ["stable hand", "farrier"],
-    "inn": ["landlord", "bar tender", "glass collector"],
-    "tavern": ["landlord", "bar tender", "glass collector"]
+    "tavern": ["bar tender", "glass collector"]
   },
   "establishmentSecrets": [
     "Built on an ancient {Dwarven/Elven/Dragonborn/Orcish} burial ground.",
@@ -30,7 +26,7 @@
     "This establishment is harbouring a criminal, as the criminal showed kindness to the owner.",
     "{Some/Many/All} of the regular patrons are {mimics/lycanthropes/vampires}.",
     "The owner is {selling/peddling} illegal {magical ingredients/potions/magical scrolls} to their patrons.",
-    "The owner never ages. Patrons who come to learn this keep their mouths shut, as they get discounted prices in return.",
+    "The owner doesn't age. No one knows why.",
     "The owner is secretly a {werewolf/demon/mimic/doppelganger} who just wants a quiet life."
   ],
   "establishmentNameSetA": [
@@ -46,15 +42,15 @@
     "{$lastNameA} & {$lastNameB}'s"
   ],
   "establishmentGeneralLookAndAppearances": [
-    "is spacious, with a tall ceiling.",
-    "is big, with wide rooms and tall walls.",
+    "is spacious, with a {tall/high} ceiling.",
+    "is big, with wide rooms and {tall/high} walls.",
     "is cramped, with a low ceiling.",
     "is small, nestled in between 2 larger buildings.",
     "is open and bright, with large windows and a high ceiling.",
     "looks old and {worn/\"well used\"}.",
     "looks \"well used\", but carefully maintained.",
     "is exceptionally clean and tidy.",
-    "is very messy, but not particularly \"dirty\".",
+    "is very untidy, but not particularly \"dirty\".",
     "is grotty, and gives off a shady atmosphere.",
     "looks brand new, with little obvious wear and tear."
   ],
@@ -66,7 +62,7 @@
       "As you {step into/walk into/enter} the building,",
       "As you {step/walk/enter} through the door",
       "As you set foot on the threshold",
-      "{Entering/Stepping into} the building"
+      "{Entering/Stepping into/Walking into} the building"
     ],
     "ii": [
       "you see there are {some/several/one or two/a few} other patrons present. They {look at/regard/eye/notice} you briefly before ignoring you.",

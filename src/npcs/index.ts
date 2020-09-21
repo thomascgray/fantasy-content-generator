@@ -75,6 +75,7 @@ const generate = (props: INPCGenerateProps = {}): INPCDomainObject => {
   });
 };
 
+// use the desires to generate some relations
 const generateRelationships = ({
   originalNpcNameObject,
   race,
