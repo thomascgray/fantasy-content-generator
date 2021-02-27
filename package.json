@@ -14,6 +14,7 @@
     "dnd-tool"
   ],
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "preversion": "npm test",
     "version": "npm run build && git add -A",
