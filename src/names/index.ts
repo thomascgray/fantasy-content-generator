@@ -52,6 +52,13 @@ const generateName = (race: IRace, gender: IGender): string => {
         humanLast: Utils.pick(Data.human.last),
         tieflingFirst: Utils.pick(Data.tiefling[gender])
       });
+    case "aelfir":
+      return Utils.parseTemplate(template, {
+        verb: Utils.pick(Data.aelfir.verb),
+        adjective: Utils.pick(Data.aelfir.adjective),
+        preposition: Utils.pick(Data.aelfir.preposition),
+        noun: Utils.pick(Data.aelfir.noun),
+      });
   }
 };
 

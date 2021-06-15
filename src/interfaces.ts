@@ -7,7 +7,8 @@ export type IRace =
   | "human"
   | "halfOrc"
   | "halfElf"
-  | "tiefling";
+  | "tiefling"
+  | "aelfir";
 
 export type IEstablishmentType =
   | "general_store"

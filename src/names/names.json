@@ -659,5 +659,22 @@
       "{$tieflingFirst} {$humanLast}",
       "{$tieflingFirst}"
     ]
+  },
+  "aelfir": {
+    "verb": [
+      "{Sings/Singing}"
+    ],
+    "adjective": [],
+    "preposition": [
+      "To",
+      "With",
+      "From"
+    ],
+    "noun": [
+      "Stars"
+    ],
+    "templates": [
+      "{$verb}-{$preposition}-{$noun}"
+    ]
   }
 }
