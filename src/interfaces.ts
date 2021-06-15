@@ -156,3 +156,30 @@ export interface IEstablishmentDomainObject {
     npcs: INPCDomainObject[];
   };
 }
+
+export type IGuildPrimaryType =
+  | "mages"
+  | "merchants"
+  | "thieves"
+  | "fighters"
+  | "hunters"
+  | "farmers"
+  | "laborers";
+
+export interface IGuildGenerateProps {
+  seed?: ISeed;
+  type?: IGuildPrimaryType;
+  name?: string;
+}
+
+export interface IGuildDomainObject {
+  seed: ISeed;
+  type: IGuildPrimaryType;
+  name: string;
+  npcs: INPCDomainObject[];
+  formattedData: {
+    name: string;
+    type: IGuildPrimaryType;
+    npcs: INPCDomainObject[];
+  };
+}

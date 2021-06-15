@@ -177,9 +177,15 @@ const _description = (type: IEstablishmentType) => {
         2
       );
       break;
+    case "general_store":
+      establishmentSpecificLines = Utils.pickMany(
+        EstablishmentData.establishmentDescriptionsGeneralStore,
+        2
+      );
+      break;
     case "blacksmith":
       establishmentSpecificLines = Utils.pickMany(
-        EstablishmentData.establishmentDescriptionsArmoursmith,
+        EstablishmentData.establishmentDescriptionsBlacksmith,
         2
       );
       break;

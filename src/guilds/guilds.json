@@ -1,0 +1,11 @@
+{
+  "types": [
+    "mages",
+    "merchants",
+    "thieves",
+    "fighters",
+    "hunters",
+    "farmers",
+    "laborers"
+  ]
+}

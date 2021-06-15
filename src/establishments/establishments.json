@@ -27,7 +27,12 @@
     "{Some/Many/All} of the regular patrons are {mimics/lycanthropes/vampires}.",
     "The owner is {selling/peddling} illegal {magical ingredients/potions/magical scrolls} to their patrons.",
     "The owner doesn't age. No one knows why.",
-    "The owner is secretly a {werewolf/demon/mimic/doppelganger} who just wants a quiet life."
+    "The owner is secretly a {werewolf/demon/mimic/doppelganger} who just wants a quiet life.",
+    "This establishment is a front for a local criminal organisation.",
+    "This establishment is haunted.",
+    "This establishment is paying bribes to local criminals to stifle the competition.",
+    "Once a {week/fortnight/month}, armed militia have private dealings with the owner.",
+    "The owner is a {fence/mover}, and is willing to buy and sell stolen goods."
   ],
   "establishmentNameSetA": [
     "The {$anyItem}",
@@ -55,7 +60,7 @@
     "looks brand new, with little obvious wear and tear."
   ],
   "establishmentBuiltFrom": [
-    "It is {built/constructed} from {oak/spruce/stone blocks/stone bricks/rough stone blocks/hewn stone blocks/clay bricks} with a {shallow/tall/wide} {slate/thatched/shingle tiled} roof, and the floor is made of {flagstones/old flagstones/wooden floorboards/sturdy wooden floorboards/cobblestones/worn, chipped bricks}."
+    "It {is/was} {built/constructed} from {oak/spruce/stone blocks/stone bricks/rough stone blocks/hewn stone blocks/clay bricks} with a {shallow/tall/wide} {slate/thatched/shingle tiled} roof, and the floor is made of {flagstones/old flagstones/wooden floorboards/sturdy wooden floorboards/cobblestones/worn, chipped bricks}."
   ],
   "establishmentEnteringAndPatrons": {
     "i": [
@@ -86,16 +91,20 @@
     "posters of various {foods/vegetables} and {items/farming equipment} are nailed to the walls, with faded prices in large, bold letters",
     "a {sweeping brush is/mop and bucket are} leaning against the {counter/far wall}"
   ],
-  "establishmentDescriptionsArmoursmith": [
+  "establishmentDescriptionsBlacksmith": [
     "you {notice/eye} a large {iron/steel/bronze} anvil in the {nearest/far} corner",
-    "a selection of {tools/hammers} are hanging from a rack near the furnace",
+    "a selection of {tools/hammers} are hanging from a rack near the {furnace/entrance}",
     "you realise there is a {thick/thin} coating of {dust/soot/coal dust} coats everything",
     "a roaring furnace is situated in the centre of the room",
     "a large {family crest/religious symbol/military insignia}, made of wrought iron, hangs on the {north/west/east/south} wall"
   ],
-  "establishmentDescriptionsStable": ["horses", "more horses"],
+  "establishmentDescriptionsStable": [
+    "the smell of {straw/hay/straw & hay/wet straw/wet hay/dry straw} is overpowering",
+    "",
+    "you eye the horses out back"
+  ],
   "establishmentDescriptionsDefault": [
     "a {barking/meowing/squarking} noise can be heard from a back room somewhere",
-    "a large chandelier hangs in the centre of the room"
+    "a {small/large/plain/decorative} chandelier hangs in the centre of the room"
   ]
 }
