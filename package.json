@@ -23,9 +23,7 @@
     "postversion": "git push && git push --tags",
     "test": "cross-env ENVIRONMENT=test npx jest",
     "build": "tsc",
-    "build:browser:linux": "npx browserify -t require-globify ./src/index_browser.js | npx terser -o fantasy_content_generator.js",
-    "build:browser:windows": "npx browserify -t require-globify ./src/index_browser.js",
-    "build:browser:unminified": "npx browserify -t require-globify ./src/index_browser.js -o fantasy_content_generator.js",
+    "build:browser": "npm run build && npx parcel build ./dist/index_browser.js .dist/**/*.json --out-dir ./ -o fantasy-content-generator.js --no-source-maps",
     "publish:patch": "npm version patch && npm publish",
     "publish:minor": "npm version minor && npm publish",
     "publish:major": "npm version major && npm publish"
@@ -35,7 +33,6 @@
   "devDependencies": {
     "@types/jest": "^24.0.23",
     "@types/node": "^12.12.14",
-    "browserify": "^16.2.3",
     "cross-env": "^7.0.0",
     "eslint": "^6.6.0",
     "jest": "^24.9.0",
