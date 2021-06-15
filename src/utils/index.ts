@@ -11,7 +11,7 @@ export let FantasyContentGeneratorSeed;
  *
  * @param {any[]} array an array of values to pick from
  */
-export const pick = array => {
+export const pick = (array) => {
   return pickMany(array, 1)[0];
 };
 
@@ -65,15 +65,16 @@ export const parseTemplate = (string: string, content = {}) => {
 
   if (matches) {
     // is our match a placeholder setup
-    matches.forEach(match => {
+    matches.forEach((match) => {
       const linkedPlaceholderMatches = /{(.+?)::(.+?)}/gm.exec(match);
       if (linkedPlaceholderMatches) {
         const rawLinkToken = linkedPlaceholderMatches[1];
         if (linkedPlaceholderIndexes[rawLinkToken] != null) {
           // if we're already setup
-          let replacement = linkedPlaceholderMatches[2].split("/")[
-            linkedPlaceholderIndexes[rawLinkToken]
-          ];
+          let replacement =
+            linkedPlaceholderMatches[2].split("/")[
+              linkedPlaceholderIndexes[rawLinkToken]
+            ];
           string = string.replace(match, replacement);
         } else {
           // if not, we need to do the first one and add the index into the linkedPlaceholderIndexes
@@ -86,7 +87,7 @@ export const parseTemplate = (string: string, content = {}) => {
       }
     });
 
-    matches.forEach(match => {
+    matches.forEach((match) => {
       if (match.charAt(1) === "$") {
         const replacementVarName = match.substring(2, match.length - 1);
         string = string.replace(match, content[replacementVarName]);
@@ -130,15 +131,15 @@ export const forCount = (number, func) => {
 };
 
 // make every word in a sentence have a capital letter
-export const titleCase = string =>
-  string.replace(/_/g, " ").replace(/\w\S*/g, function(txt) {
+export const titleCase = (string) =>
+  string.replace(/_/g, " ").replace(/\w\S*/g, function (txt) {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
   });
 
-export const firstCharacterUppercase = string =>
+export const firstCharacterUppercase = (string) =>
   string.charAt(0).toUpperCase() + string.slice(1);
 
-export const formatRace = race => {
+export const formatRace = (race) => {
   switch (race) {
     case "halfOrc":
       return "Half-Orc";
@@ -158,7 +159,7 @@ export const generateUUID = () => {
   ) {
     d += performance.now(); //use high-precision timer if available
   }
-  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
     var r = (d + Math.random() * 16) % 16 | 0;
     d = Math.floor(d / 16);
     return (c === "x" ? r : (r & 0x3) | 0x8).toString(16);

@@ -659,5 +659,85 @@
       "{$tieflingFirst} {$humanLast}",
       "{$tieflingFirst}"
     ]
+  },
+  "aelfir": {
+    "verb_past": [
+      "Singing",
+      "Dancing",
+      "Creaking",
+      "Leaping",
+      "Crying",
+      "Choking",
+      "Quivering",
+      "Glancing",
+      "Whispering",
+      "Smiling",
+      "Glancing",
+      "Stealing",
+      "Thirsting",
+      "Hungering",
+      "Screaming",
+      "Pleading",
+      "Challenging"
+    ],
+    "adverb": [
+      "Gracefully",
+      "Youthfully"
+    ],
+    "adjective": [
+      "{Gold/Silver/Silver-Touched/Ruby/Gem-Wrought/Emerald}",
+      "{Broken/Torn/Ruined}",
+      "Ornate",
+      "Rhetorical",
+      "Pompous",
+      "Plain",
+      "Stark",
+      "Floral"
+    ],
+    "preposition": [
+      "{To/To-A/To-The}",
+      "{With/With-A/With-The}",
+      "{From/From-A/From-The}",
+      "{Beneath/Beneath-A/Beneath-The}",
+      "{At/At-A/At-The}",
+      "{On/On-A/On-The}"
+    ],
+    "thing": [
+      "{Heart/Mind/Soul/Hand}",
+      "{Star/Starlight}",
+      "River",
+      "Scar",
+      "Mist",
+      "{Sunset/Sunrise}",
+      "Moonlight",
+      "Crystal",
+      "Quicksilver",
+      "Flame",
+      "{Daisy/Dandelion/Sunflower/Rose/Tulip}"
+    ],
+    "passive_emotion": [
+      "Arrogance",
+      "Hatred",
+      "Delight",
+      "Cruelty",
+      "Joy",
+      "Lust",
+      "Respect",
+      "Love",
+      "Hope",
+      "Worry",
+      "Anger",
+      "Sorrow"
+    ],
+    "templates": [
+      "{$verb_past}-{$preposition}-{$thing}",
+      "{$thing}-{$preposition}-{$thing2}",
+      "{$adverb}-{$verb_past}-{$thing}",
+      "{$preposition}-{$verb_past}-{$thing}",
+      "{$adjective}-{$thing}-{$verb_past}",
+      "{$thing}'s-{$passive_emotion}",
+      "{$passive_emotion}-{$preposition}-{$thing}",
+      "{$adjective}-{$passive_emotion}-{$verb_past}"
+    ]
   }
 }
