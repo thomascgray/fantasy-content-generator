@@ -661,7 +661,7 @@
     ]
   },
   "aelfir": {
-    "verb_past": [
+    "verb_ing": [
       "Singing",
       "Dancing",
       "Creaking",
@@ -669,7 +669,6 @@
       "Crying",
       "Choking",
       "Quivering",
-      "Glancing",
       "Whispering",
       "Smiling",
       "Glancing",
@@ -678,7 +677,44 @@
       "Hungering",
       "Screaming",
       "Pleading",
-      "Challenging"
+      "Challenging",
+      "Begging",
+      "Wanting",
+      "Calling",
+      "Beckoning",
+      "Helping",
+      "Believing",
+      "Growing",
+      "Offering",
+      "Leading",
+      "Reaching"
+    ],
+    "verb_present": [
+      "Sing",
+      "Dance",
+      "Creak",
+      "Leap",
+      "Cry",
+      "Choke",
+      "Quiver",
+      "Whisper",
+      "Smile",
+      "Glance",
+      "Steal",
+      "Thirst",
+      "Hunger",
+      "Scream",
+      "Plead",
+      "Challenge",
+      "Beg",
+      "Want",
+      "Call",
+      "Beckon",
+      "Help",
+      "Believe",
+      "Grow",
+      "Offer",
+      "Reach"
     ],
     "adverb": [
       "Gracefully",
@@ -704,34 +740,45 @@
     "adjective": [
       "{Gold/Silver/Silver-Touched/Ruby/Gem-Wrought/Emerald}",
       "{Broken/Torn/Ruined}",
-      "Ornate",
+      "{Ornate/Delicate/Fragile/Tender}",
       "Rhetorical",
       "Pompous",
-      "Plain",
-      "Stark",
-      "Floral",
-      "Shallow",
-      "Frozen"
+      "{Plain/Dull}",
+      "{Stark/Bold}",
+      "{Floral/Flowered}",
+      "{Shallow/Superficial}",
+      "{Frozen/Cold}",
+      "{Bright/Brilliant/Vivid/Iridescent}"
     ],
     "preposition": [
-      "{To}",
-      "{With/With-The}",
-      "{From/From-The}",
-      "{Beneath/Beneath-The}",
-      "{On/On-The}"
+      "To",
+      "With",
+      "From",
+      "Beneath",
+      "On"
+    ],
+    "preposition_spatial": [
+      "Beside",
+      "Beneath",
+      "Amidst",
+      "Between",
+      "Toward",
+      "Within",
+      "Beyond",
+      "Amongst"
     ],
     "thing": [
       "{Heart/Mind/Soul/Hand}",
       "{Star/Starlight}",
       "River",
       "Scar",
-      "Mist",
+      "{Mist/Rain}",
       "{Sun/Moon/Earth}",
       "{Sunset/Sunrise}",
       "Moonlight",
       "{Crystal/Diamond/Sapphire}",
       "{Flame/Fire/Ember}",
-      "{Daisy/Dandelion/Sunflower/Rose/Tulip}"
+      "{Orchid/Dandelion/Sunflower/Rose/Tulip}"
     ],
     "passive_emotion": [
       "Arrogance",
@@ -750,17 +797,22 @@
       "Pride"
     ],
     "templates": [
-      "{$verb_past}-{$preposition}-{$thing}s",
+      "{$verb_ing}-{$preposition}-{$thing}s",
       "{$thing}-{$preposition}-{$thing2}",
-      "{$adverb}-{$verb_past}-{$thing}",
-      "{$adverb}-{$verb_past}-{$thing}s",
-      "{$preposition}-{$verb_past}-{$thing}",
-      "{$adjective}-{$thing}-{$verb_past}",
-      "{$thing}'s-{$passive_emotion}",
+      "{$adverb}-{$verb_ing}-{$thing}",
+      "{$adverb}-{$verb_ing}-{$thing}s",
+      "{$adjective}-{$thing}-{$verb_ing}",
       "{$passive_emotion}-{$preposition}-{$thing}s",
-      "{$adjective}-{$passive_emotion}-{$verb_past}",
-      "The-{$adjective}-{$passive_emotion}",
-      "The-{$adjective}-{$thing}"
+      "{$adjective}-{$passive_emotion}-{$verb_ing}",
+      "{$adjective}-{$adjective2}-{$passive_emotion}",
+      "{$adjective}-{$thing}-{$verb_ing}",
+      "{$thing}-{$verb_present}-{$verb_ing}",
+      "{$thing}-{$verb_present}s-{$adverb}",
+      "{$adjective}-{$thing}-{$verb_ing}",
+      "{$thing2}-{$thing}-{$verb_ing}",
+      "{$thing}s-{$verb_present}-{$adverb}",
+      "{$thing}-{$verb_present}s-{$adverb}",
+      "{$thing}-{$verb_present}s-{$preposition_spatial}"
     ]
   }
 }
