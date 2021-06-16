@@ -754,7 +754,6 @@
       "To",
       "With",
       "From",
-      "Beneath",
       "On"
     ],
     "preposition_spatial": [
@@ -812,7 +811,9 @@
       "{$thing2}-{$thing}-{$verb_ing}",
       "{$thing}s-{$verb_present}-{$adverb}",
       "{$thing}-{$verb_present}s-{$adverb}",
-      "{$thing}-{$verb_present}s-{$preposition_spatial}"
+      "{$thing}-{$verb_present}s-{$preposition_spatial}",
+      "{$preposition}-{$verb_ing}-{$thing}s",
+      "{$preposition_spatial}-{$verb_ing}-{$thing}s"
     ]
   }
 }
