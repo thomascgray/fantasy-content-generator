@@ -53,16 +53,27 @@ const generateName = (race: IRace, gender: IGender): string => {
         tieflingFirst: Utils.pick(Data.tiefling[gender]),
       });
     case "aelfir":
+      const [adjective, adjective2] = Utils.pickMany(Data.aelfir.adjective, 2);
+      const [thing, thing2] = Utils.pickMany(Data.aelfir.thing, 2);
+      const [passive_emotion, passive_emotion2] = Utils.pickMany(
+        Data.aelfir.passive_emotion,
+        2
+      );
+
       return Utils.parseTemplate(template, {
-        verb_past: Utils.parseTemplate(Utils.pick(Data.aelfir.verb_past)),
+        verb_ing: Utils.parseTemplate(Utils.pick(Data.aelfir.verb_ing)),
+        verb_present: Utils.parseTemplate(Utils.pick(Data.aelfir.verb_present)),
         adverb: Utils.parseTemplate(Utils.pick(Data.aelfir.adverb)),
-        adjective: Utils.parseTemplate(Utils.pick(Data.aelfir.adjective)),
+        adjective: Utils.parseTemplate(adjective),
+        adjective2: Utils.parseTemplate(adjective2),
         preposition: Utils.parseTemplate(Utils.pick(Data.aelfir.preposition)),
-        passive_emotion: Utils.parseTemplate(
-          Utils.pick(Data.aelfir.passive_emotion)
+        preposition_spatial: Utils.parseTemplate(
+          Utils.pick(Data.aelfir.preposition_spatial)
         ),
-        thing: Utils.parseTemplate(Utils.pick(Data.aelfir.thing)),
-        thing2: Utils.parseTemplate(Utils.pick(Data.aelfir.thing)),
+        passive_emotion: Utils.parseTemplate(passive_emotion),
+        passive_emotion2: Utils.parseTemplate(passive_emotion2),
+        thing: Utils.parseTemplate(thing),
+        thing2: Utils.parseTemplate(thing2),
       });
   }
 };
