@@ -682,7 +682,24 @@
     ],
     "adverb": [
       "Gracefully",
-      "Youthfully"
+      "Youthfully",
+      "Quietly",
+      "Plainly",
+      "Deliberately",
+      "Forcefully",
+      "Accidentally",
+      "Begrudgingly",
+      "Majestically",
+      "Abruptly",
+      "Beautifully",
+      "Delicately",
+      "Delightfully",
+      "Firmly",
+      "Lightly",
+      "Truthfully",
+      "Quickly",
+      "Wearily",
+      "Willfully"
     ],
     "adjective": [
       "{Gold/Silver/Silver-Touched/Ruby/Gem-Wrought/Emerald}",
@@ -692,15 +709,16 @@
       "Pompous",
       "Plain",
       "Stark",
-      "Floral"
+      "Floral",
+      "Shallow",
+      "Frozen"
     ],
     "preposition": [
-      "{To/To-A/To-The}",
-      "{With/With-A/With-The}",
-      "{From/From-A/From-The}",
-      "{Beneath/Beneath-A/Beneath-The}",
-      "{At/At-A/At-The}",
-      "{On/On-A/On-The}"
+      "{To}",
+      "{With/With-The}",
+      "{From/From-The}",
+      "{Beneath/Beneath-The}",
+      "{On/On-The}"
     ],
     "thing": [
       "{Heart/Mind/Soul/Hand}",
@@ -708,11 +726,11 @@
       "River",
       "Scar",
       "Mist",
+      "{Sun/Moon/Earth}",
       "{Sunset/Sunrise}",
       "Moonlight",
-      "Crystal",
-      "Quicksilver",
-      "Flame",
+      "{Crystal/Diamond/Sapphire}",
+      "{Flame/Fire/Ember}",
       "{Daisy/Dandelion/Sunflower/Rose/Tulip}"
     ],
     "passive_emotion": [
@@ -727,17 +745,22 @@
       "Hope",
       "Worry",
       "Anger",
-      "Sorrow"
+      "Sorrow",
+      "Ignorance",
+      "Pride"
     ],
     "templates": [
-      "{$verb_past}-{$preposition}-{$thing}",
+      "{$verb_past}-{$preposition}-{$thing}s",
       "{$thing}-{$preposition}-{$thing2}",
       "{$adverb}-{$verb_past}-{$thing}",
+      "{$adverb}-{$verb_past}-{$thing}s",
       "{$preposition}-{$verb_past}-{$thing}",
       "{$adjective}-{$thing}-{$verb_past}",
       "{$thing}'s-{$passive_emotion}",
-      "{$passive_emotion}-{$preposition}-{$thing}",
-      "{$adjective}-{$passive_emotion}-{$verb_past}"
+      "{$passive_emotion}-{$preposition}-{$thing}s",
+      "{$adjective}-{$passive_emotion}-{$verb_past}",
+      "The-{$adjective}-{$passive_emotion}",
+      "The-{$adjective}-{$thing}"
     ]
   }
 }
