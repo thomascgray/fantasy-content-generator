@@ -161,3 +161,14 @@ export interface IEstablishmentDomainObject {
     npcs: INPCDomainObject[];
   };
 }
+
+export interface IMonsterGenerateProps {
+  type?: string;
+  seed?: ISeed;
+}
+
+export interface IMonsterDomainObject {
+  seed: ISeed;
+  type: string;
+  formattedDescription: string;
+}

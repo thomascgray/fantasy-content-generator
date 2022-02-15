@@ -1,0 +1,27 @@
+{
+  "type": ["swarm"],
+  "gross_swarm_verb": [
+    "squirming",
+    "writhing",
+    "gurgling",
+    "wriggling",
+    "thrashing",
+    "undulating",
+    "heaving",
+    "contorting"
+  ],
+  "visual_description_swarm": [
+    "a living {swarm/mass/surge} of {$gross_swarm_verb_1}, {$gross_swarm_verb_2} {centipedes/insects/cockroaches/worms/slugs/maggots}",
+    "hundreds of {monsterous/giant/enormous/massive} {centipedes/insects/cockroaches/worms/slugs/maggots}, {acting as one/moving in unison}"
+  ],
+  "attacks_with_swarm": [
+    "blunt force trauma, battering its {enemies/prey/target} with ever-changing {appendages/tendrils/limbs/tentacles}",
+    "acid, {secreted from somewhere inside itself/oozing from every gap in its form}",
+    "sheer volume and weight, suffocating its enemies"
+  ],
+  "visual_description_quadruped_beast": [
+    "a {huge/lithe/bloated/gaunt/starving} {dog/wolf/cat/hound}"
+  ],
+
+  "vulnerability": ["weapons edged with {silver/gold/platinum}", "salt"]
+}

@@ -64,9 +64,9 @@
   "establishmentEnteringAndPatrons": {
     "i": [
       "As you {step into/walk into/enter} the building,",
-      "As you {step/walk/enter} through the door",
+      "As you {step/walk/enter} through the door,",
       "As you set foot on the threshold",
-      "{Entering/Stepping into} the building"
+      "{Entering/Stepping into} the building,"
     ],
     "ii": [
       "you see there are {some/several/one or two/a few} other patrons present. They {look at/regard/eye/notice} you briefly before ignoring you.",

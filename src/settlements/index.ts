@@ -1,14 +1,14 @@
 import * as Utils from "../utils";
 import {
   ISettlementGenerateProps,
-  ISettlementDomainObject
+  ISettlementDomainObject,
 } from "../interfaces";
 import SettlementData from "./settlements.json";
 import Establishments from "../establishments";
 
 const settlementType = () => Utils.pick(Object.keys(SettlementData.types));
 
-const _population = settlementType => {
+const _population = (settlementType) => {
   const population = Utils.rand(
     SettlementData.types[settlementType].minPop,
     SettlementData.types[settlementType].maxPop
@@ -31,13 +31,17 @@ export const generate = (
       seed,
       type,
       population: _population(type),
-      establishments: Establishments.generate()
+      establishments: [
+        Establishments.generate({ seed: `${seed}-1` }),
+        Establishments.generate({ seed: `${seed}-2` }),
+        Establishments.generate({ seed: `${seed}-3` }),
+      ],
     };
   });
 };
 
 const functions = {
-  generate
+  generate,
 };
 
 export default functions;

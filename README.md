@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/fantasy-content-generator.svg?style=flat-square)](https://www.npmjs.com/package/fantasy-content-generator)
 
-**Like [Faker.js](https://github.com/marak/Faker.js/), but for D&D 5E themed pieces of content. Need an NPC? A name? A magic item? You came to the right place.**
+**Simple API for generating flavourful and interesting fantasy gaming content. Need an NPC? A name? A magic item? You came to the right place.**
 
 Top Features Include:
 
@@ -126,9 +126,7 @@ There are a number of "sets" available. These are
 
 and can all be found on the base Fantasy Content Generator object.
 
-Most sets expose a `generate()` function, some expose others unique to that set.
-
-See our [API Reference](https://github.com/thomascgray/fantasy-content-generator/blob/master/docs/API.md) for full details of the API methods available.
+Sets expose a `generate()` function, some expose others unique to that set.
 
 _Many of the sets are currently WIP and quite limited. More content to come soon! Follow [me on Twitter](https://twitter.com/tmcgry) for release and update details._
 

@@ -22,7 +22,7 @@ Parse template supports strings with different formats of "custom regex".
 const template = "Hello {$name}";
 
 const string = parseTemplate(template, {
-  name: "Gary"
+  name: "Gary",
 });
 
 // `string` is equal to 'Hello Gary';
