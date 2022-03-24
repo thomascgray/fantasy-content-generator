@@ -8,6 +8,5 @@ describe("monster tests", () => {
       const output = generate();
       descriptions.push(output.formattedDescription);
     });
-    console.log("descriptions", JSON.stringify(descriptions, null, 2));
   });
 });
