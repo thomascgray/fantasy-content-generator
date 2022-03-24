@@ -5,7 +5,6 @@ describe("Storyhooks", () => {
   test("generate()", () => {
     Utils.forCount(50, () => {
       const storyhook = Storyhooks.generate();
-      console.log("storyhook", storyhook);
       expect(storyhook).not.toEqual("undefined");
     });
   });
