@@ -11,7 +11,7 @@ export let FantasyContentGeneratorSeed;
  *
  * @param {any[]} array an array of values to pick from
  */
-export const pick = (array) => {
+export const pick = (array: any[]) => {
   return pickMany(array, 1)[0];
 };
 

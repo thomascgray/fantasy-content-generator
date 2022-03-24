@@ -96,11 +96,20 @@ export interface ISettlementDomainObject {
 
 export interface IStoryhookGenerateProps {
   seed?: ISeed;
+  storyhookBank?: eStoryhookBanks;
+}
+
+export enum eStoryhookBanks {
+  NPC_ACTS = "NPC_ACTS",
+  PC_RELATED = "PC_RELATED",
+  LOCATION_BASED_URBAN = "LOCATION_BASED_URBAN",
+  LOCATION_BASED_WILDERNESS = "LOCATION_BASED_WILDERNESS",
 }
 
 export interface IStoryhookDomainObject {
   seed: ISeed;
   storyhook: string;
+  storyhookBank: eStoryhookBanks;
 }
 
 export interface IMagicItemGenerateProps {
