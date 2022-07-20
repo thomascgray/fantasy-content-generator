@@ -41,7 +41,7 @@
     "parcel-bundler": "^1.12.4",
     "release-it": "^12.3.3",
     "require-globify": "^1.4.1",
-    "terser": "^3.16.1",
+    "terser": "^4.8.1",
     "ts-jest": "^24.2.0",
     "typescript": "^3.7.3",
     "uglify-js": "^3.4.9"
