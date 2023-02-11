@@ -39,7 +39,7 @@
     "jest": "^24.9.0",
     "lodash": "^4.17.14",
     "parcel-bundler": "^1.12.4",
-    "release-it": "^12.3.3",
+    "release-it": "^15.6.0",
     "require-globify": "^1.4.1",
     "terser": "^4.8.1",
     "ts-jest": "^24.2.0",
